@@ -1,0 +1,42 @@
+unit,stage,ref,value,role,confidence
+both,parametric EQ,feedback R,8.2k,per-band loop,schematic read (400/300 dpi)
+both,parametric EQ,feedback C,47 pF,per-band loop,schematic read
+both,parametric EQ,input C,150 pF,across input,schematic read
+both,parametric EQ,freq pots,100k x2 ganged,frequency,schematic read
+both,parametric EQ,level pots,20k,boost/cut,schematic read
+both,parametric EQ low,C311,0.047 uF with 7.5k,band network,schematic read
+both,parametric EQ low,C312,0.02 uF,band network,schematic read
+both,parametric EQ mid,C309,0.0062 uF with 7.5k,band network (REV5 earlier read 0.0027 uF beside it),schematic read
+both,parametric EQ mid,C310,0.0027 uF,band network,schematic read
+both,parametric EQ high,C307,0.0011 uF with 11k,band network,schematic read
+both,parametric EQ high,C308,470 pF,band network,schematic read
+REV7,input sum,,20k x2,L+R summing resistors,schematic read
+REV7,LPF103 (PFB-4),,5.6k in/out,LC anti-alias module,parts list
+REV7,A/D gain,VR104,20k trim,gain stage before emphasis,schematic read
+REV7,emphasis,R213,10k,input R,schematic read
+REV7,emphasis,R214,10k,feedback R,schematic read
+REV7,emphasis,R212,4.3k,series R (parallel with R213),schematic read
+REV7,emphasis,C251,0.0036 uF,series C,schematic read
+REV7,sample-hold,IC116,220 pF,hold caps,schematic read
+REV7,trims,VR103/VR105/VR101/VR102,,D/A gain; A/D offset; output balance,service manual
+REV5,emphasis,R104/C103,4.3k + 0.0036 uF,same network around IC101,schematic read
+REV5,active LPF,,5.6k/5.6k; 0.0039 uF; 330 pF,after emphasis before LPF101,schematic read
+REV5,F-SCALE ADJUST,IC105,30k trim,gain before S/H,schematic read
+REV5,output S/H,,150 pF; 10k,after TC4053 demux,schematic read
+REV5,de-emphasis,R133,15k,feedback R,schematic read
+REV5,de-emphasis,R134/C136,6.2k + 0.0024 uF,series RC in parallel with R133,schematic read
+REV5,de-emphasis,input R,20k,input,schematic read
+REV5,mix,VR301,B10k x2,MIXING VOLUME,schematic read
+REV5,post-mix gain,,62k / 22k,feedback / input,schematic read
+REV7,D/A,PCM53JP-V,1 DAC time-shared L/R (MSB inverted),D/A,schematic read (REV7 sch p1)
+REV7,sample/hold,,10k/10k + 220 pF,inverting S/H per channel,schematic read
+REV7,PFB-4,LPF,passive 24-pin; in pin 2 out pin 10; 5.6k source and load,reconstruction LPF (sealed),schematic read
+REV7,de-emphasis,R181,5.6k,input (also PFB-4 load),schematic read
+REV7,de-emphasis,R168,15k,feedback R,schematic read
+REV7,de-emphasis,R167/C143,6.2k + 0.0024 uF,series RC in parallel with R168 (pole 3128 Hz zero 10696 Hz LF +8.56 dB),schematic read; response inference
+REV7,aperture correction,IC107,5.6k/5.6k 6.8 nF/560 pF,unity-gain Sallen-Key LPF f0 14.56 kHz Q 1.74,schematic read; response inference
+both,parametric EQ mid,dual rheostat,100k x2 + 7.5k fixed,Wien-bridge band-pass 362 Hz-5.19 kHz (Q-26),schematic read; range inference
+REV5,A/D input LPF,,5.6k/5.6k 3.9 nF/330 pF,unity-gain Sallen-Key f0 25.1 kHz Q 1.72 ahead of LPF101,schematic read; response inference
+REV5,emphasis,R101/R102,24k / 10k,emphasis LF gain +7.6 dB,schematic read
+REV5,VCA control,,10 uF with 4.7k/47k; 47k/0.22 uF,BYPASS crossfade smoothing (tau 42.7 ms then 10.3 ms; ~0.1 s 10-90%),schematic read; time inference
+REV5,dither,R294/VR101/R112,33k / B10k DITHER ADJUST / 100k into 10k-feedback S/H node,dither injection (max -33.3 dB re YM3020 out),schematic read; level inference

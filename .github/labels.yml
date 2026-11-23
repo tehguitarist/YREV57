@@ -1,0 +1,17 @@
+# Suggested labels (create with `gh label create` or a label-sync action)
+- name: research
+  color: "1d76db"
+- name: measurement
+  color: "0e8a16"
+- name: conflict
+  color: "d93f0b"
+- name: dsp
+  color: "5319e7"
+- name: tools
+  color: "fbca04"
+- name: legal
+  color: "b60205"
+- name: decision
+  color: "c5def5"
+- name: impact-high
+  color: "000000"

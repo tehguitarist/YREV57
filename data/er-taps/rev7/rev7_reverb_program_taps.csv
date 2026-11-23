@@ -1,0 +1,19 @@
+pattern,channel,tap,time_ms,gain_db,captures,kind
+Rev Hall,L,1,0.00,0.0,Giant; Vast,measured
+Rev Hall,L,2,24.97,-0.4,Giant; Vast,measured
+Rev Hall,L,3,49.59,-0.6,Giant; Vast,measured
+Rev Hall,R,1,0.00,0.0,Giant; Vast,measured
+Rev Hall,R,2,29.55,-0.4,Giant; Vast,measured
+Rev Hall,R,3,43.97,-0.6,Giant; Vast,measured
+Rev Plate,L,1,0.00,-9.8,plate,measured (a second capture: the same times x its initial delay / 45.8 ms within 3 %, levels about equal)
+Rev Plate,L,2,5.02,-2.8,plate,measured
+Rev Plate,L,3,18.13,0.0,plate,measured
+Rev Plate,R,1,0.00,-9.8,plate,measured
+Rev Plate,R,2,6.70,-2.8,plate,measured
+Rev Plate,R,3,16.00,0.0,plate,measured
+Rev Room,L,1,0.00,0.0,Young; Slight Hall,measured (mean of the two; they differ by up to 0.25 ms)
+Rev Room,L,2,14.99,-0.6,Young; Slight Hall,measured
+Rev Room,L,3,33.10,-1.0,Young; Slight Hall,measured
+Rev Room,R,1,0.00,0.0,Young; Slight Hall,measured
+Rev Room,R,2,15.11,-0.6,Young; Slight Hall,measured
+Rev Room,R,3,32.98,-1.0,Young; Slight Hall,measured

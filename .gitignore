@@ -1,0 +1,29 @@
+# Private source material (manuals, scans, reference recordings, listening renders): never committed.
+references/
+measurements/
+
+*.wav
+*.aif
+*.aiff
+*.flac
+*.syx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Build output (JUCE / CMake)
+build/
+cmake-build-*/
+Builds/
+JuceLibraryCode/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# CI / local JUCE cache
+.fetchcontent/

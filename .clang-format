@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+Language: Cpp
+IndentWidth: 4
+ColumnLimit: 120
+BreakBeforeBraces: Allman
+SpaceAfterCStyleCast: true
+SpaceBeforeParens: Always
+PointerAlignment: Left
+AllowShortFunctionsOnASingleLine: Inline
+AccessModifierOffset: -4
+NamespaceIndentation: All

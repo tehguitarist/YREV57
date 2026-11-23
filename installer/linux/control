@@ -1,0 +1,14 @@
+Package: yrev57
+Version: __VERSION__
+Section: sound
+Priority: optional
+Architecture: amd64
+Maintainer: YREV57 Project <noreply@example.invalid>
+Description: YREV57 reverb plugin (VST3, LV2)
+ An open-source reverb inspired by mid-1980s digital reverberators, with a
+ 1985-style and a 1987-style era, built with JUCE.
+ .
+ YREV57 is an independent product, inspired by the Yamaha REV7 and REV5. It is
+ not affiliated with, endorsed by or sponsored by Yamaha Corporation. Yamaha,
+ REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
+ the hardware that inspired this plug-in.

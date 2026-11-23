@@ -1,0 +1,35 @@
+program_type,parameter,min,max,unit,notes,open_question
+REV,reverb_time,0.3,10.0,s,time for 1 kHz to fall 60 dB,
+REV,initial_delay,0.1,100,ms,,
+REV,ref1_delay,0.1,100,ms,mono centre tap on every preset,
+REV,ref1_level,0,100,%,relative to direct; default 0%,
+REV,hi_ratio,0.1,1.0,x,one 1985 review says 2.0,Q-03
+REV,lo_ratio,0.1,2.4,x,,
+REV,diffusion,0,10,,barely audible per reviews,
+E/R,liveness,0,10,,0 dead; 10 tiled and glassy,
+E/R,room_size,0.1,20,x,parameter page summary says 0.1-10,Q-02
+E/R,mode,1,6,,1 Small Hall 2 Large Hall 3 Random 4 Reverse 5 Plate 6 Spring,
+E/R,diffusion,0,10,,,
+E/R,reflections_per_channel,18,18,count,REV type uses 3 per channel,
+Delay,delay_l,0.1,900,ms,,Q-12
+Delay,delay_r,0.1,900,ms,,Q-12
+Delay,level,0,100,%,,
+Echo,delay_l,0.1,450,ms,,
+Echo,delay_r,0.1,450,ms,,
+Echo,feedback,0,99,%,,
+Echo,high_damp,0.1,1.0,x,parameter summary says 0-10,Q-13
+Mod,lfo_rate,0.1,20,Hz,one shared LFO,
+Mod,depth,0,100,%,100% = +/-4 ms delay swing,
+Mod,flange_delay,0.1,100,ms,preset 1.2 ms,
+Mod,flange_feedback,0,99,%,reverb flange fixed 30%,
+Mod,reverb_flange_delay,0.1,100,ms,ROM chart OCR reads 0.1-30,Q-07
+Mod,reverb_flange_rt,0.3,10,s,,
+Mod,chorus_base_delay,4,4,ms,three voices 0/120/240 deg; C/L/R,
+Mod,chorus_dm_depth,0,100,%,+/-4 ms at max,
+Mod,chorus_am_depth,0,100,%,,
+Mod,phasing_delay,0.1,8,ms,preset 3.0 ms; R slightly later than L,
+Analogue EQ,low_freq,50,700,Hz,not stored with programs,
+Analogue EQ,mid_freq,350,7000,Hz,,
+Analogue EQ,high_freq,2000,20000,Hz,not checkable above 12 kHz,
+Analogue EQ,gain,-15,15,dB,service OCR reads low +/-18,Q-04
+Global,input_level_dial,0,10,,8 = unity; 10 = about +12 dB,

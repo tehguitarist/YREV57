@@ -1,0 +1,38 @@
+unit,ref,part,function,source,notes
+REV7,,HD6303R(P),CPU,service manual,Hitachi
+REV7,,XA043A0,EPROM V1.9,parts list,presets 1-30; DSP program; test code
+REV7,,TC5565PL-12,SRAM user programs 31-90,parts list,8 KB used; CR2032 backup
+REV7,,YM3804 x2,DSP-1 and DSP-2,parts list,route DSP-2 -> DSP-1 -> DSP-2
+REV7,,YM3807,modulation data generator,parts list,8-bit MOD bus to YM3804
+REV7,IC130-141,MBM4416P-12 x12,DRAM 16K x 4,schematic + diagnostics,two banks of six; 24-bit words
+REV7,IC114,PCM53JP-I,current-output 16-bit DAC inside SAR A/D,parts list + BB 1984 data book,Burr-Brown; +/-1 mA out; settles 350 ns; COB input
+REV7,,uPC319C,comparator for SAR A/D,parts list,
+REV7,,HD14549BP + HD14559BP,CMOS successive-approximation registers,parts list,
+REV7,,74HC166,parallel-to-serial (A/D out),parts list,
+REV7,IC113,PCM53JP-V,voltage-output 16-bit D/A,parts list + BB 1984 data book,time-shared L/R; +/-10 V; 96 dB DR; THD 1.9 % typ at -60 dB; settles 3 us; COB input
+REV7,,74HC595,serial-to-parallel (D/A in),parts list,
+REV7,IC116,,input sample-hold,schematic read,220 pF hold caps
+REV7,LPF103,PFB-4 (VA024200),12.2 kHz LC anti-alias filter,parts list + spec,5.6k in/out; >=50 dB @ 15.5 kHz
+REV7,IC301/IC302,NJM4558,parametric EQ op-amps,schematic read,
+REV7,,4 MHz ceramic resonator,clock,service manual,/128 = 31.25 kHz
+REV5,,HD6303RP,CPU,service manual,
+REV5,,HD63B50P,ACIA (MIDI),service manual,
+REV5,,YM3804 x3,DSP,service manual + schematic,one DRAM bank each
+REV5,,YM3807,modulation signal generator,service manual,3.2 MHz clock
+REV5,,YM3608,DEQ digital equaliser,service manual,per-program 3-band EQ
+REV5,IC124,YM3901,ADA converter interface (SAR; dither/offset lines; RNG for YM3015/3020),service manual + schematic,
+REV5,IC106,PCM55HP,16-bit parallel DAC in SAR loop,schematic,Burr-Brown; 96 dB DR; +/-3 V or +/-1 mA out
+REV5,IC108,PCM56P,16-bit serial output D/A,schematic,Burr-Brown
+REV5,IC103,YM3020,dither DAC feeding A/D input,schematic,DITHER ADJUST; SW103 on/off
+REV5,,uPC319,comparator,service manual,
+REV5,IC710-727,MB81464-12 x18,DRAM 64K x 4 (120 ns),service manual diagnostics,three banks of six
+REV5,,TC5564PL-15 x2,SRAM 8K x 8 user memory,parts list,
+REV5,IC137,TBP28L22N,PROM,parts list + schematic read,CPU memory-map decoder (A11-A15 + P10/P11 to chip selects; Q-24)
+REV5,,M51133P x2,VCA on VCA board,schematic,after dry/wet mix
+REV5,IC111,TC4053,L/R demux into output sample-holds,schematic,
+REV5,LPF101-103,LP20C9B6,potted active LPF modules (+/-15 V),parts list + schematic read,cut-off not printed; factory check <= -10 dB at 22 kHz (Q-09)
+REV5,,NJM4558/4556,op-amps,parts list,
+REV5,,5.6448 MHz ceramic resonator,DSP clock,service manual,/128 = 44.1 kHz
+REV5,,4 MHz ceramic resonator,AD/CPU clock,service manual,
+REV7,IC169,TBP28L22N,PROM,schematic read (REV7 sch p2),128-step converter timing sequencer (DEG L/R; DA CK; AD LD/CK/EN/ST; SYNC)
+REV5,IC803/IC804,M51133P,stereo electronic volume (VCA),schematic read + Mitsubishi 1984 data book,complementary dry / dry+wet crossfade on BYPASS; 0 dB at Vc 3.27 V; -21 dB typ at 1.66 V; ~100 dB at 0 V (Q-10)
