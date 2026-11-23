@@ -19,7 +19,7 @@ and Standalone.
 > sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
 > the hardware that inspired this plug-in.
 
-**Status: beta, version 0.9.1, no release yet.** See [Status](#status).
+**Status: beta, version 0.9.1.** See [Status](#status).
 
 ## Highlights
 
@@ -58,7 +58,7 @@ The full control reference is in the **[user manual](docs/manual.md)**.
 
 ## Install
 
-There is no release yet. When releases exist they will be attached to the GitHub Releases page as:
+Download the installer for your system from the [Releases page](https://github.com/tehguitarist/YREV57/releases):
 
 | System | Installer | Formats |
 |---|---|---|
@@ -66,11 +66,11 @@ There is no release yet. When releases exist they will be attached to the GitHub
 | Windows | `.exe` | VST3 |
 | Linux | `.deb` | VST3, LV2 |
 
-On a Mac there will be two installers: the standard one for Apple Silicon, and a **Universal** one for Intel Macs and for
+On a Mac there are two installers: the standard one for Apple Silicon, and a **Universal** one for Intel Macs and for
 DAWs that run under Rosetta. If your DAW does not find YREV57 or reports it cannot be loaded, try the Universal installer.
 
 Then rescan plugins in your DAW. Logic caches Audio Units, so if YREV57 does not show up, restart Logic or run
-`auval -v aufx Yr57 Yrev`. Until then, build from source (below).
+`auval -v aufx Yr57 Yrev`. You can also build from source (below).
 
 ## Using it
 
@@ -144,7 +144,7 @@ Before 1.0:
 - **Some hardware features are not modelled.** The four instrument early-reflection modes (piano, organ, brass, guitar) are
   hidden until there is data for them, and MIDI features (program change, triggers) are dropped in favour of DAW
   automation.
-- **No release or installers yet.** The release workflow exists but has not been used.
+- **Beta builds.** Installers are signed and notarised on macOS; the Windows and Linux builds are unsigned, so Windows may show a SmartScreen warning.
 
 The [roadmap](ROADMAP.md) has what is left before 1.0. Design notes are in [docs/](docs/README.md).
 
