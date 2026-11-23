@@ -1,11 +1,8 @@
 # YREV57
 
-[![Build](https://github.com/tehguitarist/YREV57/actions/workflows/plugin-ci.yml/badge.svg?branch=main)](https://github.com/tehguitarist/YREV57/actions/workflows/plugin-ci.yml)
+![Build](https://github.com/tehguitarist/YREV57/actions/workflows/plugin-ci.yml/badge.svg?branch=main)
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://opensource.org/license/agpl-v3)
-![Formats](https://img.shields.io/badge/formats-AU%20%7C%20VST3%20%7C%20LV2%20%7C%20Standalone-informational)
-![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
-![JUCE](https://img.shields.io/badge/JUCE-9.0.5-8dc63f)
-![C++20](https://img.shields.io/badge/C%2B%2B-20-00599c)
+[![Downloads](https://img.shields.io/github/downloads/tehguitarist/YREV57/total)](https://somsubhra.github.io/github-release-stats/?username=tehguitarist&repository=YREV57&page=1&per_page=30)
 
 ![YREV57 in 1987 (REV5) mode](docs/images/yrev57.png)
 
@@ -82,6 +79,8 @@ reset it, or click a value readout to type a number. Hover over any control for 
 A new instance starts on INIT: mix 50 %, input and output at 0 dB, width 100 %, character 100 %. The
 panel is resizable, and the Setup key opens the settings (quality, wet input default, noise seed, era settings, output
 safety limiter, UI scale).
+
+> **Tip:** shift-click the era key that isn't lit. There's a secret preset hiding behind it.
 
 The user manual in the repository (docs/manual.md) describes each control.
 
