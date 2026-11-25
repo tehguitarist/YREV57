@@ -200,6 +200,16 @@ namespace
         return 0;
     }
 
+    // A key's design rectangle by label (the layout table is generated; labels are unique within it)
+    Rect keyRect (const char* label)
+    {
+        for (const auto& d : kKeys)
+            if (juce::String (d.label) == label)
+                return d.r;
+        jassertfalse;
+        return {};
+    }
+
     juce::String radioGroupOf (const juce::String& g)
     {
         if (g == "ermodes1" || g == "ermodes2")
@@ -1175,6 +1185,15 @@ void YrevEditor::refresh (bool force)
         const bool inView = k->def.view == 0 || k->def.view == 3 || k->def.view == eqViewNow ();
         k->setVisible (inFx && inView && !isHiddenModeKey (k->def));
         k->setPlate (k->def.era5 && era == 0);
+        // Era 7 (1.0.1, maintainer): REV E/R sits beside Spring in Pan A's place rather than alone on a third row;
+        // the Pan A and Piano plates it would cover or leave alone are not shown. Era 5 keeps the layout as drawn.
+        if (juce::String (k->def.group) == "ermodes1")
+        {
+            if (label == "RevE/R")
+                k->setBounds (toRect (era == 0 ? keyRect ("Pan A") : k->def.r));
+            else if (era == 0 && (label == "Pan A" || label == "Piano"))
+                k->setVisible (false);
+        }
 
         if (label == "Analog" || label == "Digital")
             k->setToggleState ((label == "Digital") == eqDigital (), juce::dontSendNotification);

@@ -46,7 +46,7 @@ The REV5 kept its fine controls behind an INT PARAM key; the plugin does the sam
 
 ## Mode and type keys
 
-E/R modes use large square `esq` keys (116 × 116 design px, 19 px legends), four to a row over three rows. The FX-side keys (FX types, mod types, pitch and pan selectors) are square `msq` keys, 72 × 72 with 17 px legends: FX types on one row, mod types four then three. `SkinKey` picks the legend size from the key's shape and size.
+E/R modes use large square `esq` keys (116 × 116 design px, 19 px legends), four to a row over three rows. In era 7 (since 1.0.1) the REV E/R key sits beside Spring, in Pan A's place, and the Pan A and Piano plates are not drawn, so the era-7 keys fill two rows; era 5 keeps Pan A / Pan B beside Spring and Piano / REV E/R on the third row (`YrevEditor::refresh`, not the generated layout). The FX-side keys (FX types, mod types, pitch and pan selectors) are square `msq` keys, 72 × 72 with 17 px legends: FX types on one row, mod types four then three. `SkinKey` picks the legend size from the key's shape and size.
 
 ## Front panel grid
 

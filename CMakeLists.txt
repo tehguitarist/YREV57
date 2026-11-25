@@ -10,7 +10,7 @@ option(YREV_BUILD_TESTS "Build the Catch2 unit tests (tests/); on in CI, run wit
 set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "Minimum macOS version")
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "macOS architectures")
 
-project(YREV57 VERSION 1.0.0 LANGUAGES C CXX)
+project(YREV57 VERSION 1.0.1 LANGUAGES C CXX)
 
 # Windows: link the C/C++ runtime statically (/MT), so the plug-in does not depend on the Visual C++ Redistributable on
 # the user's machine; a plug-in built with a newer MSVC than the installed redistributable fails to load, which a host's
