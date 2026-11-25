@@ -4,13 +4,15 @@
 [![License](https://img.shields.io/badge/License-AGPLv3-blue.svg)](https://opensource.org/license/agpl-v3)
 [![Downloads](https://img.shields.io/github/downloads/tehguitarist/YREV57/total)](https://somsubhra.github.io/github-release-stats/?username=tehguitarist&repository=YREV57&page=1&per_page=30)
 
-![YREV57 in 1987 (REV5) mode](docs/images/yrev57.png)
+![YREV57 1.0 with its secret preset loaded](docs/images/yrev57.png)
 
 **A free, open-source digital reverb.** YREV57 is inspired by two mid-1980s Yamaha digital reverbs, the REV7 (1985) and the
 REV5 (1987). Both were 16-bit machines with a mono-summed wet path, and much of their character came from the converters
 and filters around the reverb as well as the reverb itself. YREV57 models that converter chain and runs our own
 delay and all-pass reverb engine inside it. An **era switch** (7 or 5) is the main character control. It runs as AU, VST3, LV2 (Linux)
 and Standalone.
+
+> **Tip:** shift-click the era key that isn't lit. There's a secret preset hiding behind it.
 
 > YREV57 is an independent product, inspired by the Yamaha REV7 and REV5. It is not affiliated with, endorsed by or
 > sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
@@ -77,8 +79,6 @@ reset it, or click a value readout to type a number. Hover over any control for 
 A new instance starts on INIT: mix 50 %, input and output at 0 dB, width 100 %, character 100 %. The
 panel is resizable, and the Setup key opens the settings (quality, wet input default, noise seed, era settings, output
 safety limiter, UI scale).
-
-> **Tip:** shift-click the era key that isn't lit. There's a secret preset hiding behind it.
 
 The user manual in the repository (docs/manual.md) describes each control.
 

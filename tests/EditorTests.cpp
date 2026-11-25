@@ -124,6 +124,14 @@ TEST_CASE ("write editor snapshots", "[.snapshot]")
         os.truncate ();
         png.writeImageToStream (ed->createComponentSnapshot (ed->getLocalBounds (), true, 1.0f), os);
     }
+    // CLA mode: the SECRET bank's preset loaded, so the editor opens with both era keys lit (the README teaser)
+    {
+        YrevProcessor pc;
+        for (int i = 0; i < pc.presets.size (); ++i)
+            if (pc.presets.at (i).bank == "SECRET")
+                pc.presets.load (i);
+        save (pc, "shot-cla.png");
+    }
     // the browser on the REV7 and REV5 manual-program banks (opens on the loaded preset's bank)
     for (const auto& [bank, pick] : {std::pair{"REV7", "Reverse Gate"}, std::pair{"REV5", "PC & Rev & G"}})
     {
