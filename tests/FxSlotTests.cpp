@@ -280,6 +280,30 @@ TEST_CASE ("FX slot echo feeds each channel back to itself")
     CHECK (out.r[4800] == Catch::Approx (0.6f).margin (1e-3));
 }
 
+TEST_CASE ("FX slot echo: the bridge delay comes off the first repeat only; era-7 damping is a two-tap average")
+{
+    // REV7 Stereo Echo capture: repeats every 170.0 ms after the first, -0.45 dB per repeat at 8 kHz at HIGH
+    // 0.9
+    FxParams p;
+    p.type = fxtype::echo;
+    p.echoLMs = p.echoRMs = 50.0f; // 2400 samples
+    p.echoFb = 60.0f;
+    p.echoLevel = 100.0f;
+    p.repeatAdvanceMs = 2.5f; // 120 samples
+    Stereo in (24000);
+    in.l[0] = 1.0f;
+    auto out = run (p, in);
+    CHECK (out.l[2280] == Catch::Approx (1.0f).margin (1e-4)); // first repeat 2.5 ms early
+    CHECK (out.l[4680] == Catch::Approx (0.6f).margin (1e-3)); // then every 50 ms
+    CHECK (out.l[7080] == Catch::Approx (0.36f).margin (1e-3));
+
+    p.echoDamp = 0.9f; // era 7: y = 0.95 x + 0.05 x[n-1] in the loop, gain 0.9 at Nyquist
+    out = run (p, in);
+    CHECK (out.l[2280] == Catch::Approx (1.0f).margin (1e-4)); // the first repeat is not filtered
+    CHECK (out.l[4680] == Catch::Approx (0.6f * 0.95f).margin (1e-4));
+    CHECK (out.l[4681] == Catch::Approx (0.6f * 0.05f).margin (1e-4));
+}
+
 TEST_CASE ("FX slot tempo sync snaps delay times to note values")
 {
     auto p = delayParams ();

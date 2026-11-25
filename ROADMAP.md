@@ -1,6 +1,6 @@
 # Roadmap
 
-**Status: beta, version 0.9.1.** Every feature is in. Left before 1.0: the last live checks, the first release with installers, and anything the beta turns up.
+**Status: version 1.0.0.** Every feature is in, and the programs have been refined against reference recordings of the hardware's factory programs. Next: the live checks, a listening pass on the refinements, and anything users turn up.
 
 ## Done
 
@@ -14,18 +14,22 @@
 - [x] Full parameter set ([parameters.md](docs/design/parameters.md)) and preset banks: our own, plus the REV7 and REV5 manual programs ([presets.md](docs/design/presets.md))
 - [x] Whole-engine crossfade on era, preset and state changes; per-era settings memory
 - [x] UI from the approved layout ([ui-layout.md](docs/design/ui-layout.md)); preset management, settings overlay
-- [x] CPU pass: about 1.3–2 % of one M1 Pro core at 48 / 96 kHz
+- [x] CPU pass: about 1.3–2.4 % of one M1 Pro core at 48 / 96 kHz
 - [x] Static listening pass
+- [x] First release with signed installers (0.9.1 beta; [docs/release.md](docs/release.md))
+- [x] Refinement against reference recordings of the factory programs: converters, each program's own early taps and voice, era-5 PIANO mode, era-7 time variance ([ADR 0007](docs/design/decisions/0007-era7-time-variance.md)), reported latency with a delayed dry ([ADR 0001](docs/design/decisions/0001-native-rate-engine.md))
+- [x] 1.0.0
 
-## Before 1.0
+## Next
 
 - [ ] Live checks: the GATE LVL input gate on a noisy source; a listen to the latest liveness and combination-program changes
-- [ ] First release: signed installers for macOS, Windows and Linux ([docs/release.md](docs/release.md))
+- [ ] Listening pass on the 1.0 refinements
 - [ ] Trademark disclaimer on the product page (when it exists)
-- [ ] Fixes from beta feedback
+- [ ] Fixes from user feedback
 
 ## Later
 
-- [ ] The four instrument early-reflection modes (piano, organ, brass, guitar), hidden until there is data for them
+- [ ] The organ, brass and guitar early-reflection modes, hidden until there is data for them
+- [ ] A more modal late bass on the REV7 programs, and a sparse late field for the Echo Room programs (structural; design first)
 - [ ] Rev sets for the REV7 programs that borrow their nearest neighbour's
 - [ ] REV5 E/R2 DENSITY 1 (printed on the E/R2 programs, not modelled)

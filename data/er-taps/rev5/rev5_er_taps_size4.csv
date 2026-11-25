@@ -1,409 +1,409 @@
-mode,mode_name,room_size,liveness,channel,tap,time_ms,gain_db,kind,confidence
-1,S-HALL,4.0,,L,1,19.0,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,2,21.6,-1.0,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,3,23.0,-1.7,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,4,26.8,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,5,31.9,-1.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,6,34.2,-4.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,7,36.4,-5.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,8,39.4,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,9,44.5,-2.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,10,47.2,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,11,52.3,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,12,55.8,-3.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,13,61.2,-4.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,14,67.1,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,15,73.2,-5.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,16,82.0,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,17,85.9,-7.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,18,92.3,-7.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,19,99.5,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,20,102.6,-7.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,21,107.0,-10.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,22,109.5,-9.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,23,113.4,-10.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,24,119.5,-9.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,25,123.2,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,26,125.2,-12.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,27,130.0,-9.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,28,137.1,-10.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,29,141.4,-14.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,30,143.8,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,31,150.0,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,32,153.4,-12.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,33,157.9,-12.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,L,34,163.2,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,1,16.3,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,2,18.7,-1.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,3,21.1,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,4,25.0,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,5,28.9,-1.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,6,31.0,-4.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,7,33.8,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,8,36.4,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,9,41.9,-2.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,10,44.2,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,11,50.2,-5.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,12,53.9,-2.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,13,58.0,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,14,64.2,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,15,70.5,-5.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,16,79.1,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,17,84.7,-7.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,18,90.1,-7.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,19,96.6,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,20,98.9,-7.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,21,104.5,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,22,107.6,-9.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,23,110.6,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,24,117.2,-8.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,25,120.5,-10.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,26,122.5,-12.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,27,127.4,-10.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,28,135.8,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,29,138.6,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,30,141.7,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,31,147.3,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,32,150.8,-12.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,33,155.1,-12.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-1,S-HALL,4.0,,R,34,161.0,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,1,18.5,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,2,23.9,-0.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,3,29.6,-1.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,4,35.7,-1.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,5,44.2,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,6,56.1,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,7,66.2,-3.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,8,76.2,-3.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,9,83.4,-3.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,10,95.4,-4.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,11,106.7,-4.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,12,125.2,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,13,134.0,-5.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,14,141.2,-5.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,15,152.4,-5.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,16,162.4,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,17,180.6,-6.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,18,190.5,-7.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,19,210.2,-7.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,20,226.6,-7.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,21,233.0,-8.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,22,246.2,-8.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,23,257.7,-9.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,24,265.3,-9.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,25,280.8,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,26,286.8,-10.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,27,303.2,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,28,313.5,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,29,323.7,-12.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,30,329.7,-11.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,31,342.3,-12.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,32,352.9,-12.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,33,363.9,-13.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,L,34,371.6,-13.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,1,18.0,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,2,22.5,-0.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,3,29.6,-1.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,4,34.9,-1.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,5,43.2,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,6,54.8,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,7,64.1,-2.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,8,75.5,-3.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,9,82.4,-4.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,10,94.1,-4.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,11,106.7,-4.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,12,123.8,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,13,133.4,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,14,140.0,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,15,152.4,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,16,161.7,-6.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,17,179.6,-6.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,18,189.4,-7.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,19,208.9,-7.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,20,224.6,-8.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,21,231.4,-8.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,22,245.7,-8.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,23,256.6,-9.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,24,263.6,-9.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,25,279.9,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,26,284.8,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,27,301.8,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,28,312.8,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,29,321.8,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,30,328.7,-12.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,31,339.6,-12.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,32,352.1,-12.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,33,361.4,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-2,L-HALL,4.0,,R,34,370.0,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,1,19.5,-0.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,2,44.4,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,3,59.4,-1.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,4,80.9,-1.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,5,92.9,-3.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,6,109.1,-3.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,7,122.5,-4.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,8,140.2,-2.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,9,153.5,-5.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,10,169.8,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,11,194.2,-3.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,12,210.5,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,13,224.1,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,14,233.9,-7.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,15,244.7,-6.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,16,264.8,-5.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,17,280.0,-7.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,18,290.2,-8.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,19,299.4,-8.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,20,326.1,-10.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,21,339.3,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,22,350.8,-10.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,23,361.7,-8.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,24,379.3,-10.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,25,407.3,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,26,411.9,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,27,431.0,-9.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,28,445.1,-12.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,29,476.2,-14.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,30,481.0,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,31,491.6,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,32,512.6,-12.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,33,534.5,-15.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,L,34,542.9,-13.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,1,17.6,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,2,42.7,-1.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,3,58.4,-1.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,4,79.6,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,5,91.6,-3.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,6,108.2,-2.6,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,7,121.1,-3.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,8,138.3,-1.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,9,151.3,-4.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,10,167.9,-3.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,11,193.1,-2.8,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,12,209.1,-3.7,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,13,221.3,-5.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,14,232.0,-6.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,15,243.3,-5.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,16,263.2,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,17,278.3,-6.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,18,288.6,-7.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,19,297.8,-8.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,20,323.5,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,21,338.1,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,22,348.9,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,23,359.1,-8.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,24,376.5,-9.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,25,405.0,-9.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,26,409.7,-11.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,27,429.0,-9.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,28,444.5,-12.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,29,471.0,-14.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,30,479.2,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,31,490.0,-10.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,32,511.3,-12.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,33,530.5,-15.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-3,RANDOM,4.0,,R,34,541.8,-13.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,1,19.6,-33.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,2,36.0,-32.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,3,49.0,-32.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,4,60.5,-28.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,5,74.0,-28.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,6,88.4,-28.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,7,103.8,-28.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,8,114.8,-25.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,9,129.7,-24.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,10,142.0,-23.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,11,155.7,-22.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,12,161.8,-20.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,13,174.6,-22.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,14,183.4,-18.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,15,189.1,-18.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,16,196.1,-18.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,17,206.8,-14.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,18,215.5,-15.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,19,221.5,-14.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,20,232.9,-14.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,21,237.6,-12.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,22,247.9,-11.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,23,251.8,-8.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,24,256.9,-7.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,25,264.3,-7.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,26,271.0,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,27,273.3,-7.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,28,277.5,-4.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,29,285.7,-4.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,30,290.4,-4.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,31,294.6,-1.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,32,300.7,-2.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,33,305.0,-1.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,L,34,310.9,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,1,18.9,-32.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,2,34.6,-32.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,3,50.1,-32.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,4,60.2,-27.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,5,72.9,-27.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,6,88.0,-27.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,7,102.3,-27.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,8,113.6,-25.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,9,129.0,-23.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,10,140.0,-23.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,11,155.4,-21.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,12,163.1,-19.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,13,173.6,-21.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,14,182.4,-17.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,15,188.9,-18.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,16,195.8,-18.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,17,206.4,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,18,214.9,-15.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,19,220.4,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,20,230.7,-14.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,21,236.8,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,22,246.8,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,23,251.0,-7.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,24,255.8,-7.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,25,263.5,-6.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,26,269.3,-4.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,27,272.8,-7.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,28,277.9,-3.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,29,284.0,-4.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,30,290.5,-4.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,31,293.5,-0.8,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,32,301.0,-1.5,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,33,303.1,-0.6,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-4,REVERSE,4.0,,R,34,310.3,0.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-5,PLATE,4.0,,L,1,22.3,-9.2,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,2,23.6,-6.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,3,24.9,-6.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,4,26.1,-5.1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,5,27.7,-3.9,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,6,28.9,-3.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,7,30.2,-2.3,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,8,31.6,-1.9,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,9,33.1,-2.0,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,10,34.6,-1.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,11,36.4,-2.6,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,12,37.6,-1.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,13,38.8,-1.0,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,14,40.7,-1.1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,15,42.2,-0.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,16,43.7,-0.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,17,44.7,-1.0,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,18,45.7,-0.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,19,46.8,-0.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,20,48.1,-0.7,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,21,49.5,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,22,50.8,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,23,52.2,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,24,53.6,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,25,54.9,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,26,56.0,-0.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,27,57.0,-0.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,28,57.9,-0.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,29,58.8,-0.4,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,30,59.7,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,31,61.1,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,32,62.4,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,33,64.0,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,L,34,65.6,-0.5,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,1,22.3,-8.8,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,2,23.9,-6.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,3,25.6,-6.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,4,27.1,-4.7,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,5,29.0,-3.5,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,6,30.5,-3.1,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,7,32.5,-1.9,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,8,34.5,-1.5,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,9,35.4,-1.6,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,10,36.3,-1.0,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,11,37.3,-2.2,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,12,38.3,-1.0,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,13,39.3,-0.6,measured,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,14,40.4,-0.7,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,15,41.4,-0.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,16,42.8,-0.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,17,44.1,-0.6,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,18,45.6,-0.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,19,47.1,-0.3,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,20,48.1,-0.3,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,21,49.0,-0.1,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,22,49.7,-0.1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,23,50.4,-0.1,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,24,51.4,-0.1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,25,52.5,-0.1,measured,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,26,53.6,-0.0,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,27,54.6,0.0,measured,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,28,55.5,-0.0,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,29,56.4,0.0,measured,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,30,57.9,-0.1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,31,59.4,-0.1,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,32,61.1,-0.1,split,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,33,62.8,-0.1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R)"
-5,PLATE,4.0,,R,34,64.5,-0.1,measured,"low (lines merge; split, inserted and curve estimates; L follows R)"
-6,SPRING,4.0,,L,1,22.5,-35.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,2,26.2,-25.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,3,33.6,-23.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,4,45.9,-18.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,5,49.5,-13.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,6,55.4,-11.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,7,63.4,-9.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,8,68.7,-6.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,9,77.6,-4.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,10,83.3,-5.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,11,89.3,-3.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,12,97.3,-2.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,13,103.9,-0.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,14,111.2,-0.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,15,118.9,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,16,124.5,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,17,129.2,-1.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,18,133.6,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,19,140.4,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,20,149.7,-1.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,21,155.1,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,22,159.7,-1.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,23,168.4,-1.0,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,24,169.9,-5.6,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,25,179.6,-4.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,26,181.6,-7.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,27,188.9,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,28,197.5,-10.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,29,203.0,-12.4,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,30,204.8,-14.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,31,214.8,-19.7,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,32,219.2,-25.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,33,221.4,-27.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,L,34,230.8,-32.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,1,22.5,-34.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,2,26.2,-25.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,3,33.5,-23.2,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,4,46.2,-17.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,5,48.9,-12.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,6,56.2,-10.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,7,62.7,-8.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,8,68.1,-5.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,9,78.0,-3.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,10,82.7,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,11,90.0,-3.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,12,97.9,-2.3,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,13,103.9,-0.2,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,14,110.6,0.0,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,15,119.9,0.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,16,124.5,0.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,17,129.5,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,18,133.8,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,19,140.8,-0.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,20,148.4,-0.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,21,155.1,0.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,22,160.0,-1.3,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,23,168.4,-0.6,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,24,170.1,-5.1,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,25,179.6,-3.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,26,181.2,-6.5,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,27,182.0,-6.3,split,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,28,188.9,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,29,197.6,-9.9,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,30,202.9,-11.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,31,205.5,-13.8,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,32,214.4,-19.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,33,220.1,-25.5,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
-6,SPRING,4.0,,R,34,230.8,-33.0,measured,"good (34 lines/ch; read, with a few estimates marked in kind)"
+mode,mode_name,room_size,liveness,channel,tap,time_ms,gain_db,sign,kind,confidence,printed_ms
+1,S-HALL,4.0,,L,1,19.0,-0.6,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",19.0
+1,S-HALL,4.0,,L,2,23.3,-1.0,1,split,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",21.6
+1,S-HALL,4.0,,L,3,23.3,-1.7,1,split,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",23.0
+1,S-HALL,4.0,,L,4,27.0,-2.4,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",26.8
+1,S-HALL,4.0,,L,5,31.5,-1.9,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",31.9
+1,S-HALL,4.0,,L,6,32.1,-4.5,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",34.2
+1,S-HALL,4.0,,L,7,37.4,-5.4,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",36.4
+1,S-HALL,4.0,,L,8,41.0,-1.7,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",39.4
+1,S-HALL,4.0,,L,9,44.6,-2.6,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",44.5
+1,S-HALL,4.0,,L,10,47.2,-4.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",47.2
+1,S-HALL,4.0,,L,11,52.9,-6.1,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",52.3
+1,S-HALL,4.0,,L,12,55.8,-3.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",55.8
+1,S-HALL,4.0,,L,13,61.3,-4.9,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",61.2
+1,S-HALL,4.0,,L,14,67.1,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",67.1
+1,S-HALL,4.0,,L,15,73.5,-5.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",73.2
+1,S-HALL,4.0,,L,16,81.6,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",82.0
+1,S-HALL,4.0,,L,17,87.1,-7.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",85.9
+1,S-HALL,4.0,,L,18,91.7,-7.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",92.3
+1,S-HALL,4.0,,L,19,99.6,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",99.5
+1,S-HALL,4.0,,L,20,102.6,-7.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",102.6
+1,S-HALL,4.0,,L,21,107.4,-10.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",107.0
+1,S-HALL,4.0,,L,22,108.3,-9.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",109.5
+1,S-HALL,4.0,,L,23,113.5,-10.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",113.4
+1,S-HALL,4.0,,L,24,119.5,-9.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",119.5
+1,S-HALL,4.0,,L,25,123.7,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",123.2
+1,S-HALL,4.0,,L,26,124.1,-12.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",125.2
+1,S-HALL,4.0,,L,27,130.6,-9.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",130.0
+1,S-HALL,4.0,,L,28,137.1,-10.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",137.1
+1,S-HALL,4.0,,L,29,141.1,-14.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",141.4
+1,S-HALL,4.0,,L,30,142.2,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",143.8
+1,S-HALL,4.0,,L,31,150.4,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",150.0
+1,S-HALL,4.0,,L,32,153.4,-12.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",153.4
+1,S-HALL,4.0,,L,33,158.4,-12.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",157.9
+1,S-HALL,4.0,,L,34,162.2,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",163.2
+1,S-HALL,4.0,,R,1,16.3,-0.1,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",16.3
+1,S-HALL,4.0,,R,2,18.9,-1.0,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",18.7
+1,S-HALL,4.0,,R,3,22.7,-1.7,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",21.1
+1,S-HALL,4.0,,R,4,24.9,-2.4,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",25.0
+1,S-HALL,4.0,,R,5,28.8,-1.9,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",28.9
+1,S-HALL,4.0,,R,6,30.9,-4.5,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",31.0
+1,S-HALL,4.0,,R,7,32.2,-5.1,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",33.8
+1,S-HALL,4.0,,R,8,36.9,-1.7,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",36.4
+1,S-HALL,4.0,,R,9,42.0,-2.6,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",41.9
+1,S-HALL,4.0,,R,10,44.5,-4.2,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",44.2
+1,S-HALL,4.0,,R,11,51.4,-5.8,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",50.2
+1,S-HALL,4.0,,R,12,54.3,-2.9,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",53.9
+1,S-HALL,4.0,,R,13,58.0,-4.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",58.0
+1,S-HALL,4.0,,R,14,64.6,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",64.2
+1,S-HALL,4.0,,R,15,70.5,-5.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",70.5
+1,S-HALL,4.0,,R,16,79.6,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",79.1
+1,S-HALL,4.0,,R,17,85.7,-7.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",84.7
+1,S-HALL,4.0,,R,18,90.2,-7.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",90.1
+1,S-HALL,4.0,,R,19,96.6,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",96.6
+1,S-HALL,4.0,,R,20,98.9,-7.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",98.9
+1,S-HALL,4.0,,R,21,104.5,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",104.5
+1,S-HALL,4.0,,R,22,107.6,-9.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",107.6
+1,S-HALL,4.0,,R,23,109.9,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",110.6
+1,S-HALL,4.0,,R,24,117.7,-8.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",117.2
+1,S-HALL,4.0,,R,25,120.5,-10.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",120.5
+1,S-HALL,4.0,,R,26,122.8,-12.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",122.5
+1,S-HALL,4.0,,R,27,126.8,-10.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",127.4
+1,S-HALL,4.0,,R,28,136.0,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",135.8
+1,S-HALL,4.0,,R,29,138.6,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",138.6
+1,S-HALL,4.0,,R,30,142.5,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",141.7
+1,S-HALL,4.0,,R,31,146.7,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",147.3
+1,S-HALL,4.0,,R,32,151.6,-12.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",150.8
+1,S-HALL,4.0,,R,33,156.2,-12.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",155.1
+1,S-HALL,4.0,,R,34,160.8,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind); times re-measured on REV5 captures 05 / 06 where matched (printed_ms keeps the chart reading), signs to 45 ms (pass 86)",161.0
+2,L-HALL,4.0,,L,1,18.5,-0.6,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,2,23.9,-0.8,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,3,29.6,-1.3,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,4,35.7,-1.5,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,5,44.2,-1.7,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,6,56.1,-2.4,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,L,7,66.2,-3.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,8,76.2,-3.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,9,83.4,-3.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,10,95.4,-4.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,11,106.7,-4.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,12,125.2,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,13,134.0,-5.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,14,141.2,-5.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,15,152.4,-5.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,16,162.4,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,17,180.6,-6.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,18,190.5,-7.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,19,210.2,-7.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,20,226.6,-7.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,21,233.0,-8.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,22,246.2,-8.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,23,257.7,-9.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,24,265.3,-9.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,25,280.8,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,26,286.8,-10.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,27,303.2,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,28,313.5,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,29,323.7,-12.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,30,329.7,-11.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,31,342.3,-12.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,32,352.9,-12.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,33,363.9,-13.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,L,34,371.6,-13.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,1,18.0,-0.6,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,2,22.5,-0.8,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,3,29.6,-1.3,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,4,34.9,-1.5,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,5,43.2,-2.4,1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,6,54.8,-2.4,-1,measured,"good (34 lines/ch; read, with a few estimates marked in kind); taps 1-6 signs from REV5 capture 30 (pass 72)",
+2,L-HALL,4.0,,R,7,64.1,-2.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,8,75.5,-3.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,9,82.4,-4.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,10,94.1,-4.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,11,106.7,-4.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,12,123.8,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,13,133.4,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,14,140.0,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,15,152.4,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,16,161.7,-6.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,17,179.6,-6.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,18,189.4,-7.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,19,208.9,-7.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,20,224.6,-8.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,21,231.4,-8.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,22,245.7,-8.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,23,256.6,-9.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,24,263.6,-9.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,25,279.9,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,26,284.8,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,27,301.8,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,28,312.8,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,29,321.8,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,30,328.7,-12.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,31,339.6,-12.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,32,352.1,-12.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,33,361.4,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+2,L-HALL,4.0,,R,34,370.0,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,1,19.5,-0.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,2,44.4,-1.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,3,59.4,-1.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,4,80.9,-1.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,5,92.9,-3.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,6,109.1,-3.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,7,122.5,-4.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,8,140.2,-2.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,9,153.5,-5.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,10,169.8,-4.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,11,194.2,-3.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,12,210.5,-4.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,13,224.1,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,14,233.9,-7.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,15,244.7,-6.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,16,264.8,-5.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,17,280.0,-7.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,18,290.2,-8.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,19,299.4,-8.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,20,326.1,-10.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,21,339.3,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,22,350.8,-10.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,23,361.7,-8.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,24,379.3,-10.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,25,407.3,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,26,411.9,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,27,431.0,-9.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,28,445.1,-12.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,29,476.2,-14.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,30,481.0,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,31,491.6,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,32,512.6,-12.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,33,534.5,-15.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,L,34,542.9,-13.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,1,17.6,-0.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,2,42.7,-1.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,3,58.4,-1.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,4,79.6,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,5,91.6,-3.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,6,108.2,-2.6,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,7,121.1,-3.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,8,138.3,-1.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,9,151.3,-4.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,10,167.9,-3.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,11,193.1,-2.8,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,12,209.1,-3.7,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,13,221.3,-5.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,14,232.0,-6.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,15,243.3,-5.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,16,263.2,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,17,278.3,-6.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,18,288.6,-7.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,19,297.8,-8.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,20,323.5,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,21,338.1,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,22,348.9,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,23,359.1,-8.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,24,376.5,-9.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,25,405.0,-9.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,26,409.7,-11.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,27,429.0,-9.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,28,444.5,-12.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,29,471.0,-14.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,30,479.2,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,31,490.0,-10.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,32,511.3,-12.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,33,530.5,-15.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+3,RANDOM,4.0,,R,34,541.8,-13.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,1,19.6,-33.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,2,36.0,-32.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,3,49.0,-32.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,4,60.5,-28.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,5,74.0,-28.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,6,88.4,-28.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,7,103.8,-28.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,8,114.8,-25.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,9,129.7,-24.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,10,142.0,-23.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,11,155.7,-22.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,12,161.8,-20.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,13,174.6,-22.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,14,183.4,-18.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,15,189.1,-18.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,16,196.1,-18.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,17,206.8,-14.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,18,215.5,-15.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,19,221.5,-14.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,20,232.9,-14.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,21,237.6,-12.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,22,247.9,-11.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,23,251.8,-8.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,24,256.9,-7.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,25,264.3,-7.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,26,271.0,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,27,273.3,-7.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,28,277.5,-4.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,29,285.7,-4.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,30,290.4,-4.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,31,294.6,-1.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,32,300.7,-2.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,33,305.0,-1.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,L,34,310.9,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,1,18.9,-32.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,2,34.6,-32.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,3,50.1,-32.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,4,60.2,-27.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,5,72.9,-27.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,6,88.0,-27.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,7,102.3,-27.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,8,113.6,-25.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,9,129.0,-23.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,10,140.0,-23.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,11,155.4,-21.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,12,163.1,-19.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,13,173.6,-21.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,14,182.4,-17.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,15,188.9,-18.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,16,195.8,-18.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,17,206.4,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,18,214.9,-15.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,19,220.4,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,20,230.7,-14.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,21,236.8,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,22,246.8,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,23,251.0,-7.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,24,255.8,-7.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,25,263.5,-6.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,26,269.3,-4.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,27,272.8,-7.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,28,277.9,-3.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,29,284.0,-4.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,30,290.5,-4.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,31,293.5,-0.8,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,32,301.0,-1.5,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,33,303.1,-0.6,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+4,REVERSE,4.0,,R,34,310.3,0.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+5,PLATE,4.0,,L,1,22.3,-9.2,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,2,23.6,-6.7,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,3,24.9,-6.7,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,4,26.1,-5.1,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,5,27.7,-3.9,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,6,28.9,-3.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,7,30.2,-2.3,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,8,31.6,-1.9,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,9,33.1,-2.0,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,10,34.6,-1.4,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,11,36.4,-2.6,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,12,37.6,-1.4,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,13,38.8,-1.0,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,14,40.7,-1.1,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,15,42.2,-0.7,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,16,43.7,-0.7,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,17,44.7,-1.0,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,18,45.7,-0.7,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,19,46.8,-0.7,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,20,48.1,-0.7,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,21,49.5,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,22,50.8,-0.5,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,23,52.2,-0.5,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,24,53.6,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,25,54.9,-0.5,1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,26,56.0,-0.4,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,27,57.0,-0.4,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,28,57.9,-0.4,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,29,58.8,-0.4,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,30,59.7,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,31,61.1,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,32,62.4,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,33,64.0,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,L,34,65.6,-0.5,-1,from other channel,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,1,22.3,-8.8,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,2,23.9,-6.3,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,3,25.6,-6.3,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,4,27.1,-4.7,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,5,29.0,-3.5,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,6,30.5,-3.1,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,7,32.5,-1.9,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,8,34.5,-1.5,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,9,35.4,-1.6,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,10,36.3,-1.0,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,11,37.3,-2.2,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,12,38.3,-1.0,1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,13,39.3,-0.6,-1,measured,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,14,40.4,-0.7,1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,15,41.4,-0.3,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,16,42.8,-0.3,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,17,44.1,-0.6,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,18,45.6,-0.3,1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,19,47.1,-0.3,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,20,48.1,-0.3,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,21,49.0,-0.1,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,22,49.7,-0.1,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,23,50.4,-0.1,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,24,51.4,-0.1,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,25,52.5,-0.1,-1,measured,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,26,53.6,-0.0,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,27,54.6,0.0,-1,measured,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,28,55.5,-0.0,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,29,56.4,0.0,1,measured,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,30,57.9,-0.1,1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,31,59.4,-0.1,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,32,61.1,-0.1,-1,split,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,33,62.8,-0.1,-1,inserted,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+5,PLATE,4.0,,R,34,64.5,-0.1,-1,measured,"low (lines merge; split, inserted and curve estimates; L follows R); sign fitted on the REV5 capture of 19 Electric Bass A (room size 0.3, pass 69): per tap low confidence (taps 0.1 ms apart there), the net polarity is the measured part (captures 19-21: energy below 150 Hz 9-10 dB under 300 Hz-8 kHz)",
+6,SPRING,4.0,,L,1,22.5,-35.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,2,26.2,-25.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,3,33.6,-23.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,4,45.9,-18.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,5,49.5,-13.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,6,55.4,-11.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,7,63.4,-9.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,8,68.7,-6.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,9,77.6,-4.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,10,83.3,-5.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,11,89.3,-3.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,12,97.3,-2.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,13,103.9,-0.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,14,111.2,-0.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,15,118.9,-0.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,16,124.5,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,17,129.2,-1.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,18,133.6,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,19,140.4,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,20,149.7,-1.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,21,155.1,-0.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,22,159.7,-1.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,23,168.4,-1.0,,split,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,24,169.9,-5.6,,split,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,25,179.6,-4.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,26,181.6,-7.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,27,188.9,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,28,197.5,-10.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,29,203.0,-12.4,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,30,204.8,-14.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,31,214.8,-19.7,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,32,219.2,-25.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,33,221.4,-27.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,L,34,230.8,-32.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,1,22.5,-34.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,2,26.2,-25.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,3,33.5,-23.2,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,4,46.2,-17.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,5,48.9,-12.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,6,56.2,-10.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,7,62.7,-8.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,8,68.1,-5.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,9,78.0,-3.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,10,82.7,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,11,90.0,-3.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,12,97.9,-2.3,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,13,103.9,-0.2,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,14,110.6,0.0,,from other channel,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,15,119.9,0.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,16,124.5,0.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,17,129.5,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,18,133.8,-0.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,19,140.8,-0.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,20,148.4,-0.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,21,155.1,0.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,22,160.0,-1.3,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,23,168.4,-0.6,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,24,170.1,-5.1,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,25,179.6,-3.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,26,181.2,-6.5,,split,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,27,182.0,-6.3,,split,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,28,188.9,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,29,197.6,-9.9,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,30,202.9,-11.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,31,205.5,-13.8,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,32,214.4,-19.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,33,220.1,-25.5,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",
+6,SPRING,4.0,,R,34,230.8,-33.0,,measured,"good (34 lines/ch; read, with a few estimates marked in kind)",

@@ -1,3 +1,4 @@
+#include "ReverbMeasure.h"
 #include "dsp/Converter.h"
 
 #include <juce_audio_basics/juce_audio_basics.h>
@@ -78,37 +79,72 @@ namespace
     }
 } // namespace
 
-TEST_CASE ("era 7 converter response matches the measured REV7 tap response")
+TEST_CASE ("era 7 converter response matches the measured REV7 direct path")
 {
-    // measured (REV7 #B taps, re 1 kHz): -1.2 dB 5 kHz, -3.3 dB 10 kHz, -11.0 dB 12.2 kHz, -18.6 dB 12.5 kHz
+    // pass 36, measured (REV7 Delay L R taps, re 1 kHz): flat to 8 kHz
+    // (+0.2 dB), -0.5 dB 11.2 kHz, -2.1 dB 12 kHz, -6.1 dB 12.5 kHz, -16.9 dB 13 kHz; flat bass (no lift)
     for (const double fs : {44100.0, 48000.0, 96000.0})
     {
         CAPTURE (fs);
         const auto o = run (impulse (fs, 0.15), fs, clean (0), true);
-        CHECK (rel (o.l, fs, 5000.0) == Approx (-1.2).margin (1.0));
-        CHECK (rel (o.l, fs, 10000.0) == Approx (-3.3).margin (1.2));
-        CHECK (rel (o.l, fs, 12200.0) == Approx (-11.0).margin (2.5));
-        CHECK (rel (o.l, fs, 12500.0) == Approx (-18.6).margin (3.5));
+        CHECK (rel (o.l, fs, 100.0) == Approx (0.0).margin (0.5));
+        CHECK (rel (o.l, fs, 5000.0) == Approx (0.2).margin (0.5));
+        CHECK (rel (o.l, fs, 8000.0) == Approx (0.2).margin (0.5));
+        CHECK (rel (o.l, fs, 11200.0) == Approx (-0.5).margin (0.8));
+        CHECK (rel (o.l, fs, 12000.0) == Approx (-2.1).margin (2.0));
+        CHECK (rel (o.l, fs, 12500.0) == Approx (-6.1).margin (2.0));
         CHECK (rel (o.l, fs, 15500.0) < -50.0); // spec: >= 50 dB down at 15.5 kHz
         CHECK (rel (o.l, fs, 19000.0) < -60.0);
     }
 }
 
-TEST_CASE ("era 5 converter response matches the measured REV5 tap response")
+TEST_CASE ("the FX delay's repeat keeps the converter's top octave (whole-sample reads), both eras")
 {
-    // measured (the clean taps of four REV5 E/R programs, re 1 kHz; twenty-seventh pass): -1.9 dB 8 kHz, -3.8 dB
-    // 10 kHz, -6.7 dB 12.5 kHz, -10.7 dB 16 kHz, -13.2 dB 18 kHz, -19.1 dB 20 kHz. The converter alone, with the hold
-    // droop in the bridge and the stages at 176.4 kHz or more (the reflections' comb low-pass is in the engine).
+    // M6 (2026-11-24): the hardware's fixed delays are whole native samples; a cubic read at the fraction the bridge
+    // latency leaves took 0.8 / 1.7 / 3.5 dB off the era-7 repeat at 8 / 10 / 12.5 kHz
+    for (const int era : {0, 1})
+        for (const double fs : {44100.0, 48000.0})
+        {
+            CAPTURE (era, fs);
+            const auto direct = run (impulse (fs, 0.15), fs, clean (era), true);
+            yrev::dsp::FxParams fx;
+            fx.era = era;
+            fx.type = yrev::dsp::fxtype::delay;
+            fx.dlyLMs = fx.dlyRMs = 50.013f; // off the sample grid at every rate
+            fx.dlyLevel = 100.0f;
+            auto cp = clean (era);
+            cp.fx = &fx;
+            EngineParams ep;
+            ep.preDelayMs = 0.1f; // no initial delay on the effect, so the wet repeat and the bypass's coincide
+            const auto o = run (impulse (fs, 0.25), fs, cp, true, ep);
+            // the repeat alone: from 25 ms after the input on (the direct path is over by then)
+            const size_t from = (size_t) ((0.05 + 0.025) * fs);
+            const std::vector<float> rep (o.l.begin () + (long) from, o.l.end ());
+            for (const double hz : {8000.0, 10000.0, 12000.0})
+            {
+                CAPTURE (hz);
+                CHECK (rel (rep, fs, hz) == Approx (rel (direct.l, fs, hz)).margin (0.2));
+            }
+        }
+}
+
+TEST_CASE ("era 5 converter response matches the measured REV5 single path")
+{
+    // pass 36, measured (REV5 program 26, left, re 1 kHz): +0.5 dB 8 kHz,
+    // +0.3 dB 10 kHz, +0.1 dB 12.5 kHz, +0.3 dB 16 kHz, +0.1 dB 18 kHz, -1.5 dB 20 kHz, -8.6 dB 21 kHz: flat, no hold
+    // droop. The converter alone (the reflections' comb low-pass is in the engine).
     for (const double fs : {44100.0, 48000.0, 96000.0, 192000.0})
     {
         CAPTURE (fs);
         const auto o = run (impulse (fs, 0.15), fs, clean (1), true);
-        CHECK (rel (o.l, fs, 8000.0) == Approx (-1.9).margin (0.8));
-        CHECK (rel (o.l, fs, 10000.0) == Approx (-3.8).margin (0.8));
-        CHECK (rel (o.l, fs, 12500.0) == Approx (-6.7).margin (0.8));
-        CHECK (rel (o.l, fs, 16000.0) == Approx (-10.7).margin (1.0));
-        CHECK (rel (o.l, fs, 18000.0) == Approx (-13.2).margin (1.2));
-        CHECK (rel (o.l, fs, 20000.0) == Approx (-19.1).margin (2.5));
+        CHECK (rel (o.l, fs, 100.0) == Approx (0.0).margin (0.5));
+        CHECK (rel (o.l, fs, 8000.0) == Approx (0.5).margin (0.5));
+        CHECK (rel (o.l, fs, 10000.0) == Approx (0.3).margin (0.5));
+        CHECK (rel (o.l, fs, 12500.0) == Approx (0.1).margin (0.5));
+        CHECK (rel (o.l, fs, 16000.0) == Approx (0.3).margin (0.6));
+        CHECK (rel (o.l, fs, 18000.0) == Approx (0.1).margin (0.6));
+        if (fs > 44100.0) // 20 kHz is the host's own edge at 44.1 kHz
+            CHECK (rel (o.l, fs, 20000.0) == Approx (-1.5).margin (1.5));
     }
 }
 
@@ -136,7 +172,7 @@ TEST_CASE ("the converter latency is fixed, known and short at every host rate")
         }
 }
 
-TEST_CASE ("the bridge delay is taken off the pre-delay, so reflections arrive on time")
+TEST_CASE ("the wet path is padded to the reported latency, so reflections arrive on time after it")
 {
     const double fs = 48000.0;
     EngineParams ep;
@@ -152,7 +188,9 @@ TEST_CASE ("the bridge delay is taken off the pre-delay, so reflections arrive o
             first = i;
             break;
         }
-    const double arrivalMs = 1000.0 * ((double) first - 0.05 * fs) / fs;
+    Converter probe;
+    probe.prepare (fs, 512);
+    const double arrivalMs = 1000.0 * ((double) first - 0.05 * fs - probe.reportedLatency ()) / fs;
     CHECK (arrivalMs == Approx (30.0).margin (1.0));
 }
 
@@ -255,8 +293,8 @@ TEST_CASE ("the A/D clips at full scale, and content above the native Nyquist do
     float peak = 0.0f;
     for (size_t i = (size_t) (0.1 * fs); i < o.l.size (); ++i)
         peak = std::max (peak, std::abs (o.l[i]));
-    // full scale is 2.0 (+6 dBFS); some overshoot from the filters, and era 7's bass lift after the D/A (+1.8 dB at
-    // 500 Hz) raises the clipped tone
+    // full scale is 2.0 (+6 dBFS); some overshoot from the filters raises the clipped tone (margin kept from when an
+    // era-7 bass lift sat after the D/A, removed in pass 36)
     CHECK (peak < 2.6f * 1.23f);
     const auto a = run (high, fs, clean (0), true);
     CHECK (rms (a.l, (size_t) (0.2 * fs), a.l.size ()) < 0.5 * 1.0e-3); // below -60 dB re the input
@@ -289,30 +327,110 @@ TEST_CASE ("the wet path blocks DC and keeps its bass to 20 Hz, in both eras")
     }
 }
 
-TEST_CASE ("era 7's reflections take the era bandwidth: the opening is darker at 8 kHz")
+TEST_CASE ("era 7's reflections take the tap average, the Rev taps more than the charts; the 1st reflection none")
 {
-    // seventeenth pass: a 7.5 kHz one-pole on the era-7 reflection outputs (8 kHz octave re 1 kHz over the first 60 ms
-    // of a reflections-only render: bare taps +7.8 dB, with it +5.5 dB)
+    // pass 39: a two-sample average on the era-7 reflections, u 0.5 on the Rev taps and 0.35 on the E/R charts (8 kHz
+    // octave re 1 kHz over the first 60 ms of a reflections-only render: bare taps +8.1 dB, the chart +7.4 dB); the 1st
+    // reflection is as flat as the direct path (REV7 captures)
     const double fs = 48000.0;
-    EngineParams ep;
-    ep.erRevBalance = 100.0f; // reflections only
-    ep.preDelayMs = 1.0f;
-    const auto o = run (impulse (fs, 1.0), fs, clean (0), false, ep);
-    size_t on = 0;
-    while (on < o.l.size () && std::abs (o.l[on]) < 1.0e-3f * 0.25f)
-        ++on;
-    const std::vector<float> head (o.l.begin () + (long) on, o.l.begin () + (long) (on + (size_t) (0.06 * fs)));
-    auto octave = [&] (double fc)
+    auto r8For = [&] (int erMode, float tapRead = 0.0f)
     {
-        double e = 0.0;
-        for (double f = fc / std::sqrt (2.0); f < fc * std::sqrt (2.0); f += 25.0)
-            e += std::pow (10.0, dbAt (head, fs, f) / 10.0);
-        return 10.0 * std::log10 (e);
+        EngineParams ep;
+        ep.tapReadOffset = tapRead;
+        ep.erRevBalance = 100.0f; // reflections only
+        ep.preDelayMs = 1.0f;
+        ep.erMode = erMode;
+        const auto o = run (impulse (fs, 1.0), fs, clean (0), false, ep);
+        size_t on = 0;
+        while (on < o.l.size () && std::abs (o.l[on]) < 1.0e-3f * 0.25f)
+            ++on;
+        const std::vector<float> head (o.l.begin () + (long) on, o.l.begin () + (long) (on + (size_t) (0.06 * fs)));
+        auto octave = [&] (double fc)
+        {
+            double e = 0.0;
+            for (double f = fc / std::sqrt (2.0); f < fc * std::sqrt (2.0); f += 25.0)
+                e += std::pow (10.0, dbAt (head, fs, f) / 10.0);
+            return 10.0 * std::log10 (e);
+        };
+        return octave (8000.0) - octave (1000.0);
     };
-    const double r8 = octave (8000.0) - octave (1000.0);
-    CAPTURE (r8);
-    CHECK (r8 < 6.6);
-    CHECK (r8 > 4.0);
+    const double chart = r8For (1), rev = r8For (12);
+    CAPTURE (chart, rev);
+    CHECK (chart < 8.0);
+    CHECK (chart > 6.5);
+    CHECK (rev < chart - 1.0);
+
+    // pass 61: the program's own read (voice_tap_read) moves the average; -0.5 reads whole samples (as bright as the
+    // 1st reflection's taps), +0.5 takes a second half-sample average (darker than the Rev default)
+    const double whole = r8For (12, -0.5f), darker = r8For (12, 0.5f);
+    CAPTURE (whole, darker);
+    CHECK (whole > rev + 2.0);
+    CHECK (darker < rev - 2.0);
+
+    // the 1st reflection alone (the taps start 50 ms later): the converter's response at 8 and 10 kHz
+    EngineParams ep;
+    ep.erRevBalance = 100.0f;
+    ep.preDelayMs = 50.0f;
+    ep.ref1DelayMs = 5.0f;
+    ep.ref1Level = 100.0f;
+    const auto o = run (impulse (fs, 0.3), fs, clean (0), false, ep);
+    const auto direct = run (impulse (fs, 0.3), fs, clean (0), true);
+    const size_t from = (size_t) (0.05 * fs), to = from + (size_t) (0.03 * fs);
+    const std::vector<float> r1 (o.l.begin () + (long) from, o.l.begin () + (long) to);
+    for (const double hz : {8000.0, 10000.0})
+    {
+        CAPTURE (hz);
+        CHECK (rel (r1, fs, hz) == Approx (rel (direct.l, fs, hz)).margin (0.3));
+    }
+}
+
+TEST_CASE ("the printed HIGH holds at the top of each era's band")
+{
+    // pass 37: the hardware captures read the printed HIGH as the RT ratio at about 10-12.5 kHz (REV7) and 16 kHz
+    // (REV5); the 2 kHz third octave stays near 0.9-1.0 (measurement of the captures, HIGH 0.3). The REV7 captures read
+    // HIGH 0.3 as 0.33-0.36 there; pass 39's brighter late feed moves this octave's reading (0.30 -> 0.38; the
+    // third-octave ratios it was fitted on are unchanged, 0.041 rms), so era 7 is held to the captures' reading.
+    // Pass 73 (corner x 1.15, reference 10.5 kHz) moves this octave to about 0.44: the third-octave T20 ratios against
+    // the captures stay within 0.02 at 10-12.5 kHz (0.044 -> 0.047 rms, 2-12.5 kHz), the late 4-10 kHz level is fixed.
+    const double fs = 96000.0;
+    for (const int era : {0, 1})
+    {
+        CAPTURE (era);
+        EngineParams ep;
+        ep.rt = 2.0f;
+        ep.hiRatio = 0.3f;
+        ep.erRevBalance = 0.0f;
+        ep.preDelayMs = 5.0f;
+        const auto o = run (impulse (fs, 3.0, 0.5f), fs, clean (era), false, ep);
+        auto rt = [&] (float hz) { return yrev::test::reverbTime (yrev::test::octaveBand (o.l, fs, hz), fs); };
+        const double r1 = rt (1000.0f), top = rt (era == 0 ? 11000.0f : 16000.0f), r2 = rt (2000.0f);
+        CAPTURE (r1, top, r2);
+        CHECK (top / r1 == Approx (era == 0 ? 0.42 : 0.3).margin (0.08));
+        CHECK (r2 / r1 > 0.85);
+    }
+}
+
+TEST_CASE ("era 7's treble decay floors at short RT and low HIGH")
+{
+    // pass 75: the REV7 Handclaps capture (RT 0.4 s, HIGH 0.1) decays about 0.40 s at 4-8 kHz against 0.45 s at 1 kHz
+    // (measurement of the capture); era 7 floors the treble decay at 0.2 s, era 5 does not (no capture)
+    const double fs = 96000.0;
+    double ratio[2] = {};
+    for (const int era : {0, 1})
+    {
+        CAPTURE (era);
+        EngineParams ep;
+        ep.rt = 0.4f;
+        ep.hiRatio = 0.1f;
+        ep.erRevBalance = 0.0f;
+        ep.preDelayMs = 5.0f;
+        const auto o = run (impulse (fs, 1.5, 0.5f), fs, clean (era), false, ep);
+        auto rt = [&] (float hz) { return yrev::test::reverbTime (yrev::test::octaveBand (o.l, fs, hz), fs); };
+        ratio[era] = rt (8000.0f) / rt (1000.0f);
+        CAPTURE (ratio[era]);
+    }
+    CHECK (ratio[0] > 0.5);
+    CHECK (ratio[1] < ratio[0] - 0.1);
 }
 
 TEST_CASE ("converter output does not depend on the block size")

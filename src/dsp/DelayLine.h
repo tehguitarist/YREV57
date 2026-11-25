@@ -76,4 +76,35 @@ namespace yrev::dsp
         int length = 1;
         T gain = T (0);
     };
+
+    // A Schroeder all-pass with a one-pole low-pass in its feedback (pass 88: the REV5 E/R2 tail, whose treble
+    // dies faster than its mid band). damp 0 is the plain all-pass, bit for bit; above 0 it is no longer all-pass:
+    // the treble decays faster on each pass.
+    template <typename T> class DampedAllPass
+    {
+    public:
+        void prepare (int maxLength) { line.prepare (maxLength); }
+        void reset ()
+        {
+            line.reset ();
+            lp = T (0);
+        }
+        void setLength (int samples) { length = std::clamp (samples, 1, line.capacity ()); }
+        int getLength () const { return length; }
+        void setGain (T g) { gain = g; }
+        void setDamping (T d) { damp = std::clamp (d, T (0), T (0.99)); }
+
+        T process (T x) noexcept
+        {
+            const T y = -gain * x + line.readBeforeWrite (length);
+            lp = (T (1) - damp) * y + damp * lp;
+            line.write (x + gain * lp);
+            return y;
+        }
+
+    private:
+        DelayLine<T> line;
+        int length = 1;
+        T gain = T (0), damp = T (0), lp = T (0);
+    };
 } // namespace yrev::dsp

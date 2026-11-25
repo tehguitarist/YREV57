@@ -58,6 +58,11 @@ namespace yrev::dsp
         // around it can be tested on its own.
         void setEngineEnabled (bool on) { engineOn = on; }
 
+        // Latency reported to the host, in samples (valid after prepare()): the converter model's bridge delay, which
+        // the wet path is padded to and the dry is delayed by, so the reflections play as printed (ADR 0001 update
+        // 2026-11-25). Zero with the engine off (the test hook).
+        int latencySamples () const { return engineOn ? converter[0].reportedLatency () : 0; }
+
         static double tailSeconds (const ChainParams& p)
         {
             return Engine::tailSeconds (p.engine) + FxSlot::tailSeconds (p.fx);
@@ -81,6 +86,8 @@ namespace yrev::dsp
         double sampleRate = 48000.0;
         int maxBlock = 0;
         std::vector<float> dryL, dryR, wetL, wetR, key;
+        std::vector<float> dryRing[2]; // the dry path's delay line (latencySamples)
+        size_t dryPos = 0;
 
         juce::SmoothedValue<float> inGain, outGain, wetAmount, soloAmount, bypassAmount, muteGain, phaseR;
         Biquad aeq[3][2]; // [band][channel]; the digital EQ is in the converter's DSP stage

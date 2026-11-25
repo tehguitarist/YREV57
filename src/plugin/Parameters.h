@@ -145,6 +145,22 @@ namespace yrev::id
     // its HIGH ratio (0 = follow hi_ratio) and a gain in dB on rev2_level (2026-11-22, manual audit).
     inline constexpr auto voiceRev2Hi = "voice_rev2_hi";
     inline constexpr auto voiceRev2Gain = "voice_rev2_gain";
+    inline constexpr auto voiceTapRead = "voice_tap_read";
+    // Hidden per-preset (pass 67): a reverb program's own tap set beside a chart, from the late onset (REV DLY); 0 =
+    // none, n = the set of er_mode 11 + n (Rev Hall .. Combi). REV5 98 ER + Rev & G plays the combinations' set.
+    inline constexpr auto voiceRevTaps = "voice_rev_taps";
+    inline constexpr auto voiceErFill = "voice_er_fill";            // pass 78: early fill level (linear, 0 = off)
+    inline constexpr auto voiceErFillSize = "voice_er_fill_size";   // pass 78: x the fill's all-pass lengths
+    inline constexpr auto voiceDiffGain = "voice_diff_gain";        // pass 80: x the input diffusers' gain
+    inline constexpr auto voiceSubRatio = "voice_sub_ratio";        // pass 81: x the decay below 120 Hz
+    inline constexpr auto voiceSubHz = "voice_sub_hz";              // pass 83: the sub shelf's corner
+    inline constexpr auto voiceErCloud = "voice_er_cloud";          // pass 84: early cloud in place of the chart, 0..1
+    inline constexpr auto voiceErCloudHold = "voice_er_cloud_hold"; // pass 84: the cloud's flat part (ms)
+    inline constexpr auto voiceErCloudFade = "voice_er_cloud_fade"; // pass 84: its fade after the hold (dB per 10 ms)
+    inline constexpr auto voiceErCloudRise = "voice_er_cloud_rise"; // pass 84: its level at the start re the hold (dB)
+    inline constexpr auto voiceErLoTilt = "voice_er_lo_tilt";       // pass 84: low shelf on the reflections (dB)
+    inline constexpr auto voiceErLoHz = "voice_er_lo_hz";           // pass 84: its corner
+    inline constexpr auto voiceErPrinted = "voice_er_printed"; // pass 86: era-5 S-Hall as printed (1), not re-measured
     // FX routing (2026-11-22). The REV5 combination programs run the effect through the reverb AND around it (OM
     // block diagrams, printed pp. 37-39): FX > Rev = effect + REV MIX x reverb (effect); Rev > FX = effect (dry +
     // REV MIX x reverb). rev_mix is that REV MIX (0-100 %); fx_wet removes the bypass (fully wet, a plugin choice):
@@ -168,6 +184,9 @@ namespace yrev
     // stand-in instead and leaves the stored value alone. The stand-ins are the patterns the placeholders already
     // used: Small Hall, Large Hall, Plate, Spring.
     inline constexpr int kFirstHiddenErMode = 8, kLastHiddenErMode = 11;
+    // Piano has a pattern of its own in era 5 since pass 52 (measured from the REV5 capture of 25 Rehearsal
+    // Room); its key stays hidden (showing it is a maintainer decision), so only a stored value reaches it.
+    inline constexpr int kPianoErMode = 8;
     inline constexpr int erModeStandIn (int mode) noexcept
     {
         constexpr int standIn[] = {0, 1, 4, 5};
@@ -175,8 +194,11 @@ namespace yrev
     }
 
     // Rev Hall, Rev Plate and Rev Room (12-14): the reverb programs' own early taps, in both eras (REV5: twenty-second
-    // pass, Rev Room playing the sparse Rev Hall set; REV7: three per channel, twenty-third pass).
-    inline constexpr int kRevHallErMode = 12, kRevPlateErMode = 13, kRevRoomErMode = 14;
+    // pass; REV7: three per channel, twenty-third pass). 15-18 (pass 40): the programs' own sets, Percussion Plate,
+    // Snare, Spring, Echo Room; 19-20 (pass 41): Strings and the REV5 combinations (era 7 plays its Rev Plate and Rev
+    // Hall sets for them). Each era plays its own unit's set (hardware captures). All behind one REV E/R key; the set is
+    // stored with the preset.
+    inline constexpr int kRevHallErMode = 12, kRevPlateErMode = 13, kRevRoomErMode = 14, kLastRevErMode = 20;
     inline constexpr bool isEra5OnlyErMode (int mode) noexcept
     {
         return mode >= 6 && mode < kRevHallErMode;
@@ -185,7 +207,7 @@ namespace yrev
     // reverb programs' reflections are fixed per program.
     inline constexpr bool isRevErMode (int mode) noexcept
     {
-        return mode >= kRevHallErMode && mode <= kRevRoomErMode;
+        return mode >= kRevHallErMode && mode <= kLastRevErMode;
     }
     // The mode era 7 plays: its six charts and the Rev modes as they are, the era-5 modes (Pan A/B, instruments) as
     // Small Hall.

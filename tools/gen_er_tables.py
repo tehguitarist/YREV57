@@ -32,23 +32,32 @@ PAN_SIZE_FACTOR = 4.0 / 1.0               # the charts are at room size 1.0; tab
 PAN_LAG_MS = {"Pan A": 5.65}
 MAX_TAPS = 34             # the REV5 charts' count; the REV7 charts have 18
 REV7_SMALL_CSV = ROOT / "data/er-taps/rev7/rev7_er_taps_size1_lowconf.csv"
-# REV5 reverb programs' own early taps (not charted): read from the REV5 captures (twenty-second pass,
-# "The REV5 reverb programs' early taps"); times from the first arrival
-# (the initial delay), no room-size scaling (the captures show none). Order is the engine's kRevPattern* indices.
+# REV5 reverb programs' own early taps (not charted): read from the REV5 captures of the factory programs
+# (pass 41, "REV5 tap sets, per program"; they replace the sets of
+# the twenty-second pass); times from the first arrival (the initial delay), not scaled. Order is the era-5 er_mode
+# order 12-20 (the engine's kRevPatterns5 index = er_mode - 12).
 REV5_REV_CSV = ROOT / "data/er-taps/rev5/rev5_reverb_program_taps.csv"
-REV_PATTERNS = ("Rev Hall A", "Rev Hall B", "Rev Plate")
+REV_PATTERNS = ("Rev Hall", "Rev Plate", "Rev Room", "Rev Perc Plate", "Rev Snare", "Rev Spring", "Rev Echo Room",
+                "Rev Strings", "Rev Combi")
 # REV7 reverb programs' early reflections: "3 early reflections are programmed for each channel" (REV7 OM p. 14, OCR),
-# the first at the initial delay on both channels. Times and levels read from the REV7 captures whose first
-# tap sits on a factory initial delay (twenty-third pass, "The REV7
-# reverb programs' early reflections"); times from the initial delay, not scaled. Order is the engine's kRevPatterns7
-# indices (era-7 Rev Hall, Rev Plate, Rev Room).
+# the first at the initial delay on both channels. Times and levels read from the REV7 captures of the factory
+# programs (pass 40, "Early reflections"; they replace the sets of
+# the twenty-third pass); times from the initial delay, not scaled (the initial delay only offsets them). Spring and
+# Echo Room show a fourth tap. Order is the engine's kRevPatterns7 indices: era-7 Rev Hall, Rev Plate, Rev Room (the
+# er_mode choices), then the per-program sets picked by the hidden voice_rev_set (1-4).
 REV7_REV_CSV = ROOT / "data/er-taps/rev7/rev7_reverb_program_taps.csv"
-REV7_PATTERNS = ("Rev Hall", "Rev Plate", "Rev Room")
+# REV5 PIANO (an instrument mode, era 5 er_mode 8; no chart in the manual, Q-01): read from the REV5 capture of
+# 25 Rehearsal Room (E/R1 PIANO, room size 1.0, liveness 4; pass 52): the 34 strongest 300 Hz-8 kHz peaks per
+# channel of a diffused field, times re the initial delay x4 onto the size-4.0 scale (scaled by room size like the
+# charts, inference), levels with liveness 4's extra fade taken out (measurement of one setting, not a hardware spec).
+REV5_PIANO_CSV = ROOT / "data/er-taps/rev5/rev5_piano_taps.csv"
+REV7_PATTERNS = ("Rev Hall", "Rev Plate", "Rev Room", "Rev Perc Plate", "Rev Snare", "Rev Spring", "Rev Echo Room")
 # REV7 modes whose size-1.0 chart is a pattern of its own rather than the size-4.0 chart scaled by 1/4 (CSV mode
-# numbers): Random (span 122 ms against 113 scaled, taps ~2 ms / 1-2 dB off) and Spring (34 ms against 48, levels
-# ~9 dB off). Large Hall, Reverse and Small Hall scale (within ~1 ms / 1 dB); Plate's size-1.0 chart is very low
-# confidence (a solid block) and is left out. Every REV5 mode scales. Check: docs/design/engine.md fourteenth pass.
-REV7_SMALL_MODES = (3, 6)
+# numbers): Spring (34 ms against 48, levels ~9 dB off). Large Hall, Reverse and Small Hall scale (within ~1 ms / 1 dB);
+# Plate's size-1.0 chart is very low confidence (a solid block) and is left out. Every REV5 mode scales. Check:
+# docs/design/engine.md fourteenth pass. Random was here until pass 48: the REV7 captures 27 (room size 0.9)
+# and 23 (1.6) both play the size-4.0 chart scaled (taps within about 1 ms at size 4.0), not its size-1.0 chart.
+REV7_SMALL_MODES = (6,)
 
 
 def read(path: Path) -> tuple[dict, dict]:
@@ -58,7 +67,21 @@ def read(path: Path) -> tuple[dict, dict]:
         for row in csv.DictReader(f):
             mode = int(row["mode"])
             names[mode] = row["mode_name"]
-            groups[(mode, row["channel"])].append((float(row["time_ms"]), float(row["gain_db"])))
+            sign = float(row.get("sign") or 1)  # measured polarity (REV7 Small Hall, pass 66; REV5 Plate, pass 69; REV7 Random, REV5 Large Hall 1-6, pass 72), else +1
+            groups[(mode, row["channel"])].append((float(row["time_ms"]), float(row["gain_db"]), sign))
+    return groups, names
+
+
+def read_printed(path: Path) -> tuple[dict, dict]:
+    """The rows that carry a printed_ms (the chart reading where time_ms was re-measured; pass 86), unsigned."""
+    groups: dict[tuple[int, str], list[tuple[float, float, float]]] = defaultdict(list)
+    names: dict[int, str] = {}
+    with path.open(newline="") as f:
+        for row in csv.DictReader(f):
+            if row.get("printed_ms"):
+                mode = int(row["mode"])
+                names[mode] = row["mode_name"]
+                groups[(mode, row["channel"])].append((float(row["printed_ms"]), float(row["gain_db"]), 1.0))
     return groups, names
 
 
@@ -70,7 +93,8 @@ def pattern_lines(groups: dict, names: dict, origin) -> list[str]:
         for ch in ("L", "R"):
             t0 = origin(mode, ch)
             t = sorted(groups[(mode, ch)])[:MAX_TAPS]
-            parts.append((len(t), "{" + ", ".join(f"{{{max(0.0, ms - t0):.1f}f, {db:.1f}f}}" for ms, db in t) + "}"))
+            parts.append((len(t), "{" + ", ".join(f"{{{max(0.0, ms - t0):.1f}f, {db:.1f}f" + (", -1.0f}" if sg < 0 else "}")
+                                                for ms, db, sg in t) + "}"))
         name = names[mode].title()
         out += [f'        {{"{name}", {parts[0][0]}, {parts[1][0]},', f"         {parts[0][1]},", f"         {parts[1][1]}}},"]
     return out
@@ -122,7 +146,7 @@ def small_lines(groups: dict, names: dict) -> list[str]:
         parts = []
         for ch in ("L", "R"):
             t = sorted(groups[(mode, ch)])[:MAX_TAPS]
-            body = ", ".join(f"{{{max(0.0, ms - REV7_FIRST_TAP_MS) * 4.0:.1f}f, {db:.1f}f}}" for ms, db in t)
+            body = ", ".join(f"{{{max(0.0, ms - REV7_FIRST_TAP_MS) * 4.0:.1f}f, {db:.1f}f}}" for ms, db, *_ in t)
             parts.append((len(t), "{" + body + "}"))
         out += [f'        {{"{names[mode].title()} 1.0", {parts[0][0]}, {parts[1][0]},', f"         {parts[0][1]},", f"         {parts[1][1]}}},"]
     return out
@@ -132,13 +156,15 @@ def rev_lines(path: Path = REV5_REV_CSV, names: tuple = REV_PATTERNS, digits: in
     groups: dict[tuple[str, str], list[tuple[float, float]]] = defaultdict(list)
     with path.open(newline="") as f:
         for row in csv.DictReader(f):
-            groups[(row["pattern"], row["channel"])].append((float(row["time_ms"]), float(row["gain_db"])))
+            sign = float(row.get("sign") or 1)  # pass 65: the tap's polarity, read from the captures
+            groups[(row["pattern"], row["channel"])].append((float(row["time_ms"]), float(row["gain_db"]), sign))
     out = []
     for name in names:
         parts = []
         for ch in ("L", "R"):
             t = sorted(groups[(name, ch)])[:MAX_TAPS]
-            parts.append((len(t), "{" + ", ".join(f"{{{ms:.{digits}f}f, {db:.1f}f}}" for ms, db in t) + "}"))
+            parts.append((len(t), "{" + ", ".join(f"{{{ms:.{digits}f}f, {db:.1f}f" + (", -1.0f}" if sg < 0 else "}")
+                                                for ms, db, sg in t) + "}"))
         out += [f'        {{"{name}", {parts[0][0]}, {parts[1][0]},', f"         {parts[0][1]},", f"         {parts[1][1]}}},"]
     return out
 
@@ -149,12 +175,17 @@ def main() -> None:
     g5, n5 = read(REV5_CSV)
     gpan = read_pan(REV5_PAN_CSV)
     g7s, n7s = read(REV7_SMALL_CSV)
-    first5 = {(m, ch): min(ms for ms, _ in g5[(m, ch)]) for m in n5 for ch in ("L", "R")}
+    piano = rev_lines(REV5_PIANO_CSV, ("Piano",), 2)
+    first5 = {(m, ch): min(ms for ms, *_ in g5[(m, ch)]) for m in n5 for ch in ("L", "R")}
+    gp5, np5 = read_printed(REV5_CSV)
+    assert list(np5) == [1], "the printed alternative is S-Hall only (er::kShallPrinted5)"
+    firstp5 = {(m, ch): min(ms for ms, *_ in gp5[(m, ch)]) for m in np5 for ch in ("L", "R")}
+    printed = pattern_lines(gp5, np5, lambda m, ch: firstp5[(m, ch)])
     lines = [
         "#pragma once",
         "",
         "// Generated by tools/gen_er_tables.py from data/er-taps/rev7/rev7_er_taps_size4.csv and",
-        "// data/er-taps/rev5/rev5_er_taps_size4.csv (plus the Pan A/B rows of rev5_er_taps_size1_lowconf.csv, rev5_reverb_program_taps.csv and rev7_reverb_program_taps.csv). Do not edit by hand.",
+        "// data/er-taps/rev5/rev5_er_taps_size4.csv (plus the Pan A/B rows of rev5_er_taps_size1_lowconf.csv, rev5_reverb_program_taps.csv, rev7_reverb_program_taps.csv and rev5_piano_taps.csv). Do not edit by hand.",
         "// E/R chart taps at room size 4.0, digitised from the owner's manuals' stem plots (REV7: times +-0.5 ms, gains",
         "// +-0.3 dB, re-read 2026-11-19; REV5: see the kind/confidence columns of its CSV). Times are relative to the chart set's first-tap",
         f"// offset (REV7 {REV7_FIRST_TAP_MS:g} ms; REV5 each channel's first tap), so the engine adds its own initial",
@@ -165,6 +196,7 @@ def main() -> None:
         "    struct Tap",
         "    {",
         "        float ms, db;",
+        "        float sign = 1.0f; // -1: an inverted tap (the Rev sets, pass 65; REV7 Small Hall, pass 66; REV5 Plate, pass 69; REV7 Random, REV5 Large Hall, pass 72)",
         "    };",
         "    struct Pattern",
         "    {",
@@ -189,6 +221,13 @@ def main() -> None:
         *pattern_lines(g5, n5, lambda m, ch: first5[(m, ch)]),
         "    };",
         "",
+        "    // REV5 S-Hall as the owner's manual prints it (the printed_ms column; pass 86). kPatterns5's S-Hall carries the",
+        "    // times re-measured on the REV5 captures of 05 / 06 (the E/R programs); REV5 98 ER + Rev & G matches",
+        "    // its own capture better on this printed one (hidden voice_er_printed).",
+        "    inline constexpr Pattern kShallPrinted5 =",
+        *printed[:-1], printed[-1].rstrip(","),
+        "    ;",
+        "",
         "    // REV5 Pan A and Pan B (era 5 modes 6 and 7) at liveness 0 and 10, in the order A/0, A/10, B/0, B/10. Source:",
         "    // data/er-taps/rev5/rev5_er_taps_size1_lowconf.csv (LOW confidence: room size 1.0, lines merge, many estimates).",
         "    // The charts are at room size 1.0; times are scaled x4 about the mode's earliest tap onto the size-4.0 scale",
@@ -207,21 +246,29 @@ def main() -> None:
         *small_lines(g7s, n7s),
         "    };",
         "",
-        "    // REV5 reverb programs' own early taps (era 5 modes Rev Hall and Rev Plate; Rev Hall plays A below density 4,",
-        "    // B at 4). Source: data/er-taps/rev5/rev5_reverb_program_taps.csv, read from the REV5 captures (a",
-        "    // third-party library: measurement, not a hardware spec). Times from the initial delay, not scaled by room size.",
+        "    // REV5 reverb programs' own early taps, one set per era-5 Rev mode (er_mode 12-20, index = mode - 12). Source:",
+        "    // data/er-taps/rev5/rev5_reverb_program_taps.csv, read from the REV5 captures of the factory programs",
+        "    // (measurement, not a hardware spec). Times from the initial delay, not scaled.",
         f"    inline constexpr int kNumRevPatterns5 = {len(REV_PATTERNS)};",
         "    inline constexpr Pattern kRevPatterns5[kNumRevPatterns5] = {",
-        *rev_lines(),
+        *rev_lines(digits=2),  # pass 64: the measured 0.01 ms (was 0.1 ms)
         "    };",
         "",
-        "    // REV7 reverb programs' early reflections, 3 per channel (REV7 OM p. 14, OCR; era 7 modes Rev Hall, Rev Plate,",
-        "    // Rev Room). Source: data/er-taps/rev7/rev7_reverb_program_taps.csv, read from the REV7 captures (a",
-        "    // third-party library: measurement, not a hardware spec). Times from the initial delay, not scaled by room size.",
+        "    // REV7 reverb programs' early reflections, 3 per channel (REV7 OM p. 14, OCR; 4 on Spring and Echo Room): era 7",
+        "    // modes Rev Hall, Rev Plate, Rev Room, then the per-program sets (voice_rev_set 1-4). Source:",
+        "    // data/er-taps/rev7/rev7_reverb_program_taps.csv, read from the REV7 captures of the factory programs",
+        "    // (measurement, not a hardware spec). Times from the initial delay, not scaled.",
         f"    inline constexpr int kNumRevPatterns7 = {len(REV7_PATTERNS)};",
         "    inline constexpr Pattern kRevPatterns7[kNumRevPatterns7] = {",
         *rev_lines(REV7_REV_CSV, REV7_PATTERNS, 2),
         "    };",
+        "",
+        "    // REV5 PIANO (era 5 er_mode 8, an instrument mode with no chart): data/er-taps/rev5/rev5_piano_taps.csv, read",
+        "    // from the REV5 capture of 25 Rehearsal Room at room size 1.0 (measurement of one setting). Times from",
+        "    // the initial delay on the size-4.0 scale (scaled by room size / 4 like the charts), levels at liveness 5.",
+        "    inline constexpr Pattern kPianoPattern5 =",
+        *piano[:-1], piano[-1].rstrip(","),
+        "    ;",
         "} // namespace yrev::dsp::er",
         "",
     ]

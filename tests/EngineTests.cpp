@@ -375,8 +375,10 @@ TEST_CASE ("loop mixing: the bass tail is less modal, era 7 keeps its bass modes
         CAPTURE (era, bass[era], mid[era]);
         CHECK (mid[era] < 9.0); // unmixed 9.5 (era 7) / 9.8 (era 5); mixed 8.1 / 8.2
     }
-    CHECK (bass[1] < 7.5);           // era 5: unmixed 9.1, mixed 6.1
-    CHECK (bass[0] > bass[1] + 1.0); // era 7 keeps resolved bass modes (mixed only above 400 Hz): 8.4
+    // era 5: unmixed 9.1, mixed 6.1; 7.8 since pass 62's sparser era-5 diffusers (towards the REV5 tails,
+    // whose ripple is 11.2 dB against our 7.7)
+    CHECK (bass[1] < 8.5);
+    CHECK (bass[0] > bass[1] + 0.3); // era 7 keeps resolved bass modes (mixed only above 400 Hz): 8.3
     for (const int era : {0, 1})
     {
         auto p = lateOnly (99.0f, 1.0f, 2.4f);
@@ -428,6 +430,35 @@ TEST_CASE ("era-7 Spring plays its own room-size-1.0 chart and blends to the siz
     CHECK (s2 < 0.5 * s4 + 0.001);
 }
 
+TEST_CASE ("era-7 Random scales its size-4.0 chart at every room size (pass 48)")
+{
+    // The REV7 captures 27 (room size 0.9) and 23 (1.6) both play the size-4.0 Random chart scaled, not its
+    // size-1.0 chart: L spans 450.1 ms at size 4.0 (data/er-taps/rev7)
+    EngineParams p;
+    p.erRevBalance = 100.0f;
+    p.preDelayMs = 25.0f;
+    p.erCount = 18;
+    p.erMode = 2; // Random
+    auto span = [&] (float size)
+    {
+        p.roomSize = size;
+        const auto x = impulse (p, 0.7).l;
+        size_t first = x.size (), last = 0;
+        for (size_t i = 0; i < x.size (); ++i)
+            if (std::abs (x[i]) > 1.0e-4f)
+            {
+                first = std::min (first, i);
+                last = i;
+            }
+        return (double) (last - first) / kSr;
+    };
+    const double s09 = span (0.9f), s16 = span (1.6f), s4 = span (4.0f);
+    CAPTURE (s09, s16, s4);
+    CHECK (s4 == Approx (0.4501).margin (0.002));
+    CHECK (s09 == Approx (s4 * 0.9 / 4.0).margin (0.001));
+    CHECK (s16 == Approx (s4 * 1.6 / 4.0).margin (0.001));
+}
+
 TEST_CASE ("the reflections start at the pre-delay and spread with room size")
 {
     EngineParams p;
@@ -455,19 +486,19 @@ TEST_CASE ("the reflections start at the pre-delay and spread with room size")
     p.roomSize = 4.0f;
     const auto a = impulse (p, 0.4);
     CHECK (firstTap (a.l) == Approx (0.025).margin (0.0005));
-    // Small Hall L at chart size 4.0 ends at 131.6 ms, i.e. 111.6 ms after the first tap (data/er-taps)
-    CHECK (lastTap (a.l) - firstTap (a.l) == Approx (0.1116).margin (0.001));
+    // Small Hall L at size 4.0 ends 122.1 ms after the first tap (pass 42: hardware capture 5 at size 2.0, x2)
+    CHECK (lastTap (a.l) - firstTap (a.l) == Approx (0.1221).margin (0.001));
 
     p.roomSize = 1.0f;
     const auto b = impulse (p, 0.4);
-    CHECK (lastTap (b.l) - firstTap (b.l) == Approx (0.1116 / 4.0).margin (0.001));
+    CHECK (lastTap (b.l) - firstTap (b.l) == Approx (0.1221 / 4.0).margin (0.001));
 
     p.erCount = 1;
     const auto c = impulse (p, 0.4);
     CHECK (lastTap (c.l) == Approx (firstTap (c.l)).margin (0.0005));
 }
 
-TEST_CASE ("each era plays its own unit's E/R charts: 18 reflections per channel (REV7), 34 (REV5)")
+TEST_CASE ("each era plays its own unit's E/R charts: 18 reflections per channel (REV7; S-Hall 17), 34 (REV5)")
 {
     // ER only, room size 4.0 (the charts' own size), no 1st reflection, diffusion 0 (era 5 plays bare taps there):
     // count the separate reflections per channel.
@@ -492,8 +523,10 @@ TEST_CASE ("each era plays its own unit's E/R charts: 18 reflections per channel
             p.diffusion = 0.0f;
             const auto ir = impulse (p, 0.8);
             CAPTURE (set, mode);
-            CHECK (count (ir.l) == (set == 0 ? 18 : 34));
-            CHECK (count (ir.r) == (set == 0 ? 18 : 34));
+            const int n = set == 1 ? 34 : mode == 0 ? 17 : 18; // REV7 S-Hall: 17, measured (passes 42, 48)
+            // REV5 S-Hall: L taps 2 and 3 coincide, as the hardware captures of 05 / 06 play them (pass 86)
+            CHECK (count (ir.l) == n - (set == 1 && mode == 0 ? 1 : 0));
+            CHECK (count (ir.r) == n);
         }
     // the two sets differ (REV5 Large Hall spreads to about 370 ms at size 4, the REV7's to about 330 ms)
     EngineParams a, b;
@@ -539,11 +572,11 @@ TEST_CASE ("era-5 reflections start together in both channels at the pre-delay (
         }
 }
 
-TEST_CASE ("era-5 Rev modes play the reverb programs' own taps: no room size, liveness or count; density picks the set")
+TEST_CASE ("era-5 Rev modes play the reverb programs' own taps: no room size, liveness or count; one set per mode")
 {
-    // Rev Hall (12) and Rev Plate (13), twenty-second pass: taps from the initial delay read from the REV5 captures,
-    // unscaled; density 4 plays the dense set; the reverb-program diffusion (0.06 per step) rings more than the
-    // charted modes' (0.024). Rev Room (14) plays the sparse Rev Hall set in era 5.
+    // Pass 41: one set per Rev mode (12-20), read from the REV5 captures, from the initial delay, unscaled;
+    // density no longer picks a set (pass 22's rule); the reverb-program diffusion (0.06 per step) rings more than the
+    // charted modes' (0.024).
     auto render = [] (int mode, auto&& tweak)
     {
         EngineParams p;
@@ -572,11 +605,17 @@ TEST_CASE ("era-5 Rev modes play the reverb programs' own taps: no room size, li
                 ++n;
         return n;
     };
-    const auto sparse = render (12, [] (EngineParams& p) { p.density = 3.0f; });
-    CAPTURE (spikes (hall.l), spikes (sparse.l));
-    CHECK (spikes (hall.l) > 2 * spikes (sparse.l)); // dense set: about 22 taps per channel against 5
+    const auto spring = render (17, none); // Spring: a dense set (16 / 20 taps) against Large Hall's 5 / 6
+    CAPTURE (spikes (hall.l), spikes (spring.l));
+    CHECK (spikes (spring.l) > 2 * spikes (hall.l));
     CHECK (render (13, none).l != hall.l);
-    // the first tap at the initial delay rings more than a charted mode's at the same diffusion
+    for (int mode = 14; mode <= 20; ++mode) // every set is its own
+    {
+        CAPTURE (mode);
+        CHECK (render (mode, none).l != hall.l);
+    }
+    // pass 64: the first tap at the initial delay is a single spike (the REV5 reverb taps); a charted mode's
+    // rings (its all-pass, kErDiffPerStepEr). Until pass 64 the Rev taps rang more.
     auto peakShare = [] (const std::vector<float>& x)
     {
         size_t at = 0;
@@ -595,15 +634,15 @@ TEST_CASE ("era-5 Rev modes play the reverb programs' own taps: no room size, li
     };
     const auto charted = render (1, [] (EngineParams& p) { p.erCount = 1; });
     CAPTURE (peakShare (hall.l), peakShare (charted.l));
-    CHECK (peakShare (hall.l) < peakShare (charted.l) - 0.05);
-    CHECK (render (14, [] (EngineParams& p) { p.density = 3.0f; }).l == sparse.l);
+    CHECK (peakShare (hall.l) > 0.99);
+    CHECK (peakShare (charted.l) < peakShare (hall.l) - 0.01);
 }
 
-TEST_CASE ("E/R2 diffuses the reflections and closes smoothly, era 5 more slowly; the Rev modes ignore it")
+TEST_CASE ("E/R2 adds a decaying tail beside the reflections (REV5 Reverse in series); the Rev modes ignore it")
 {
-    // Twenty-fifth pass: E/R2 passes the reflections through four series all-passes (T60 80 ms), so a gated program's
-    // field is dense and ends in an exponential close instead of stopping at the last tap. An all-pass keeps the
-    // energy, so the level stays about the same.
+    // Twenty-fifth pass: E/R2 adds four all-passes (era 7 since pass 46 beside the taps, T60 100 ms on this chart),
+    // so a gated program's field is dense and ends in an exponential close instead of stopping at the last tap. The
+    // all-passes keep the energy and dry and wet are scaled to unit power, so the level stays about the same.
     auto render = [] (int erType, int set, int mode)
     {
         EngineParams p;
@@ -644,25 +683,143 @@ TEST_CASE ("E/R2 diffuses the reflections and closes smoothly, era 5 more slowly
     CHECK (10.0 * std::log10 (late2a / late2b) > 12.0);
     CHECK (10.0 * std::log10 (late2a / late2b) < 40.0);
     CHECK (render (1, 0, 12).l == render (0, 0, 12).l); // the Rev modes: their own reflections
-    // Twenty-eighth pass: era 5 runs the same diffuser at T60 200 ms (the REV5 E/R captures' tails), so its close is
-    // slower: about 17 dB over 100 ms (four all-passes in series close more slowly than each one's T60; era 7 about
-    // 0.3 dB/ms), where bare era-5 taps stop
+    // Forty-sixth pass: era 7 plays the taps dry beside the tail (the REV7 E/R2 captures), so the first
+    // 10 ms after the first tap follow the bare taps (capture 06 against 05: 0.96); the series chain smeared them
+    auto corrEarly = [] (const std::vector<float>& a, const std::vector<float>& b)
+    {
+        size_t on = 0;
+        while (on < a.size () && std::abs (a[on]) < 1.0e-4f)
+            ++on;
+        double ab = 0.0, aa = 0.0, bb = 0.0;
+        for (size_t i = on; i < std::min (a.size (), on + (size_t) (0.01 * kSr)); ++i)
+        {
+            ab += (double) a[i] * b[i];
+            aa += (double) a[i] * a[i];
+            bb += (double) b[i] * b[i];
+        }
+        return ab / std::sqrt (std::max (aa * bb, 1.0e-30));
+    };
+    CAPTURE (corrEarly (e1.l, e2.l));
+    CHECK (corrEarly (e1.l, e2.l) > 0.9);
+    // Fifty-sixth pass: era 7's Random plays its first three taps dry and only the later ones feed the tail (the
+    // REV7 capture of 23 Gate Reverb: silence between taps 1-3), so the gap after the first tap stays clean
+    size_t on = 0;
+    while (on < e2.l.size () && std::abs (e2.l[on]) < 1.0e-4f)
+        ++on;
+    const double gap = energy (e2.l, (double) on / kSr + 0.001, (double) on / kSr + 0.006);
+    CAPTURE (gap, total2);
+    CHECK (gap < 1.0e-6 * total2);
+    // the Spring chart's tail starts 30 ms after the taps (pass 59): E/R2 equals the scaled bare taps until then
+    const auto s1 = render (0, 0, 5), s2 = render (1, 0, 5);
+    CAPTURE (corrEarly (s1.l, s2.l));
+    CHECK (corrEarly (s1.l, s2.l) > 0.99);
+    // Twenty-eighth pass: era 5 runs the same diffuser, both channels at the same lengths, where bare era-5 taps stop.
+    // Forty-seventh pass: beside the taps too (the REV5 E/R2 captures), except Reverse, which stays in series
+    // and closes fast (REV5 Reverse Gate falls about 37 dB in 90 ms after its peak)
     const auto f1 = render (0, 1, 2), f2 = render (1, 1, 2);
-    const double close5 = 10.0 * std::log10 (energy (f2.l, 0.30, 0.32) / energy (f2.l, 0.40, 0.42));
-    CAPTURE (close5);
-    CHECK (energy (f1.l, 0.40, 0.45) < 1.0e-12);
-    CHECK (energy (f2.l, 0.40, 0.45) > 1.0e-9);
-    CHECK (close5 > 10.0);
-    CHECK (close5 < 30.0);
-    CHECK (close5 / 100.0 < 10.0 * std::log10 (late2a / late2b) / 50.0);
+    auto lastTap = [] (const std::vector<float>& x)
+    {
+        size_t n = x.size ();
+        while (n > 0 && std::abs (x[n - 1]) < 1.0e-6f)
+            --n;
+        return (double) n / kSr;
+    };
+    const double end1 = lastTap (f1.l);
+    CAPTURE (end1, corrEarly (f1.l, f2.l));
+    CHECK (corrEarly (f1.l, f2.l) > 0.9);
+    CHECK (energy (f1.l, end1 + 0.005, end1 + 0.025) < 1.0e-12);
+    CHECK (energy (f2.l, end1 + 0.005, end1 + 0.025) > 1.0e-7);
+    const double total5a = energy (f1.l, 0.0, 0.6), total5b = energy (f2.l, 0.0, 0.6);
+    CHECK (total5b == Approx (total5a).epsilon (0.15));
+    const auto v1 = render (0, 1, 3), v2 = render (1, 1, 3);
+    CAPTURE (corrEarly (v1.l, v2.l));
+    CHECK (corrEarly (v1.l, v2.l) < 0.8); // series: the taps are smeared (0.70 since pass 58: T60 80 ms, lengths x1.0)
     CHECK (render (1, 1, 12).l == render (0, 1, 12).l); // era-5 Rev modes too
+    // Fifty-third pass: on the REV5 hall charts only the first six taps play dry (REV5 06 and 30), so the
+    // later taps' spikes are gone from E/R2, while the energy stays E/R1's (05 and 06 carry the same)
+    auto peakIn = [] (const std::vector<float>& x, double from, double to)
+    {
+        float m = 0.0f;
+        for (size_t i = (size_t) (from * kSr); i < std::min (x.size (), (size_t) (to * kSr)); ++i)
+            m = std::max (m, std::abs (x[i]));
+        return m;
+    };
+    const double first = 0.02; // pre-delay
+    CAPTURE (peakIn (f1.l, first + 0.06, first + 0.2), peakIn (f2.l, first + 0.06, first + 0.2));
+    CHECK (peakIn (f2.l, first + 0.06, first + 0.2) < 0.5f * peakIn (f1.l, first + 0.06, first + 0.2));
+    CHECK (peakIn (f2.l, 0.0, first + 0.004) > 0.7f * peakIn (f1.l, 0.0, first + 0.004)); // the first taps dry
+    // Fifty-seventh pass: the Plate voices' decay follows LIVENESS (hardware Electric Bass B at 3 against Kick at 1,
+    // both units: T60 about 280 / 100 ms on the REV7), so at liveness 1 the tail falls much faster than at 3
+    for (int set : {0, 1})
+    {
+        auto plate = [&] (float live)
+        {
+            EngineParams p;
+            p.erRevBalance = 100.0f;
+            p.rt = 0.3f;
+            p.preDelayMs = 12.0f;
+            p.erMode = 4;
+            p.roomSize = 0.4f;
+            p.erCount = 18;
+            p.erTableSet = set;
+            p.erType = 1;
+            p.liveness = live;
+            return impulse (p, 0.4);
+        };
+        const auto l1 = plate (1.0f), l3 = plate (3.0f);
+        const double fall1 = 10.0 * std::log10 (energy (l1.l, 0.05, 0.07) / energy (l1.l, 0.13, 0.15)),
+                     fall3 = 10.0 * std::log10 (energy (l3.l, 0.05, 0.07) / energy (l3.l, 0.13, 0.15));
+        CAPTURE (set, fall1, fall3);
+        CHECK (fall1 > 1.5 * fall3);
+        CHECK (fall3 > 10.0); // 80 ms at T60 about 0.25 s
+        // Pass 70: the tail recirculates at a period that follows room size (hardware Electric Bass B at 0.4: 13.1 ms;
+        // Kick at 0.3: 8.7 ms, both units); R about 1 % longer
+        auto period = [&] (const std::vector<float>& x)
+        {
+            const size_t a = (size_t) (0.06 * kSr), n = (size_t) (0.14 * kSr);
+            int best = 0;
+            double bestR = -1.0;
+            for (int lag = (int) (0.003 * kSr); lag < (int) (0.04 * kSr); ++lag)
+            {
+                double r = 0.0;
+                for (size_t i = a; i < a + n; ++i)
+                    r += (double) x[i] * x[i + (size_t) lag];
+                if (r > bestR)
+                    bestR = r, best = lag;
+            }
+            return 1000.0 * best / kSr;
+        };
+        for (auto [size, ms] : {std::pair{0.3f, 8.67}, std::pair{0.4f, 13.1}})
+        {
+            auto p = [&] (float s)
+            {
+                EngineParams q;
+                q.erRevBalance = 100.0f;
+                q.rt = 0.3f;
+                q.preDelayMs = 12.0f;
+                q.erMode = 4;
+                q.roomSize = s;
+                q.erCount = 18;
+                q.erTableSet = set;
+                q.erType = 1;
+                q.liveness = 3.0f;
+                return impulse (q, 0.4);
+            }(size);
+            const double pl = period (p.l), pr = period (p.r);
+            CAPTURE (set, size, pl, pr);
+            CHECK (std::abs (pl - ms) < 0.3);
+            CHECK (pr > pl);
+            CHECK (pr < pl * 1.03);
+        }
+    }
 }
 
-TEST_CASE ("era-7 Rev modes play three taps per channel from the initial delay")
+TEST_CASE ("era-7 Rev modes play their taps from the initial delay, offset by it, not scaled")
 {
-    // REV7 OM p. 14 (OCR): "3 early reflections are programmed for each channel"; times read from the REV7 captures
-    // (twenty-third pass): the first at the initial delay on both channels, unscaled by room size, liveness or count.
-    // Since 2026-11-21 the offsets scale with the initial delay (fixed multiples of the first tap; one REV7 capture).
+    // REV7 OM p. 14 (OCR): "3 early reflections are programmed for each channel"; times read from the REV7
+    // captures (pass 40): the first at the initial delay on both channels, the rest at fixed offsets from it (Vocal
+    // Plate at 45 ms and Strings at 13 ms share them), unscaled by room size, liveness or count; L tap 2 = R + 0.8 ms
+    // and L tap 3 = R - 1.05 ms in every set. Spring and Echo Room play four.
     auto render = [] (int mode, auto&& tweak)
     {
         EngineParams p;
@@ -687,17 +844,23 @@ TEST_CASE ("era-7 Rev modes play three taps per channel from the initial delay")
     REQUIRE (r.size () == 3);
     CHECK (l[0] == Approx (30.0).margin (0.05));
     CHECK (r[0] == Approx (30.0).margin (0.05));
-    CHECK (l[1] == Approx (30.0 + 24.97 * 30.0 / 30.69).margin (0.05));
-    CHECK (r[2] == Approx (30.0 + 43.97 * 30.0 / 30.69).margin (0.05));
-    // the Plate set at that capture's initial delay: its measured multiples (x1.115 / 1.395 L, x1.150 / 1.349 R)
-    const auto alpha = render (13, [] (EngineParams& p) { p.preDelayMs = 21.12f; });
-    const auto al = taps (alpha.l), ar = taps (alpha.r);
-    REQUIRE (al.size () == 3);
-    REQUIRE (ar.size () == 3);
-    CHECK (al[1] / al[0] == Approx (1.115).epsilon (0.01));
-    CHECK (al[2] / al[0] == Approx (1.395).epsilon (0.01));
-    CHECK (ar[1] / ar[0] == Approx (1.150).epsilon (0.01));
-    CHECK (ar[2] / ar[0] == Approx (1.349).epsilon (0.01));
+    CHECK (l[1] == Approx (30.0 + 25.80).margin (0.05));
+    CHECK (r[1] == Approx (30.0 + 24.97).margin (0.05));
+    CHECK (r[2] == Approx (30.0 + 45.01).margin (0.05));
+    // the Plate set at two initial delays: the same offsets
+    auto plateAt = [&] (float pre) { return taps (render (13, [pre] (EngineParams& p) { p.preDelayMs = pre; }).r); };
+    const auto pa = plateAt (13.0f), pb = plateAt (45.0f);
+    REQUIRE (pa.size () == 3);
+    REQUIRE (pb.size () == 3);
+    for (size_t k = 1; k < 3; ++k)
+        CHECK (pb[k] - pb[0] == Approx (pa[k] - pa[0]).margin (0.05));
+    CHECK (pa[1] - pa[0] == Approx (4.99).margin (0.05));
+    CHECK (pa[2] - pa[0] == Approx (17.04).margin (0.05));
+    // the programs' own sets (15-18): three taps, four on Spring and Echo Room
+    CHECK (taps (render (15, none).l).size () == 3);
+    CHECK (taps (render (16, none).l).size () == 3);
+    CHECK (taps (render (17, none).l).size () == 4);
+    CHECK (taps (render (18, none).r).size () == 4);
     // era 5's Rev taps keep their offsets (the REV5 sets were not seen at another delay)
     auto taps5 = [&] (float pre)
     {
@@ -1552,6 +1715,93 @@ TEST_CASE ("the voice's late onset delays the late field only")
     CHECK (Engine::tailSeconds (p) == Approx (t0 + 0.020));
 }
 
+TEST_CASE ("a Rev set beside a chart plays from the late onset as part of the reverb (pass 67)")
+{
+    auto render = [] (int revTaps, float balance)
+    {
+        EngineParams p;
+        p.erTableSet = 1;
+        p.erMode = 0; // S-Hall chart
+        p.roomSize = 2.0f;
+        p.rt = 2.0f;
+        p.preDelayMs = 10.0f;
+        p.lateOnsetMs = 20.0f;
+        p.erRevBalance = balance;
+        p.revTaps = revTaps;
+        return impulse (p, 0.3);
+    };
+    // reverb only: the combinations' first tap at the pre-delay plus the onset is the loudest sample to 40 ms
+    const auto a = render (9, 0.0f), b = render (0, 0.0f);
+    auto loudest = [] (const std::vector<float>& x)
+    {
+        size_t at = 0;
+        for (size_t i = 0; i < (size_t) (0.040 * kSr); ++i)
+            if (std::abs (x[i]) > std::abs (x[at]))
+                at = i;
+        return std::make_pair ((double) at / kSr, std::abs (x[at]));
+    };
+    const auto [ta, pa] = loudest (a.l);
+    const auto [tb, pb] = loudest (b.l);
+    CAPTURE (ta, pa, tb, pb);
+    CHECK (ta == Approx (0.030).margin (0.0005));
+    CHECK (pa > 3.0f * pb); // without the set the late field there is diffuse
+    // reflections only: the set is part of the reverb, so the chart output is unchanged
+    const auto c = render (9, 100.0f), d = render (0, 100.0f);
+    double diff = 0.0, peak = 0.0;
+    for (size_t i = 0; i < c.l.size (); ++i)
+    {
+        diff = std::max (diff, (double) std::abs (c.l[i] - d.l[i]));
+        peak = std::max (peak, (double) std::abs (d.l[i]));
+    }
+    CHECK (diff < 1.0e-6 * peak);
+}
+
+TEST_CASE ("the early fill fills between the reflections and decorrelates the sides (pass 78)")
+{
+    auto render = [] (float fill)
+    {
+        EngineParams p;
+        p.erMode = 0; // S-Hall chart, era 7
+        p.roomSize = 2.0f;
+        p.rt = 1.4f;
+        p.preDelayMs = 1.0f;
+        p.erRevBalance = 100.0f; // reflections only
+        p.erFill = fill;
+        return impulse (p, 0.1);
+    };
+    const auto off = render (0.0f), on = render (1.0f), zero = render (0.0f);
+    // off is off: two renders at 0 agree to the sample
+    for (size_t i = 0; i < off.l.size (); ++i)
+        REQUIRE (off.l[i] == zero.l[i]);
+    // 1 ms bins over 0-40 ms: with the fill, fewer bins lie 30 dB under the loudest (the gaps between taps)
+    auto holes = [] (const std::vector<float>& x)
+    {
+        const size_t b = (size_t) (0.001 * kSr);
+        std::vector<double> e (40, 0.0);
+        for (size_t i = 0; i < 40 * b; ++i)
+            e[i / b] += (double) x[i] * x[i];
+        const double top = *std::max_element (e.begin (), e.end ());
+        return std::count_if (e.begin (), e.end (), [top] (double v) { return v < top * 1.0e-3; });
+    };
+    const auto hOff = holes (off.l), hOn = holes (on.l);
+    CAPTURE (hOff, hOn);
+    CHECK (hOn < hOff);
+    // the fill's L and R chains differ, so the sides correlate less over 0-40 ms
+    auto corr = [] (const Ir& r)
+    {
+        double lr = 0.0, ll = 0.0, rr = 0.0;
+        for (size_t i = 0; i < (size_t) (0.040 * kSr); ++i)
+        {
+            lr += (double) r.l[i] * r.r[i];
+            ll += (double) r.l[i] * r.l[i];
+            rr += (double) r.r[i] * r.r[i];
+        }
+        return lr / std::sqrt (ll * rr + 1.0e-30);
+    };
+    CAPTURE (corr (off), corr (on));
+    CHECK (corr (on) < corr (off));
+}
+
 TEST_CASE ("era 5's reflection top-octave low-pass trims 18 kHz and leaves 8 kHz")
 {
     // Twenty-seventh pass: the REV5 taps' comb on average, a 20 kHz Q 0.5 low-pass on the reflection output.
@@ -1735,4 +1985,95 @@ TEST_CASE ("the secondary reverb's hidden voice: its own HIGH and a gain on its 
     const auto dark = secondary (0.3f, 0.0f);
     CHECK (bandRt (dark, 8000.0f) < 0.7 * bandRt (plain, 8000.0f));
     CHECK (bandRt (dark, 1000.0f) == Approx (bandRt (plain, 1000.0f)).epsilon (0.1));
+}
+
+TEST_CASE ("era-5 Piano plays its measured field, taps and a tail to 250 ms, the right channel louder")
+{
+    // Pass 52: the REV5 capture of 25 Rehearsal Room (E/R1 PIANO, room size 1.0, liveness 4) is a continuous
+    // field from about 16 ms to past 250 ms; Piano used to play the Small Hall chart (pattern 0) in the engine
+    auto render = [] (int mode)
+    {
+        EngineParams p;
+        p.erRevBalance = 100.0f;
+        p.rt = 0.3f;
+        p.preDelayMs = 10.0f;
+        p.erMode = mode;
+        p.roomSize = 1.0f;
+        p.liveness = 4.0f;
+        p.erCount = 34;
+        p.erTableSet = 1;
+        return impulse (p, 0.4);
+    };
+    auto energy = [] (const std::vector<float>& x, double from, double to)
+    {
+        double e = 0.0;
+        for (size_t i = (size_t) (from * kSr); i < std::min (x.size (), (size_t) (to * kSr)); ++i)
+            e += (double) x[i] * x[i];
+        return e;
+    };
+    const auto piano = render (8), hall = render (0);
+    CHECK (piano.l != hall.l);
+    CHECK (energy (hall.l, 0.15, 0.25) < 1.0e-12); // the size-1.0 Small Hall chart is over by then
+    const double early = energy (piano.l, 0.02, 0.1), late = energy (piano.l, 0.15, 0.25);
+    CAPTURE (10.0 * std::log10 (early / late));
+    CHECK (10.0 * std::log10 (early / late) > 5.0); // decaying, about 13 dB in the capture
+    CHECK (10.0 * std::log10 (early / late) < 25.0);
+    const double lr = 10.0 * std::log10 (energy (piano.r, 0.0, 0.4) / energy (piano.l, 0.0, 0.4));
+    CAPTURE (lr);
+    CHECK (lr == Approx (4.4).margin (1.5));
+}
+
+TEST_CASE ("era-5 Plate chart mixes its polarity, so a small room's field carries little DC (pass 69)")
+{
+    // Pass 69: the REV5 captures of 19-21 (PLATE, room size 0.3 / 0.4) hold their field's energy below 150 Hz
+    // 9-10 dB under the 300 Hz-8 kHz band; the chart's 34 taps all positive, packed into about 3 ms, held it 2-6 dB
+    // over. Signs fitted on capture 19 (per tap low confidence; the net polarity is the measured part).
+    for (const auto* side : {&yrev::dsp::er::kPatterns5[4].left, &yrev::dsp::er::kPatterns5[4].right})
+    {
+        int neg = 0;
+        for (const auto& t : *side)
+            neg += t.sign < 0.0f ? 1 : 0;
+        CHECK (neg > 5);
+        CHECK (neg < 29);
+    }
+    EngineParams p;
+    p.erRevBalance = 100.0f;
+    p.erTableSet = 1;
+    p.erMode = 4; // the Plate chart
+    p.erCount = 34;
+    p.roomSize = 0.3f;
+    p.liveness = 1.0f;
+    p.preDelayMs = 12.0f;
+    p.diffusion = 5.0f;
+    const auto ir = impulse (p, 0.1);
+    for (const auto* x : {&ir.l, &ir.r})
+    {
+        double sum = 0.0, sumAbs = 0.0;
+        for (size_t i = (size_t) (0.008 * kSr); i < (size_t) (0.02 * kSr); ++i)
+        {
+            sum += (*x)[i];
+            sumAbs += std::abs ((*x)[i]);
+        }
+        CAPTURE (sum / sumAbs);
+        CHECK (std::abs (sum) < 0.35 * sumAbs); // all positive: about 0.9
+    }
+}
+
+TEST_CASE ("REV7 Random and REV5 Large Hall charts carry the captures' tap signs (pass 72)")
+{
+    // Pass 72: REV7 Random from hardware capture 27 (L = R on all 18 taps, capture 23 agrees 12 of 13 per channel);
+    // REV5 Large Hall taps 1-6 from capture 30 (the rest lie under the E/R2 field and stay +1)
+    const char* random7 = "+++-++-----+++--++";
+    const auto& rnd = yrev::dsp::er::kPatterns[2];
+    REQUIRE (rnd.countL == 18);
+    REQUIRE (rnd.countR == 18);
+    for (const auto* side : {&rnd.left, &rnd.right})
+    {
+        for (size_t i = 0; i < 18; ++i)
+            CHECK (((*side)[i].sign < 0.0f) == (random7[i] == '-'));
+    }
+    const char* large5 = "+++-+-";
+    for (const auto* side : {&yrev::dsp::er::kPatterns5[1].left, &yrev::dsp::er::kPatterns5[1].right})
+        for (size_t i = 0; i < 6; ++i)
+            CHECK (((*side)[i].sign < 0.0f) == (large5[i] == '-'));
 }

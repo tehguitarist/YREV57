@@ -1,6 +1,6 @@
 program_type,parameter,min,max,unit,notes,open_question
 Reverb,reverb_time,0.3,99.0,s,,
-Reverb,hi_ratio,0.1,1.0,x,,
+Reverb,hi_ratio,0.1,1.0,x,"the printed value is the RT ratio at 16 kHz re 1 kHz (measurement of the hardware captures, 2026-11-24)",Q-27
 Reverb,lo_ratio,0.1,2.4,x,,
 Reverb,diffusion,0,10,,0-5 on SMALL HALL,
 Common,initial_delay,0.1,1000,ms,all programs; owner's manual p. 14 (OCR),

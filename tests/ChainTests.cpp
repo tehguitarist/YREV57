@@ -228,9 +228,16 @@ TEST_CASE ("the FX slot feeds the reverb and is heard (FX > Rev), or follows it 
             e += (double) x[i] * x[i];
         return e;
     };
+    double latSec = 0.0; // the reported latency: the dry impulse and the wet's zero point sit here
+    {
+        Chain c;
+        c.prepare (kSr, kBlock);
+        latSec = (double) c.latencySamples () / kSr;
+    }
 
     ChainParams p;
     p.wetSolo = true;
+    p.frozenNoise = true; // runs compared against each other: the same era-7 drift (ADR 0007)
     p.engine.rt = 0.5f;
     p.fx.type = yrev::dsp::fxtype::delay;
     p.fx.dlyLMs = p.fx.dlyRMs = 300.0f;
@@ -245,8 +252,8 @@ TEST_CASE ("the FX slot feeds the reverb and is heard (FX > Rev), or follows it 
     SECTION ("FX > Rev: the repeat is heard directly, not only through the reverb")
     {
         const auto x = impulse (p, 1.0);
-        // the repeat at 300 ms (through the converter model, so band-limited): a clear peak, on time, since the
-        // bridge delay comes off the repeat time as it does off the pre-delay
+        // the repeat at 300 ms after the (delayed) dry impulse (through the converter model, so band-limited): a clear
+        // peak, on time, since the wet path is padded to the reported latency and the dry delayed by it
         float peak = 0.0f, before = 0.0f;
         size_t at = 0;
         for (size_t i = (size_t) (0.295 * kSr); i < (size_t) (0.305 * kSr); ++i)
@@ -259,7 +266,7 @@ TEST_CASE ("the FX slot feeds the reverb and is heard (FX > Rev), or follows it 
             before = std::max (before, std::abs (x[i]));
         CHECK (peak > 0.2f);
         CHECK (peak > 4.0f * before);
-        CHECK ((double) at / kSr == Approx (0.300).margin (0.0005));
+        CHECK ((double) at / kSr - latSec == Approx (0.300).margin (0.0005));
         // and the reverb of the repeat adds energy after it
         CHECK (energy (x, 0.32, 0.6) > 1.5 * energy (dry, 0.32, 0.6));
 
@@ -276,7 +283,7 @@ TEST_CASE ("the FX slot feeds the reverb and is heard (FX > Rev), or follows it 
                 atQ = i;
             }
         CHECK (pk > 0.2f);
-        CHECK ((double) atQ / kSr == Approx (0.400).margin (0.0005));
+        CHECK ((double) atQ / kSr - latSec == Approx (0.400).margin (0.0005));
     }
     SECTION ("Rev > FX: the whole reverb is repeated")
     {
@@ -292,6 +299,49 @@ TEST_CASE ("the FX slot feeds the reverb and is heard (FX > Rev), or follows it 
         p.fx.dlyFb = p.fx.dlyFbR = 90.0f;
         CHECK (Chain::tailSeconds (p) > Chain::tailSeconds (off) + 1.0);
     }
+}
+
+TEST_CASE ("era 5 Rev > FX: the reverb reaches the effect in mono (REV5 95 / 96 captures, pass 55)")
+{
+    auto run = [] (const ChainParams& p)
+    {
+        Chain c;
+        c.prepare (kSr, kBlock);
+        const int total = (int) (kSr * 0.6);
+        std::vector<float> l ((size_t) total, 0.0f), r ((size_t) total, 0.0f);
+        l[0] = r[0] = 1.0f;
+        for (int pos = 0; pos < total; pos += kBlock)
+            c.process (l.data () + pos, r.data () + pos, std::min (kBlock, total - pos), p);
+        double ll = 0.0, rr = 0.0, lr = 0.0;
+        for (size_t i = (size_t) (0.05 * kSr); i < l.size (); ++i)
+        {
+            ll += (double) l[i] * l[i];
+            rr += (double) r[i] * r[i];
+            lr += (double) l[i] * r[i];
+        }
+        return lr / std::sqrt (ll * rr);
+    };
+    ChainParams p;
+    p.wetSolo = true;
+    p.character = 0.0f;
+    p.engine.rt = 1.0f;
+    p.fx.type = yrev::dsp::fxtype::delay; // equal times, no feedback: the effect itself adds no width
+    p.fx.dlyLMs = p.fx.dlyRMs = 200.0f;
+    p.fx.dlyLevel = 100.0f;
+    p.fx.dlyFb = 0.0f;
+    p.fxOrder = 1;
+    p.era = 1;
+    p.fx.era = 1;
+    p.engine.erTableSet = 1;
+    CHECK (run (p) > 0.999);
+    auto q = p; // FX > Rev keeps the stereo reverb, and so does era 7
+    q.fxOrder = 0;
+    CHECK (run (q) < 0.95);
+    auto s = p;
+    s.era = 0;
+    s.fx.era = 0;
+    s.engine.erTableSet = 0;
+    CHECK (run (s) < 0.95);
 }
 
 TEST_CASE ("the REV5 gate cuts the reverb tail after hold and release")
@@ -434,7 +484,8 @@ namespace
     {
         ChainParams p;
         p.wetSolo = true;
-        p.character = 0.0f; // no hiss, so two runs can be compared sample for sample
+        p.character = 0.0f;   // no hiss, so two runs can be compared sample for sample
+        p.frozenNoise = true; // and the same era-7 drift (ADR 0007)
         p.engine.rt = 3.0f;
         return p;
     }
@@ -507,8 +558,11 @@ TEST_CASE ("a switch under steady input has no gap or jump, and the old engine s
     }
 
     // and nothing jumps sample to sample beyond what the signal itself does
+    // (against the larger of the old era's steps and the new era's once settled: the eras differ in treble)
     float maxStepBefore = 0.0f, maxStepAround = 0.0f;
     for (int i = first - 4800; i < first; ++i)
+        maxStepBefore = std::max (maxStepBefore, std::abs (out[(size_t) i + 1] - out[(size_t) i]));
+    for (int i = first + 9600; i < first + 14400; ++i)
         maxStepBefore = std::max (maxStepBefore, std::abs (out[(size_t) i + 1] - out[(size_t) i]));
     for (int i = first; i < first + 4800; ++i)
         maxStepAround = std::max (maxStepAround, std::abs (out[(size_t) i + 1] - out[(size_t) i]));
@@ -576,4 +630,88 @@ TEST_CASE ("wet input True stereo reaches the engine: a left-only input leans le
     };
     const float stereo = balance (1), trueStereo = balance (2);
     CHECK (trueStereo - stereo > 6.0f);
+}
+
+TEST_CASE ("a 1st reflection printed at 0.1 ms plays about 0.1 ms after the dry, in both eras (ADR 0001 update)")
+{
+    for (int era : {0, 1})
+    {
+        ChainParams p;
+        p.era = era;
+        p.wetSolo = true;
+        p.engine.preDelayMs = 0.1f;
+        p.engine.ref1DelayMs = 0.1f;
+        p.engine.ref1Level = 100.0f;
+        p.engine.erRevBalance = 0.0f; // no taps: the 1st reflection and the late field
+        Chain c;
+        c.prepare (kSr, kBlock);
+        CHECK (c.latencySamples () > 0);
+        const int total = (int) (kSr * 0.1);
+        std::vector<float> l ((size_t) total, 0.0f), r ((size_t) total, 0.0f);
+        l[0] = r[0] = 1.0f;
+        for (int pos = 0; pos < total; pos += kBlock)
+            c.process (l.data () + pos, r.data () + pos, std::min (kBlock, total - pos), p);
+        size_t peakAt = 0;
+        float peak = 0.0f;
+        for (size_t i = 0; i < (size_t) total; ++i)
+            if (std::abs (l[i]) > peak)
+            {
+                peak = std::abs (l[i]);
+                peakAt = i;
+            }
+        const double ms = 1000.0 * ((double) peakAt - c.latencySamples ()) / kSr;
+        CHECK (ms == Approx (0.1).margin (0.6));
+    }
+}
+
+TEST_CASE ("era 7's late output drifts between runs (ADR 0007); the taps, era 5 and frozen renders do not")
+{
+    auto run = [] (int era, bool frozen)
+    {
+        ChainParams p;
+        p.wetSolo = true;
+        p.character = 0.0f; // no hiss or dither: only the drift can differ
+        p.frozenNoise = frozen;
+        p.era = era;
+        p.engine.rt = 2.0f;
+        Chain c;
+        c.prepare (kSr, kBlock);
+        const int total = (int) (kSr * 1.2);
+        std::vector<float> l ((size_t) total, 0.0f), r ((size_t) total, 0.0f);
+        l[0] = r[0] = 1.0f;
+        for (int pos = 0; pos < total; pos += kBlock)
+            c.process (l.data () + pos, r.data () + pos, std::min (kBlock, total - pos), p);
+        l.insert (l.end (), r.begin (), r.end ()); // both channels, for the comparisons below
+        return std::make_pair (l, c.latencySamples ());
+    };
+    // normalised correlation and energy ratio (dB) of two runs over a window after the latency, both channels
+    auto compare = [] (const std::vector<float>& a, const std::vector<float>& b, int lat, double from, double to)
+    {
+        const size_t half = a.size () / 2;
+        double ab = 0.0, aa = 0.0, bb = 0.0;
+        for (size_t ch = 0; ch < 2; ++ch)
+            for (size_t i = (size_t) lat + (size_t) (from * kSr); i < (size_t) lat + (size_t) (to * kSr); ++i)
+            {
+                const double x = a[ch * half + i], y = b[ch * half + i];
+                ab += x * y;
+                aa += x * x;
+                bb += y * y;
+            }
+        return std::make_pair (ab / std::sqrt (aa * bb + 1.0e-30), 10.0 * std::log10 ((aa + 1.0e-30) / (bb + 1.0e-30)));
+    };
+    const auto [a, lat] = run (0, false);
+    const auto [b, latB] = run (0, false); // another instance: another seed
+    REQUIRE (lat == latB);
+    // the reflections (before the 30 ms pre-delay's late field) are static
+    CHECK (compare (a, b, lat, 0.0, 0.025).first > 0.999);
+    // the late field differs between runs at about the same level (fitted coherence about 0.5)
+    const auto late = compare (a, b, lat, 0.3, 1.0);
+    CHECK (late.first < 0.9);
+    CHECK (late.first > 0.0);
+    CHECK (std::abs (late.second) < 2.0);
+    // frozen renders repeat; era 5 is time-invariant
+    const auto f1 = run (0, true), f2 = run (0, true);
+    CHECK (compare (f1.first, f2.first, f1.second, 0.0, 1.0).first == Approx (1.0).margin (1.0e-9));
+    const auto e1 = run (1, false), e2 = run (1, false);
+    CHECK (compare (e1.first, e2.first, e1.second, 0.0, 1.0).first == Approx (1.0).margin (1.0e-9));
 }

@@ -83,7 +83,10 @@ private:
         std::atomic<float>*erFbGain, *erFbDelay, *erFbHi, *rev2Time, *rev2Delay, *rev2Level, *gateLevel, *gateTrigDelay,
             *gateHold, *gateRelease, *ref1LDelay, *ref1LLevel, *ref1RDelay, *ref1RLevel;
         std::atomic<float>*voiceLoopSize, *voiceDiffSize, *voiceLoXover, *voiceErGain, *gateInput, *voiceHiXover,
-            *erType, *voiceLateOnset, *voiceErTilt, *voiceLateTilt, *revMix, *fxWet, *voiceRev2Hi, *voiceRev2Gain;
+            *erType, *voiceLateOnset, *voiceErTilt, *voiceLateTilt, *revMix, *fxWet, *voiceRev2Hi, *voiceRev2Gain,
+            *voiceTapRead, *voiceRevTaps, *voiceErFill, *voiceErFillSize, *voiceDiffGain, *voiceSubRatio, *voiceSubHz,
+            *voiceErCloud, *voiceErCloudHold, *voiceErCloudFade, *voiceErCloudRise, *voiceErLoTilt, *voiceErLoHz,
+            *voiceErPrinted;
     } raw{};
     yrev::dsp::ChainParams readParams () const;
     double hostBpm = 0.0;              // from the play head, audio thread only (fx_sync)

@@ -4,7 +4,7 @@ YREV57 is a free, open-source reverb plugin (AU, VST3 and Standalone) inspired b
 
 > YREV57 is an independent product, inspired by the Yamaha REV7 and REV5. It is not affiliated with, endorsed by or sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe the hardware that inspired this plug-in.
 
-This is a beta (version 0.9.1): every feature is in and the voicing has had its first listening pass; it may still change before 1.0. Ranges and defaults below come from the parameter specification ([parameters.md](design/parameters.md)) and the built panel. The tooltips in the plugin are the quickest check of what each control does.
+This is version 1.0: every feature is in and the voicing is tuned against reference recordings and by ear; a listening pass may still refine it in 1.x releases. Ranges and defaults below come from the parameter specification ([parameters.md](design/parameters.md)) and the built panel. The tooltips in the plugin are the quickest check of what each control does.
 
 ## Contents
 
@@ -56,7 +56,7 @@ The two keys at the top left, **7** and **5**, choose the era. The numbers are t
 | Pre-delay and 1st reflection delay | up to 100 ms | up to 1,000 ms |
 | Early reflections | up to 18 | up to 34, with E/R feedback |
 | Secondary reverb | no | yes |
-| Early-reflection modes | six plus REV E/R | six plus Pan A, Pan B and REV E/R |
+| Early-reflection modes | six plus REV E/R | six plus Pan A, Pan B, REV E/R and Piano |
 | FX | delay, echo, mod | delay, echo, mod, pitch, pan |
 | Delay time L and R | up to 900 ms | up to 2,900 ms |
 | Echo time L and R | up to 450 ms | up to 1,400 ms |
@@ -120,7 +120,7 @@ A grid of nine knobs. Ranges are the widest of the two eras; the knob travel nar
 
 A row of **mode keys** and three knobs.
 
-- **Modes:** Small Hall, Large Hall, Random, Reverse, Plate and Spring. Era 5 adds **Pan A** and **Pan B**, where the reflections sweep across the stereo field (Pan A one way, Pan B across and back) and LIVENESS sets the direction, Both eras have **REV E/R**, the reverb program's own early reflections, the way the hardware's reverb programs play them: in era 7 the REV7's three per channel, in era 5 the REV5's multitap (denser at DENSITY 4). Each preset carries its own set (hall, plate or room), so the key just turns them on; from another mode it picks the hall set. ROOM SIZE, LIVENESS and E/R NUMBER do not apply; the reflections start at the pre-delay.
+- **Modes:** Small Hall, Large Hall, Random, Reverse, Plate and Spring. Era 5 adds **Pan A** and **Pan B**, where the reflections sweep across the stereo field (Pan A one way, Pan B across and back) and LIVENESS sets the direction, Both eras have **REV E/R**, the reverb program's own early reflections, the way the hardware's reverb programs play them: in era 7 the REV7's three per channel, in era 5 the REV5's multitap (denser at DENSITY 4). Each preset carries its own set (hall, plate or room), so the key just turns them on; from another mode it picks the hall set. ROOM SIZE, LIVENESS and E/R NUMBER do not apply; the reflections start at the pre-delay. Era 5 also has **PIANO** beside REV E/R, the REV5's piano reflection pattern (the *Rehearsal Room* program uses it); ROOM SIZE scales it.
 - **ROOM SIZE:** 0.1 to 20 (era 5: 0.1 to 25). Spreads the reflection times.
 - **LIVENESS:** 0 to 10. How reflective the room is.
 - **E/R NUMBER:** 1 to 18 (era 5: 1 to 34). The number of reflections.
@@ -207,7 +207,7 @@ The settings dialog also shows the about box with the version, the licence and t
 
 - Every continuous control on the panel is a host-automatable parameter. The hidden per-preset voice parameters that give the manual programs their identity (loop and diffuser sizes, crossovers, reflection gain and tilt, late onset, late tilt, the E/R type and the gate placement) are saved with presets but are not on the panel and are not automatable.
 - The reverb tail is reported to the host (up to 99 s in era 5).
-- No latency is reported: the converter's delay is taken off the pre-delay and the 1st reflection delay.
+- The plugin reports its converter delay (about 2–3 ms) as latency and delays the dry to match, so the host keeps everything aligned and pre-delays, reflections and FX delays play as printed. Live monitoring through it adds that much delay.
 - The plugin handles sample-rate changes and any block size, and the presets are also exposed to the host as programs. A fresh instance reports no current program until you choose a preset (it opens on INIT).
 - Validated with Apple's `auval` (AU) and with pluginval at strictness 10 (AU and VST3).
 

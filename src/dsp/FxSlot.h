@@ -48,6 +48,9 @@ namespace yrev::dsp
         float echoDamp =
             1.0f; // HIGH ratio x0.1..1.0 of the repeats' treble (1.0 = none); from echo_damp / 10 (echoDampToHigh)
         float echoLevel = 50.0f; // echo_level, %
+        // Set by the converter: the bridge delay, ms. It comes off the first repeat only (the output read); the loop
+        // keeps the panel time, so every later repeat is spaced as printed (M6, the hardware Stereo Echo capture).
+        float repeatAdvanceMs = 0.0f;
 
         int modType = modtype::chorusA; // mod_type
         float lfoRateHz = 1.0f;         // lfo_rate (0.1..20 era 7, ..40 era 5)
@@ -179,7 +182,8 @@ namespace yrev::dsp
         std::array<fxdetail::Line, 2> lineA, lineB;
         std::array<fxdetail::Slew, 2> sTime;
         fxdetail::Slew sLevel, sFb, sA, sB, sRate;
-        std::array<float, 2> damp{}; // echo damping filter states
+        std::array<float, 2> damp{};     // echo damping filter states
+        std::array<float, 2> dampPrev{}; // era-7 echo: the two-tap average's previous loop sample
         std::array<float, 2> panGain{0.5f, 0.5f};
         double phase = 0.0;                         // LFO phase in cycles
         double phaseSlow = 0.0;                     // symphonic's slow LFO phase in cycles

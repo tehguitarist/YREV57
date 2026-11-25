@@ -16,7 +16,7 @@ and Standalone.
 > sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
 > the hardware that inspired this plug-in.
 
-**Status: beta, version 0.9.1.** See [Status](#status).
+**Status: version 1.0.** See [Status](#status).
 
 ## Highlights
 
@@ -34,7 +34,7 @@ and Standalone.
 - **Two EQs.** A wet-only analogue 3-band EQ in both eras, and a digital 3-band parametric EQ in era 5.
 - **Modern additions.** True-stereo wet input, wet stereo width, an input-keyed ducker, wet solo, an output safety limiter,
   a resizable panel, host automation of every panel control, and presets.
-- **Light on CPU.** About 1.3 to 1.8 % of one Apple M1 Pro core at 48 or 96 kHz.
+- **Light on CPU.** About 1.3 to 2.4 % of one Apple M1 Pro core at 48 or 96 kHz.
 - **Presets.** 15 generic presets of our own, plus the 30 REV7 and 39 REV5 programs under the names and settings printed
   in the owners' manuals, and your own user presets.
 
@@ -48,7 +48,7 @@ and Standalone.
   left and right 1st reflections, early-reflection feedback, gate and ducker settings.
 - Preset browser with FACTORY, USER, COMBI, REV7 and REV5 banks; store, rename, delete, import, export, compare and init.
 - Per-era settings memory, so each era keeps its own settings (or share them across eras).
-- Reports the reverb tail to the host. No latency is reported: the converter's delay is taken off the pre-delay.
+- Reports the reverb tail and its converter delay (about 2–3 ms) to the host; the dry is delayed to match, so pre-delays, reflections and FX delays play as printed.
 - Tooltips on every control (the **?** key switches them off).
 
 The full control reference is in the **[user manual](docs/manual.md)**.
@@ -131,21 +131,21 @@ The CI and release workflows run by hand only; see [docs/release.md](docs/releas
 
 ## Status
 
-**Beta.** Every feature is in: the panel, every parameter, the preset banks and the whole DSP chain. It builds as AU,
-VST3 and Standalone, passes Apple's `auval` and pluginval at strictness 10 (AU and VST3) and its automated tests, and costs about 1.3 to 1.8 % of one Apple M1 Pro core (block 256, 48 or 96 kHz; about 2.2 % at 192 kHz).
+**1.0.** Every feature is in: the panel, every parameter, the preset banks and the whole DSP chain. It builds as AU,
+VST3 and Standalone, passes Apple's `auval` and pluginval at strictness 10 (AU and VST3) and its automated tests, and costs about 1.3 to 2.4 % of one Apple M1 Pro core (block 256, 48 or 96 kHz).
 
-Before 1.0:
+Good to know:
 
-- **The listening pass.** The voicing has not been finalised by ear yet and may still change, including four
-  period-style FX options that are off until they are judged.
+- **Voicing.** The programs are tuned by measurement and ear; a listening pass may still refine them in 1.x
+  releases, including four period-style FX options that are off until they are judged.
 - **Inspired by, not a copy.** YREV57 is our own interpretation of the sound of these units, built from publicly
   available documentation and listening. It does not reproduce their circuits or firmware.
-- **Some hardware features are not modelled.** The four instrument early-reflection modes (piano, organ, brass, guitar) are
-  hidden until there is data for them, and MIDI features (program change, triggers) are dropped in favour of DAW
+- **Some hardware features are not modelled.** Three of the instrument early-reflection modes (organ, brass, guitar) are
+  hidden until there is data for them (era 5's piano mode is in), and MIDI features (program change, triggers) are dropped in favour of DAW
   automation.
-- **Beta builds.** Installers are signed and notarised on macOS; the Windows and Linux builds are unsigned, so Windows may show a SmartScreen warning.
+- **Builds.** Installers are signed and notarised on macOS; the Windows and Linux builds are unsigned, so Windows may show a SmartScreen warning.
 
-The [roadmap](ROADMAP.md) has what is left before 1.0. Design notes are in [docs/](docs/README.md).
+The [roadmap](ROADMAP.md) has what is planned next. Design notes are in [docs/](docs/README.md).
 
 ## Repository layout
 
@@ -173,3 +173,5 @@ YREV57 is an independent product, inspired by the Yamaha REV7 and REV5. It is no
 ## Credits
 
 Built by Leigh Pierce, using [JUCE](https://juce.com/) for the plugin framework and interface.
+
+Big thanks to Eric from [JRRShop](https://www.jrrshop.com/) (go there for some great deals on plugins) for helping with additional IRs of both units.

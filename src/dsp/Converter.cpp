@@ -45,7 +45,12 @@ namespace yrev::dsp
         // captures' darkening is the program LPF (`wet_lpf`, a one-pole): the 7 / 9 kHz values had stood in for it, so
         // presets applied the printed LPF twice (7-15 dB rms too dark). Measurement of the captures; engine.md,
         // pass 21.
-        constexpr float kLateBandwidthEra7 = 4500.0f, kLateBandwidthEra5 = 0.0f;
+        // Pass 39 (2026-11-24): era 7 11 kHz, after the half-sample average below (kLateTapAverageEra7). Without it
+        // the late colour fits best (100-300 / 300-800 ms 1.18 / 0.75 dB rms) but C80 at 8 kHz reads 2.0 dB late-heavy
+        // against the captures (was 0.7 dB early-heavy); 11 kHz gives 0.34 / 1.76 dB and C80 1.0 dB. The two late
+        // windows pull apart because our treble decays faster than the hardware's, which input filtering cannot fix.
+        constexpr float kLateBandwidthEra7 = 11000.0f, kLateBandwidthEra5 = 0.0f;
+        constexpr float kMonoSumGain = 0.70710678f; // era 5, Rev > FX: the reverb's equal-power mono sum (pass 55)
         // Bandwidth on the reflection outputs (reflections and 1st reflections). Era 5 (fifteenth pass): the REV5
         // openings (first 50 ms) are darker than our reflections by about 2 dB at 8 kHz and 4 dB at 12.5 kHz; a
         // one-pole at the same 9 kHz closes the median (0-20 ms residual within 0.5 dB, 3-16 kHz). Era 7 (seventeenth
@@ -53,18 +58,55 @@ namespace yrev::dsp
         // more of its energy in the first 50 ms than the captures' (C50 at 8 kHz, 9 of 10); 7.5 kHz (at the 31.25 kHz
         // native rate) takes the opening colour from 3.5 / 1.7 / 2.1 to 1.7 / 0.6 / 1.2 dB rms (0-20 / 20-50 / 50-100
         // ms, 3-12.5 kHz). Measurement of the captures; where the hardware band-limits its reflections is inference.
-        constexpr float kErBandwidthEra5 = 0.0f, kErBandwidthEra7 = 7500.0f; // era 5: off since pass 21 (was 9 kHz)
+        // Pass 39: era 7 off too (was 7.5 kHz); the tap averages below replace it, and the 1st reflection no longer
+        // passes it.
+        constexpr float kErBandwidthEra5 = 0.0f, kErBandwidthEra7 = 0.0f; // era 5: off since pass 21 (was 9 kHz)
+        // Era-7 tap filtering (pass 39, 2026-11-24): a two-sample average, y = (1 - u) x + u x[-1], on the reflections
+        // (not the 1st reflection) and on what the late network hears. The REV7 taps sit below the direct path
+        // by -3.5 / -6 / -9.6 dB at 8 / 10 / 12.5 kHz on the halls and plates, which is a half-sample average at
+        // 31.25 kHz (-3.2 / -5.4 / -10.2 dB) and which no one-pole fits (any corner that closes 10-12.5 kHz darkens
+        // 4-8 kHz); the E/R charts' taps fall less (-0.6 / -2.4 / -5.2 dB). Grid of factory-bank renders against the
+        // captures (colour re 1 kHz, 2-12.5 kHz, rms of the family median): Rev taps 0-50 ms 2.34 -> 0.45 dB (u 0.5),
+        // E/R charts 0-50 ms 1.39 -> 0.58 dB (u 0.35), late 100-300 / 300-800 ms 1.83 / 1.75 -> 0.34 / 1.76 dB (u 0.5,
+        // with the 11 kHz one-pole above). Measurement of the captures; that the hardware reads its taps between two
+        // samples is inference.
+        // 1st-reflection level against the reflections (pass 43, 2026-11-24): the printed level is not the tap's
+        // amplitude against our energy-normalised reflections. On the hardware E/R captures with a 1st reflection the
+        // reflection field (2-200 ms, 300 Hz-8 kHz) sits re the 1st reflection 9.3 dB higher than ours (REV7 19-21,
+        // 25-28; spread 5.6-10.5) and 14.3 dB higher (REV5 19-21, 25; 4.5-17.6). Scaled per era on all three 1st
+        // reflections (measurement of the captures; how the hardware scales its level is not documented).
+        constexpr float kRef1GainEra7 = 0.343f, kRef1GainEra5 = 0.193f; // -9.3 / -14.3 dB
+        constexpr float kErTapAverageEra7 = 0.5f, kErTapAverageChartEra7 = 0.35f, kLateTapAverageEra7 = 0.5f;
+        // Pass 61 (2026-11-25): the read is the program's, not the family's. Every tap of a REV7 capture has
+        // the same treble (1.2 ms windows, 8 / 10 / 12.5 kHz re 1-4 kHz, spread within a program about 1 dB), but the
+        // programs fall into groups: as the direct path (Strings, Live Reference, Piano: -2 / -10 dB at 10 / 12.5 kHz),
+        // a little under it (Snare, Organ, Brass, both E/R presets: -3 / -14), the half-sample read (the halls, the
+        // plates, Reverb Flange: -6 / -17) and darker (Gate Reverb, Handclaps: -11 / -23). No panel value predicts the
+        // group, so a hidden per-preset offset (voice_tap_read) moves both averages; above 0.5 a second average stage
+        // takes the rest. Measurement of the captures; how the hardware reads its taps is inference.
+        constexpr float kTapReadMax = 0.5f;
         // Era-5 reflections' top octave: the REV5 E/R taps' comb on average (twenty-seventh pass, Engine.cpp kErTopQ).
-        constexpr float kErTopEra5 = 20000.0f;
-        // Era-7 wet-path bass lift: a low shelf on the whole wet output (reflections and tail alike). The REV7
-        // captures sit a steady +5 dB above ours at 63-125 Hz, +3 dB at 160-315 Hz and +1-2 dB at 400-630 Hz relative
-        // to 1 kHz, in every window from the first reflections on and on 8 of 10 programs; the REV5 captures, made by
-        // the same company, match ours. Fitted on the 0.1-0.6 s third-octave medians with the shelf held flat above
-        // 1 kHz (+0.2 dB at 1 kHz, the converter fit owns the treble): 0.97 dB rms, 50-630 Hz. Measurement of the
-        // captures; that the REV7's own wet path does it (rather than a capture EQ setting) is the maintainer's call
-        // (2026-11-19, engine.md twelfth pass). Where in the hardware: unknown (Q-22). A second, independent set of
-        // REV7 IRs would settle whether it is the unit or the capture; until then we work with this.
-        constexpr float kBassLiftDbEra7 = 5.7f, kBassLiftHzEra7 = 290.0f, kBassLiftQEra7 = 0.6f;
+        // Off since pass 36 (0 = off): the REV5 taps carry no comb (tap-to-tap spread <= 1.4 dB to 12 kHz), and
+        // without it the era-5 openings sit on the captures at 16 kHz (median +1.3 -> +0.3 dB, capture minus ours).
+        constexpr float kErTopEra5 = 0.0f;
+        // Where the printed HIGH holds, per era (pass 37): the RT ratio at the top of each unit's band. The hardware
+        // captures read the printed value at about 10-12.5 kHz (REV7) and at 16 kHz (REV5), third-octave T20 ratios re
+        // 1 kHz on eight / ten reverb programs (measurement of the captures).
+        // Fitted against a grid of renders (corner x hi) and checked on renders at the printed values: era 7 keeps the
+        // voice corner (8.5 kHz) with the reference at 10 kHz (swept 9-14 kHz), era 5 plays the corner x 12 / 8.5 (12
+        // kHz by default) with the reference at 16 kHz; ratio error 2-12.5 / 2-16 kHz 0.117 / 0.244 -> 0.041 / 0.032
+        // rms (the 8 kHz-octave reading had left the tails 6-10 dB dark late on).
+        // Pass 73 (final sweep): era 7's tails still read 2-4 dB dark at 4-10 kHz from 200 ms on (median over the ten
+        // REV7 reverb programs, three drift seeds); a grid of corner x reference (x1.1-1.4, 10-11.5 kHz) fits best at
+        // the corner x 1.15 (9.8 kHz by default) with the reference at 10.5 kHz: 300-800 ms colour 3.16 -> 2.80 dB
+        // rms per program (measurement against the captures; inference for the fit).
+        constexpr float kHiRefEra7 = 10500.0f, kHiRefEra5 = 16000.0f;
+        constexpr float kHiXoverScaleEra7 = 1.15f, kHiXoverScaleEra5 = 12000.0f / 8500.0f;
+        // Pass 75 (final sweep): the REV7 Handclaps capture (RT 0.4 s, HIGH 0.1) decays about 0.40 s at 4-8 kHz over
+        // 50-600 ms (mid 0.45 s; measurement of the capture), where the printed ratio would give 0.04 s; every other
+        // REV7 reverb program prints a treble decay of 0.5 s or more. Era 7's treble decay floors at 0.2 s (the shelf
+        // plateau; grid 0.15-0.4 s on that capture, inference for the mechanism). Era 5: no capture, off.
+        constexpr float kHiRtFloorEra7 = 0.2f;
         // Wet-path DC block (eighteenth pass): a 2nd-order Butterworth high-pass at 10 Hz on the converter output, both
         // eras. The chart reflections are all positive, so the cluster carries a DC step (about 4.5 % of the first 50
         // ms's energy) and the late network a long infrasonic tail (our wet IR held +5 / +9 dB more at 5 Hz than at
@@ -89,12 +131,25 @@ namespace yrev::dsp
         // near-exact pair; REV7 de-emphasis not transcribed, Q-14).
         constexpr double kEmphZeroHz = 3092.0, kEmphPoleHz = 10281.0, kEmphWarpHz = 6000.0;
         constexpr double kDroopWarpHz = 10000.0;
-        // Bilinear prewarp at the middle of each era's measured cliff, so it lands where it was measured. Era 5 is
-        // fitted on the realised chain at 96 kHz (REALISED fit: these warps, the bridge
-        // and the hold droop), so keep them in step with that fit.
-        constexpr double kEra7DesignWarpHz = 12200.0, kEra5DesignWarpHz = 17000.0;
+        // Bilinear prewarp at each era's measured cliff, so it lands where it was measured. Era 5 is fitted on the
+        // realised chain at 96 kHz (REALISED fit: this warp and the bridge), so keep them
+        // in step with the fit. Pass 36: era 5 at its own edge (was 17 kHz, which cramped the elliptic prototype).
+        constexpr double kEra7DesignWarpHz = 12200.0, kEra5DesignWarpHz = 20077.0;
+        // Era-5 D/A hold droop in the bridge (twenty-seventh pass): off since pass 36. The REV5 is flat within
+        // 0.3 dB to 19 kHz with no droop (measurement of the capture); the
+        // taps it was fitted on carried the E/R programs' 10 kHz program LPF (inference). The bridge keeps
+        // the option (RateBridge::setHoldDroop).
+        constexpr bool kHoldDroopEra5 = false;
         constexpr double kOversampleBelowHz = 88000.0;
-        constexpr uint32_t kFrozenSeed = 0x12345678u; // 'frozen' noise seed: renders repeat sample for sample
+        constexpr uint32_t kFrozenSeed = 0x12345678u;  // 'frozen' noise seed: renders repeat sample for sample
+        constexpr uint32_t kVarSeedSalt = 0x5bd1e995u; // the engine's time-variance seed: the noise seed, salted
+        // Era-7 time variance (ADR 0007, pass 71): the share of the late output's energy whose read gains drift, and
+        // the drift's period. Fitted on the REV7 repeat sweeps (1 s against 120 s through the plug-in, the
+        // nine reverb programs, three seed pairs): 50-1000 ms coherence about 0.5 flat over 250 Hz-4 kHz, the
+        // hardware's 0.47-0.59; 0.4 / 0.45 / 0.5 and 1 / 3 / 8 s tried, 8 s too slow. Era 5 is time-invariant
+        // (0.97-1.00) and stays static.
+        constexpr float kLateVarShareEra7 = 0.5f;
+        constexpr float kLateVarSecEra7 = 3.0f;
         constexpr double kHalfBandBeta = 8.0;
         const conv::AnalogSection kEmphasis[] = {
             {{0, conv::kRefHz / kEmphZeroHz, 1}, {0, conv::kRefHz / kEmphPoleHz, 1}}};
@@ -488,8 +543,18 @@ namespace yrev::dsp
         randomSeed = (uint32_t) rd () | 1u;
         bridge.prepare (innerFs, kNativeEra7);
         bridge.preparePolyphase (kNativeEra7, false); // the eras' settings (configure)
-        bridge.preparePolyphase (kNativeEra5, true);
+        bridge.preparePolyphase (kNativeEra5, kHoldDroopEra5);
         halfBand.prepare ();
+        // the plug-in's reported latency: the larger of the two eras' bridge delays (ADR 0001 update 2026-11-25)
+        reported = 0;
+        for (int e = 0; e < 2; ++e)
+        {
+            era = -1;
+            configure (e, false);
+            reported = std::max (reported, latency);
+        }
+        for (auto& r : padRing)
+            r.assign ((size_t) reported + 1, 0.0f);
         era = -1;
         configure (0, false);
     }
@@ -513,13 +578,6 @@ namespace yrev::dsp
         else
             droop.design (conv::kEra5Droop, count (conv::kEra5Droop), kDroopWarpHz, innerFs);
         emphasis.design (kEmphasis, 1, kEmphWarpHz, innerFs);
-        for (auto& b : bassLift)
-        {
-            if (era == 0)
-                b.setLowShelf (innerFs, kBassLiftHzEra7, kBassLiftQEra7, kBassLiftDbEra7);
-            else
-                b.setBypass ();
-        }
         deemphasis.design (kDeemphasis, 1, kEmphWarpHz, innerFs);
         {
             // RBJ high-pass, Q 1/sqrt(2)
@@ -533,11 +591,12 @@ namespace yrev::dsp
         if (!eco)
         {
             bridge.setNativeRate (native);
-            bridge.setHoldDroop (era == 1);
+            bridge.setHoldDroop (era == 1 && kHoldDroopEra5);
         }
         // half-band group delay: (kTaps - 1) samples at the doubled rate for the round trip
         const double hb = oversample > 1 ? (HalfBand::kTaps - 1) / 2.0 : 0.0;
         latency = eco ? 0 : (int) std::lround ((double) bridge.latencySamples () / oversample + hb);
+        padSamples = std::max (0, reported - latency); // pads the wet up to the reported latency
         engine.setSampleRate (native);
         fxSlot.setSampleRate (native);
         gate.setSampleRate (native);
@@ -554,18 +613,20 @@ namespace yrev::dsp
     {
         for (auto* c : {&aaIn, &recon, &droop, &emphasis, &deemphasis})
             c->reset ();
-        for (auto& b : bassLift)
-            b.reset ();
         for (auto& b : dcBlock)
             b.reset ();
         bridge.reset ();
         halfBand.reset ();
         engine.reset ();
+        engine.seedVariance ((frozen ? kFrozenSeed : randomSeed) ^ kVarSeedSalt);
         fxSlot.reset ();
         gate.reset ();
         for (auto& r : fxOffset)
             std::fill (r.begin (), r.end (), 0.0f);
         fxOffsetPos = 0;
+        for (auto& r : padRing)
+            std::fill (r.begin (), r.end (), 0.0f);
+        padPos = 0;
         for (auto& band : deq)
             for (auto& f : band)
                 f.reset ();
@@ -639,6 +700,7 @@ namespace yrev::dsp
         {
             frozen = p.frozenNoise;
             rng = frozen ? kFrozenSeed : randomSeed;
+            engine.seedVariance ((frozen ? kFrozenSeed : randomSeed) ^ kVarSeedSalt);
         }
         if (p.era != era || p.eco != eco)
             configure (p.era, p.eco);
@@ -649,22 +711,33 @@ namespace yrev::dsp
                             kFullScale);
         const bool dither = era == 1 && p.dither && c > 0.0f;
 
-        // keep panel timing: the bridge delay comes off the pre-delay and the 1st-reflection delay
+        // panel timing: the wet path is padded to the reported latency and the dry is delayed by the same, so the
+        // delays play as printed (no bridge delay taken off them any more)
         EngineParams ep = engineParams;
-        const float latencyMs = (float) (1000.0 * latency / hostFs);
-        ep.initialDelayMs = ep.preDelayMs; // the era-7 Rev taps scale with the delay as programmed
-        ep.preDelayMs = std::max (0.1f, ep.preDelayMs - latencyMs);
-        ep.ref1DelayMs = std::max (0.1f, ep.ref1DelayMs - latencyMs);
-        ep.ref1LDelayMs = std::max (0.1f, ep.ref1LDelayMs - latencyMs);
-        ep.ref1RDelayMs = std::max (0.1f, ep.ref1RDelayMs - latencyMs);
+        const float ref1Gain = era == 0 ? kRef1GainEra7 : kRef1GainEra5;
+        ep.ref1Level *= ref1Gain;
+        ep.ref1LLevel *= ref1Gain;
+        ep.ref1RLevel *= ref1Gain;
         ep.lateBandwidthHz = era == 0 ? kLateBandwidthEra7 : kLateBandwidthEra5;
         ep.erBandwidthHz = era == 0 ? kErBandwidthEra7 : kErBandwidthEra5;
+        // pass 61: the program's own tap read, an offset on the era's averages (voice_tap_read)
+        const float tapRead = std::clamp (ep.tapReadOffset, -kTapReadMax, kTapReadMax);
+        ep.erTapAverage =
+            era == 0 ? std::clamp ((isRevTapMode (ep.erMode) ? kErTapAverageEra7 : kErTapAverageChartEra7) + tapRead,
+                                   0.0f, 1.0f)
+                     : 0.0f;
+        ep.lateTapAverage = era == 0 ? std::clamp (kLateTapAverageEra7 + tapRead, 0.0f, 1.0f) : 0.0f;
         ep.erTopHz = era == 0 ? 0.0f : kErTopEra5;
-        ep.erTableSet = era == 0 ? 0 : 1; // REV7 or REV5 E/R charts
+        ep.hiRefHz = era == 0 ? kHiRefEra7 : kHiRefEra5;
+        ep.hiXoverScale = era == 0 ? kHiXoverScaleEra7 : kHiXoverScaleEra5;
+        ep.hiRtFloorSec = era == 0 ? kHiRtFloorEra7 : 0.0f;
+        ep.erTableSet = era == 0 ? 0 : 1;                      // REV7 or REV5 E/R charts
+        ep.lateVarShare = era == 0 ? kLateVarShareEra7 : 0.0f; // ADR 0007
+        ep.lateVarSec = kLateVarSecEra7;
         if (!engineBypass)
             engine.update (ep);
 
-        // FX slot at the native rate. The bridge delay comes off the repeat times too, so they keep panel timing.
+        // FX slot at the native rate; the effect delays play as printed (see above).
         const bool fxOn = p.fx != nullptr;
         const bool fxFirst = p.fxOrder == 0;
         const bool fxActive = fxOn && p.fx->type != fxtype::off;
@@ -672,10 +745,9 @@ namespace yrev::dsp
         if (fxOn)
         {
             fxNative = *p.fx;
-            for (float* t : {&fxNative.dlyLMs, &fxNative.dlyRMs, &fxNative.echoLMs, &fxNative.echoRMs,
-                             &fxNative.pitchDelayMs, &fxNative.pitch2DelayMs})
-                *t = std::max (0.1f, *t - latencyMs);
-            fxNative.afterReverb = !fxFirst && p.fxWet; // the slot hears the reverb alone
+            fxNative.repeatAdvanceMs = 0.0f;
+            // the slot hears the reverb alone (era 5 sums it to mono first, below, so the mod types' own sum is unity)
+            fxNative.afterReverb = !fxFirst && p.fxWet && era != 1;
             carried = FxSlot::dryCarried (fxNative);
         }
         const bool fxIdle = fxOn && fxNative.type == fxtype::off; // Off and settled: the slot's call is skipped
@@ -691,7 +763,6 @@ namespace yrev::dsp
 
         const float revMix = std::clamp (p.revMix, 0.0f, 1.0f);
         // the effect's offset: the programmed initial delay above the 0.1 ms minimum every effect program prints
-        // (the bridge latency is already off the effect's own times, so it is not taken again here)
         const size_t offsetCap = fxOffset[0].size ();
         const size_t fxOffsetSamples =
             offsetCap < 2
@@ -743,6 +814,16 @@ namespace yrev::dsp
                 engine.processSample (l, r, rl, rr);
                 f1l = engine.lastRef1L (); // the 1st reflections, kept at full level beside REV MIX: both manuals
                 f1r = engine.lastRef1R (); // give every program them (REV7 OM p. 18; REV5 p. 14 and the FX plots)
+            }
+            // Era 5, Rev > FX: the reverb reaches the effect in mono, at equal power (the REV5 captures of 95
+            // and 96: L/R correlation 1.00 up to 2 kHz, side 15 dB under mid, at the level of 91-93, the same network
+            // at L/R correlation 0.1; pass 55). The effects sum their input to mono anyway, but at half amplitude,
+            // which lost 3 dB of an uncorrelated reverb through the bypass; delay and echo now repeat a mono reverb.
+            // Era 7 has no combination programs and keeps its stereo reverb.
+            if (fxActive && !fxFirst && era == 1)
+            {
+                rl = rr = kMonoSumGain * (rl + rr);
+                f1l = f1r = kMonoSumGain * (f1l + f1r);
             }
             if (fxActive && fxFirst)
             {
@@ -814,10 +895,8 @@ namespace yrev::dsp
                 nativeStage ((float) l, (float) r, ol, orr);
             else
                 bridge.process ((float) l, (float) r, ol, orr, nativeStage);
-            x[0] = dcBlock[0].process (
-                bassLift[0].process (deemphasis.process (0, droop.process (0, recon.process (0, ol)))));
-            x[1] = dcBlock[1].process (
-                bassLift[1].process (deemphasis.process (1, droop.process (1, recon.process (1, orr)))));
+            x[0] = dcBlock[0].process (deemphasis.process (0, droop.process (0, recon.process (0, ol))));
+            x[1] = dcBlock[1].process (deemphasis.process (1, droop.process (1, recon.process (1, orr))));
         };
 
         for (int i = 0; i < n; ++i)
@@ -840,6 +919,16 @@ namespace yrev::dsp
                 inner (x);
                 l = x[0];
                 r = x[1];
+            }
+            if (padSamples > 0)
+            {
+                const size_t len = padRing[0].size (), rd = (padPos + len - (size_t) padSamples) % len;
+                const double inL = l, inR = r;
+                l = padRing[0][rd];
+                r = padRing[1][rd];
+                padRing[0][padPos] = (float) inL;
+                padRing[1][padPos] = (float) inR;
+                padPos = (padPos + 1) % len;
             }
             if (fade < 1.0f)
                 fade = std::min (1.0f, fade + fadeStep);

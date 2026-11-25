@@ -487,24 +487,24 @@ body[data-eqview="analog"] .eqset.analog, body[data-eqview="digital"] .eqset.dig
 
   /* ---------- presets (generic names, own values) ---------- */
   var PRESETS = [
-    { name: 'Large Hall', bank: 'FACTORY', v: { rt: 2.6, hi: .7, lo: 1.2, pre: 30, r1d: 10, r1l: 0, dif: 5, erb: 60, size: 3, live: 5, ern: 12, dl: 100, dr: 200, dlev: 25, mix: 35 }, er: 1, fx: 'delay' },
-    { name: 'Small Hall', bank: 'FACTORY', v: { rt: 1.8, hi: .6, lo: 1.0, pre: 18, r1d: 8, r1l: 0, dif: 5, erb: 55, size: 1.5, live: 4, ern: 10, mix: 30 }, er: 0, fx: 'off' },
-    { name: 'Vocal Plate', bank: 'FACTORY', v: { rt: 2.3, hi: .8, lo: 1.0, pre: 40, r1d: 10, r1l: 0, dif: 8, erb: 80, size: 1, live: 8, ern: 14, mix: 25 }, er: 4, fx: 'off' },
-    { name: 'Bright Plate', bank: 'FACTORY', v: { rt: 1.9, hi: 1.0, lo: .9, pre: 8, r1d: 10, r1l: 0, dif: 9, erb: 80, size: 1, live: 9, ern: 14, mix: 28 }, er: 4, fx: 'off' },
-    { name: 'Spring Tank', bank: 'FACTORY', v: { rt: 2.4, hi: .3, lo: 1.2, pre: 22, r1d: 10, r1l: 0, dif: 4, erb: 70, size: 1, live: 6, ern: 8, mix: 30 }, er: 5, fx: 'off' },
-    { name: 'Drum Room', bank: 'FACTORY', v: { rt: .5, hi: .6, lo: 1.0, pre: 10, r1d: 10, r1l: 65, dif: 6, erb: 10, size: 2, live: 4, ern: 16, mix: 22 }, er: 0, fx: 'off' },
-    { name: 'Gated Snare', bank: 'FACTORY', era: 5, v: { rt: 2.0, hi: .8, lo: .8, pre: 12, r1d: 10, r1l: 0, dif: 7, erb: 40, size: 1.6, live: 7, ern: 18, glev: 40, gtd: .1, ghold: 250, grel: 60, mix: 40 }, er: 2, fx: 'off' },
-    { name: 'Reverse Swell', bank: 'FACTORY', v: { rt: 1.5, hi: .7, lo: 1.0, pre: 25, r1d: 10, r1l: 0, dif: 5, erb: 5, size: 2.4, live: 5, ern: 16, mix: 40 }, er: 3, fx: 'off' },
-    { name: 'Slap Echo', bank: 'FACTORY', v: { rt: .9, hi: .6, lo: 1.0, pre: 6, r1d: 10, r1l: 0, dif: 5, erb: 40, size: 1, live: 4, ern: 8, el: 120, er_: 128, efb: 35, edamp: 6, elev: 45, mix: 30 }, er: 0, fx: 'echo' },
-    { name: 'Hall + Delay', bank: 'FACTORY', v: { rt: 2.6, hi: .7, lo: 1.2, pre: 30, dif: 5, erb: 60, dl: 250, dr: 375, dlev: 35, mix: 35 }, er: 1, fx: 'delay', order: 'fxrev' },
-    { name: 'Chorus Wash', bank: 'FACTORY', v: { rt: 2.0, hi: .6, lo: 1.0, pre: 20, dif: 5, erb: 60, lfo: .6, dm: 50, am: 20, mix: 35 }, er: 1, fx: 'mod', mod: 'chorusA' },
-    { name: 'Flange Room', bank: 'FACTORY', v: { rt: 1.2, hi: .6, lo: 1.0, pre: 12, dif: 5, erb: 50, lfo: 1, depth: 70, mdel: 1.2, mfb: 40, mix: 35 }, er: 0, fx: 'mod', mod: 'flange' },
-    { name: 'CLA Drum Room', bank: 'SECRET', v: { rt: 1.4, hi: .37, lo: 1.27, pre: .1, r1d: 10, r1l: 0, dif: 8, erb: 75, size: 3, live: 5, ern: 18, a_lof: 150, a_log: -10, a_hif: 16000, a_hig: -5, mix: 22 }, x: { aeq_on: 1, voice_er_tilt: 8, voice_late_tilt: -2 }, er: 0, fx: 'off' },
+    { name: 'Large Hall', bank: 'FACTORY', v: { rt: 2.6, hi: .3, lo: 1.2, pre: 30, r1d: 10, r1l: 0, dif: 5, erb: 60, size: 3, live: 5, ern: 12, dl: 100, dr: 200, dlev: 25, mix: 35 }, er: 1, fx: 'delay' },
+    { name: 'Small Hall', bank: 'FACTORY', v: { rt: 1.8, hi: .4, lo: 1.0, pre: 18, r1d: 8, r1l: 0, dif: 5, erb: 55, size: 1.5, live: 4, ern: 10, mix: 30 }, er: 0, fx: 'off' },
+    { name: 'Vocal Plate', bank: 'FACTORY', v: { rt: 2.3, hi: .3, lo: 1.0, pre: 40, r1d: 10, r1l: 0, dif: 8, erb: 80, size: 1, live: 8, ern: 14, mix: 25 }, er: 4, fx: 'off' },
+    { name: 'Bright Plate', bank: 'FACTORY', v: { rt: 1.9, hi: .5, lo: .9, pre: 8, r1d: 10, r1l: 0, dif: 9, erb: 80, size: 1, live: 9, ern: 14, mix: 28 }, er: 4, fx: 'off' },
+    { name: 'Spring Tank', bank: 'FACTORY', v: { rt: 2.4, hi: .2, lo: 1.2, pre: 22, r1d: 10, r1l: 0, dif: 4, erb: 70, size: 1, live: 6, ern: 8, mix: 30 }, er: 5, fx: 'off' },
+    { name: 'Drum Room', bank: 'FACTORY', v: { rt: .5, hi: .4, lo: 1.0, pre: 10, r1d: 10, r1l: 65, dif: 6, erb: 10, size: 2, live: 4, ern: 16, mix: 22 }, er: 0, fx: 'off' },
+    { name: 'Gated Snare', bank: 'FACTORY', era: 5, v: { rt: 2.0, hi: .3, lo: .8, pre: 12, r1d: 10, r1l: 0, dif: 7, erb: 40, size: 1.6, live: 7, ern: 18, glev: 40, gtd: .1, ghold: 250, grel: 60, mix: 40 }, er: 2, fx: 'off' },
+    { name: 'Reverse Swell', bank: 'FACTORY', v: { rt: 1.5, hi: .3, lo: 1.0, pre: 25, r1d: 10, r1l: 0, dif: 5, erb: 5, size: 2.4, live: 5, ern: 16, mix: 40 }, er: 3, fx: 'off' },
+    { name: 'Slap Echo', bank: 'FACTORY', v: { rt: .9, hi: .3, lo: 1.0, pre: 6, r1d: 10, r1l: 0, dif: 5, erb: 40, size: 1, live: 4, ern: 8, el: 120, er_: 128, efb: 35, edamp: 6, elev: 45, mix: 30 }, er: 0, fx: 'echo' },
+    { name: 'Hall + Delay', bank: 'FACTORY', v: { rt: 2.6, hi: .3, lo: 1.2, pre: 30, dif: 5, erb: 60, dl: 250, dr: 375, dlev: 35, mix: 35 }, er: 1, fx: 'delay', order: 'fxrev' },
+    { name: 'Chorus Wash', bank: 'FACTORY', v: { rt: 2.0, hi: .3, lo: 1.0, pre: 20, dif: 5, erb: 60, lfo: .6, dm: 50, am: 20, mix: 35 }, er: 1, fx: 'mod', mod: 'chorusA' },
+    { name: 'Flange Room', bank: 'FACTORY', v: { rt: 1.2, hi: .4, lo: 1.0, pre: 12, dif: 5, erb: 50, lfo: 1, depth: 70, mdel: 1.2, mfb: 40, mix: 35 }, er: 0, fx: 'mod', mod: 'flange' },
+    { name: 'CLA Drum Room', bank: 'SECRET', v: { rt: 1.4, hi: .4, lo: 1.5, pre: .1, r1d: 10, r1l: 0, dif: 10, erb: 62.5, size: 2.0, live: 6, ern: 16, a_lof: 100, a_log: -4, a_hif: 16000, a_hig: -5, mix: 22 }, x: { aeq_on: 1, voice_er_tilt: 9, voice_late_tilt: -10, voice_lo_xover: 350, voice_hi_xover: 6500, voice_er_fill: 0.4, voice_er_fill_size: 2, voice_sub_ratio: 1.3, voice_er_cloud: 1, voice_er_cloud_hold: 20, voice_er_cloud_fade: 3, voice_er_cloud_rise: -3, voice_er_lo_tilt: -10, voice_er_lo_hz: 100 }, er: 0, fx: 'off' },
     { name: 'My Vocal', bank: 'USER', v: { rt: 2.1, hi: .7, lo: 1.0, pre: 35, dif: 7, erb: 75, mix: 22 }, er: 4, fx: 'off' },
     { name: 'Mix Bus Glue', bank: 'USER', v: { rt: .8, hi: .5, lo: .9, pre: 4, dif: 6, erb: 30, mix: 12 }, er: 0, fx: 'off' },
-    { name: 'Symphonic Hall', bank: 'COMBI', v: { rt: 2.8, hi: .7, lo: 1.2, pre: 30, dif: 6, erb: 65, lfo: .7, depth: 80, mix: 40 }, er: 1, fx: 'mod', mod: 'symph', order: 'fxrev' },
-    { name: 'Pan Verb', bank: 'COMBI', era: 5, v: { rt: 3.2, hi: .6, lo: 1.1, pre: 20, dif: 6, erb: 60, prate: 2, pdepth: 60, mix: 38 }, er: 1, fx: 'pan' },
-    { name: 'Pitch Shimmer', bank: 'COMBI', era: 5, v: { rt: 4.5, hi: .5, lo: 1.0, pre: 30, dif: 7, erb: 70, shift: 12, fine: 6, pdel: 20, pfb: 40, mix: 40 }, er: 1, fx: 'pitch', order: 'revfx' }
+    { name: 'Symphonic Hall', bank: 'COMBI', v: { rt: 2.8, hi: .3, lo: 1.2, pre: 30, dif: 6, erb: 65, lfo: .7, depth: 80, mix: 40 }, er: 1, fx: 'mod', mod: 'symph', order: 'fxrev' },
+    { name: 'Pan Verb', bank: 'COMBI', era: 5, v: { rt: 3.2, hi: .3, lo: 1.1, pre: 20, dif: 6, erb: 60, prate: 2, pdepth: 60, mix: 38 }, er: 1, fx: 'pan' },
+    { name: 'Pitch Shimmer', bank: 'COMBI', era: 5, v: { rt: 4.5, hi: .3, lo: 1.0, pre: 30, dif: 7, erb: 70, shift: 12, fine: 6, pdel: 20, pfb: 40, mix: 40 }, er: 1, fx: 'pitch', order: 'revfx' }
   ];
 
   function resetAll() { Object.keys(knobs).forEach(function (id) { knobs[id].set(knobs[id].def, true); }); }
@@ -676,11 +676,11 @@ body[data-eqview="analog"] .eqset.analog, body[data-eqview="digital"] .eqset.dig
     { id: 'rlpf', label: 'Reverb LPF', min: 1, max: 17, def: 17, fmt: 'lpf', step: 1, size: 'l', mn: '1', mx: 'THRU' }
   ]);
   var ERM = [['Small<br>hall', 0], ['Large<br>hall', 1], ['Random', 2], ['Reverse', 3], ['Plate', 4], ['Spring', 5]];
-  var ERM5 = [['Pan A', 6], ['Pan B', 7]]; // Piano, Organ, Brass, Guitar (8-11) hidden until there is data (Q-01)
-  // One key for both eras: the reverb program's own early reflections (er_mode 12-14: Rev Hall, Rev Plate, Rev Room; which
+  var ERM5 = [['Pan A', 6], ['Pan B', 7], ['Piano', 8]]; // Organ, Brass, Guitar (9-11) stay hidden: no data and no preset uses them (Q-01); Piano from pass 52, Rehearsal Room
+  // One key for both eras: the reverb program's own early reflections (er_mode 12-20: Rev Hall, Rev Plate, Rev Room and the REV7 programs' own sets; which
   // set is stored with the preset, as on the hardware, where they are fixed per program). Pressing it picks Rev Hall
   // unless one of the three is already playing. REV5 pass 22, REV7 pass 23.
-  var isRev = function (m) { return m >= 12 && m <= 14; };
+  var isRev = function (m) { return m >= 12 && m <= 20; };
   erSync1 = (function () {
     var all = [];
     ERM.forEach(function (m) { var k = makeKey(m[0], { cls: 'esq', onclick: function () { S.erMode = m[1]; erSync1(); say('E/R ' + m[0]); edited = true; showLCD(); } }); $('#ermodes1').appendChild(k.el); all.push([k, m[1]]); });

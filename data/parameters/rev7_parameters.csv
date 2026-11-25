@@ -3,7 +3,7 @@ REV,reverb_time,0.3,10.0,s,time for 1 kHz to fall 60 dB,
 REV,initial_delay,0.1,100,ms,,
 REV,ref1_delay,0.1,100,ms,mono centre tap on every preset,
 REV,ref1_level,0,100,%,relative to direct; default 0%,
-REV,hi_ratio,0.1,1.0,x,one 1985 review says 2.0,Q-03
+REV,hi_ratio,0.1,1.0,x,"one 1985 review says 2.0; the printed value is the RT ratio at about 10-12.5 kHz re 1 kHz (measurement of the hardware captures, 2026-11-24; Q-27)",Q-03
 REV,lo_ratio,0.1,2.4,x,,
 REV,diffusion,0,10,,barely audible per reviews,
 E/R,liveness,0,10,,0 dead; 10 tiled and glassy,

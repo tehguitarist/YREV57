@@ -126,7 +126,21 @@ namespace
                                       "rev_mix",
                                       "fx_wet",
                                       "voice_rev2_hi",
-                                      "voice_rev2_gain"};
+                                      "voice_rev2_gain",
+                                      "voice_tap_read",
+                                      "voice_rev_taps",
+                                      "voice_er_fill",
+                                      "voice_er_fill_size",
+                                      "voice_diff_gain",
+                                      "voice_sub_ratio",
+                                      "voice_sub_hz",
+                                      "voice_er_cloud",
+                                      "voice_er_cloud_hold",
+                                      "voice_er_cloud_fade",
+                                      "voice_er_cloud_rise",
+                                      "voice_er_lo_tilt",
+                                      "voice_er_lo_hz",
+                                      "voice_er_printed"};
 } // namespace
 
 TEST_CASE ("every frozen parameter ID exists and IDs are unique")
@@ -219,17 +233,22 @@ TEST_CASE ("reverb and FX LPFs snap to the hardware-style steps")
     }
 }
 
-TEST_CASE ("ER mode lists the fifteen modes, Rev Hall, Rev Plate and Rev Room last")
+TEST_CASE ("ER mode lists the charted and instrument modes, then the Rev sets")
 {
     YrevProcessor proc;
     auto* er = dynamic_cast<juce::AudioParameterChoice*> (proc.apvts.getParameter ("er_mode"));
     REQUIRE (er != nullptr);
-    CHECK (er->choices.size () == 15);
+    CHECK (er->choices.size () == 21);
     CHECK (er->choices[0] == "Small Hall");
     CHECK (er->choices[11] == "Guitar");
     CHECK (er->choices[12] == "Rev Hall");
     CHECK (er->choices[13] == "Rev Plate");
     CHECK (er->choices[14] == "Rev Room");
+    CHECK (er->choices[15] == "Rev Perc Plate");
+    CHECK (er->choices[18] == "Rev Echo Room");
+    CHECK (er->choices[20] == "Rev Combi");
+    CHECK (yrev::isRevErMode (20));
+    CHECK (yrev::erModeEra7 (20) == 20);
     CHECK (yrev::erModeEra7 (12) == 12); // the Rev modes play in both eras
     CHECK (yrev::erModeEra7 (14) == 14);
     CHECK (yrev::erModeEra7 (7) == 0);
@@ -272,9 +291,32 @@ TEST_CASE ("hardware ranges: echo high damp, mid EQ, reverb flange (Q-13, Q-26, 
 TEST_CASE ("the hidden voice parameters are not automatable and default to the engine's fixed values")
 {
     YrevProcessor proc;
-    for (const char* id :
-         {"voice_loop_size", "voice_diff_size", "voice_lo_xover", "voice_er_gain", "gate_input", "voice_hi_xover",
-          "er_type", "voice_late_onset", "voice_er_tilt", "voice_late_tilt", "voice_rev2_hi", "voice_rev2_gain"})
+    for (const char* id : {"voice_loop_size",
+                           "voice_diff_size",
+                           "voice_lo_xover",
+                           "voice_er_gain",
+                           "gate_input",
+                           "voice_hi_xover",
+                           "er_type",
+                           "voice_late_onset",
+                           "voice_er_tilt",
+                           "voice_late_tilt",
+                           "voice_rev2_hi",
+                           "voice_rev2_gain",
+                           "voice_tap_read",
+                           "voice_rev_taps",
+                           "voice_er_fill",
+                           "voice_er_fill_size",
+                           "voice_diff_gain",
+                           "voice_sub_ratio",
+                           "voice_sub_hz",
+                           "voice_er_cloud",
+                           "voice_er_cloud_hold",
+                           "voice_er_cloud_fade",
+                           "voice_er_cloud_rise",
+                           "voice_er_lo_tilt",
+                           "voice_er_lo_hz",
+                           "voice_er_printed"})
     {
         auto* prm = proc.apvts.getParameter (id);
         REQUIRE (prm != nullptr);
@@ -291,4 +333,7 @@ TEST_CASE ("the hidden voice parameters are not automatable and default to the e
     CHECK (proc.apvts.getRawParameterValue ("voice_late_tilt")->load () == Approx (0.0f));
     CHECK (proc.apvts.getRawParameterValue ("voice_rev2_hi")->load () == Approx (0.0f));
     CHECK (proc.apvts.getRawParameterValue ("voice_rev2_gain")->load () == Approx (0.0f));
+    CHECK (proc.apvts.getRawParameterValue ("voice_tap_read")->load () == Approx (0.0f));
+    CHECK (proc.apvts.getRawParameterValue ("voice_rev_taps")->load () == Approx (0.0f));
+    CHECK (proc.apvts.getRawParameterValue ("voice_er_printed")->load () == Approx (0.0f));
 }

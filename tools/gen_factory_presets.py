@@ -34,18 +34,19 @@ ER5_MODES = {'S-HALL': 0, 'L-HALL': 1, 'RANDOM': 2, 'REVERSE': 3, 'PLATE': 4, 'S
 # The instrument ER modes (Piano 8, Organ 9, Brass 10, Guitar 11) are hidden until there is data for them (Q-01).
 # A program that prints one (only Rehearsal Room: PIANO) gets a charted stand-in: Small Hall, the nearest room
 # (inference; the same pattern the placeholder already used).
-INSTRUMENT_STAND_IN = {8: 0, 9: 1, 10: 4, 11: 5}
+INSTRUMENT_STAND_IN = {9: 1, 10: 4, 11: 5}  # Piano (8) plays its own pattern (pass 52) and has a key (2026-11-25)
 # The REV7 reverb programs print no ER mode: "3 early reflections are programmed for each channel" (REV7 OM p. 14,
-# OCR). They play the REV7 Rev sets read from the REV7 captures (twenty-third pass, docs/design/engine.md):
-# Large Hall, Small Hall and Vocal Plate have a capture at their factory initial delay (Rev Hall 12, Rev Room 14, Rev
-# Plate 13); the others take the nearest set by name (ours, inference).
-REVERB_ER_MODE = {'Large Hall': 12, 'Small Hall': 14, 'Vocal Plate': 13, 'Percussion Plate': 13, 'Spring': 13,
-                  'Echo Room': 14, 'Strings': 12, 'Snare': 14, 'Handclaps': 14}
-REV7_MEASURED = {'Large Hall', 'Small Hall', 'Vocal Plate'}
+# OCR). Each plays the set read from its own hardware capture (pass 40, docs/design/engine.md): Rev Hall 12, Rev Plate 13
+# and Rev Room 14 are shared (Strings plays the plate set; Small Hall, Handclaps and Reverb Flange the room set), and
+# Percussion Plate, Snare, Spring and Echo Room have their own (15-18).
+REVERB_ER_MODE = {'Large Hall': 12, 'Small Hall': 14, 'Vocal Plate': 13, 'Percussion Plate': 15, 'Spring': 17,
+                  'Echo Room': 18, 'Strings': 19, 'Snare': 16, 'Handclaps': 14}
 # The REV5 reverb programs print no ER mode: they play their own early taps (Rev Hall 12, Rev Plate 13; read from the
 # REV5 captures, twenty-second pass, docs/design/engine.md). The plates take Rev Plate, everything else Rev Hall.
-REV5_REVERB_ER_MODE = {'Vocal Plate': 13, 'Percussion Plate': 13}
-REV_NOTE = "the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5_REVERB_ER_MODE = {'Large Hall': 12, 'Small Hall': 14, 'Vocal Plate': 13, 'Percussion Plate': 15, 'Spring': 17,
+                       'Echo Room': 18, 'Strings': 19, 'Snare': 16, 'Reverb & Gate': 12}
+REV_NOTE = "the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
+REV_NOTE_COMBI = "the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 FX = ['delay', 'echo', 'mod', 'pitch', 'pan', 'off']
 MOD = ['flange', 'revflange', 'chorusA', 'chorusB', 'phasing', 'tremolo', 'symph']
 REV5_REVERB = {1, 2, 3, 4, 16, 17, 18, 22}
@@ -189,7 +190,10 @@ def build5(r):
         p.pr('liveness', g('liveness')); p.pr('room_size', g('room_size')); p.pr('diffusion', g('diffusion'))
         p.pr('er_count', g('er_number')); p.pr('wet_lpf', g('lpf_khz')); p.pr('density', g('density'))
         # E/R1 or E/R2 as the ROM chart's type column prints it (pass 28: era-5 E/R2 diffuses the reflections, as pass 25 in era 7)
-        p.pr('er_type', 1 if r['type'] == 'E/R2' else 0, 'TYPE ' + r['type'])
+        if nm in KICK_ER2:  # pass 57: the capture plays a tail the chart's E/R1 has not
+            p.derived('er_type', 1, KICK_ER2_NOTE % r['type'])
+        else:
+            p.pr('er_type', 1 if r['type'] == 'E/R2' else 0, 'TYPE ' + r['type'])
         p.pr('er_fb_delay', g('fb_delay_ms')); p.pr('er_fb_gain', g('fb_gain_pct')); p.pr('er_fb_hi', g('fb_high_x'))
         if g('space_mod') is not None: p.pr('space_mod', g('space_mod'))
         else: p.ours('space_mod', 0, 'not printed on this program; modulation off like the others')
@@ -214,11 +218,11 @@ def build5(r):
     elif n == 10:
         # REV5 Reverb Flange: "the same REV TIME, HIGH, LOW and DIFFUSION parameters as the reverb type effects" (OM
         # p. 29, OCR), and the ROM chart prints the reverb block (p. 65): a reverb program with a flange on it, unlike
-        # the REV7's (a flange whose feedback becomes a decay). The engine at the printed settings on the Rev Hall
-        # taps (the REV5 Reverb Flange capture sits on the shared reverb-program pattern, 2026-11-20); the slot's
+        # the REV7's (a flange whose feedback becomes a decay). The engine at the printed settings on the Rev Room
+        # taps (its hardware capture shares Small Hall's, pass 41); the slot's
         # plain flange before it, its feedback at the REV7 program's fixed 30 % (the REV5 prints none; inference).
-        base_choices(p, 12, 'mod', mod='flange')
-        p.ours('er_mode', 12, REV_NOTE)
+        base_choices(p, 14, 'mod', mod='flange')
+        p.ours('er_mode', 14, REV_NOTE)
         reverb_block()
         p.pr('lfo_rate', g('mod_freq_hz')); p.pr('mod_depth', g('mod_depth_pct')); p.pr('mod_delay', g('mod_delay_ms'))
         p.ours('mod_fb', 30, 'feedback fixed at 30 % as in the REV7 Reverb Flange (REV7 OM p. 16); the REV5 prints none')
@@ -243,8 +247,8 @@ def build5(r):
     elif 91 <= n <= 97:
         order = 1 if n in REV5_COMBO_REVFIRST else 0
         fx = {91: 'echo', 92: 'mod', 93: 'mod', 94: 'pitch', 95: 'mod', 96: 'pan', 97: 'pitch'}[n]
-        base_choices(p, 12, fx, order, REV5_COMBO_MOD.get(n, 2))
-        p.ours('er_mode', 12, REV_NOTE)
+        base_choices(p, 20, fx, order, REV5_COMBO_MOD.get(n, 2))
+        p.ours('er_mode', 20, REV_NOTE_COMBI)
         reverb_block(); p.ours('rev2_level', 0, 'combination programs print no secondary reverb')
         p.pr('rev_mix', g('rev_mix_pct'), 'REV MIX: the reverb beside the effect\'s bypass (block diagram, OM pp. 37-39)')
         if n == 91:
@@ -271,7 +275,19 @@ def build5(r):
         # ER DLY and REV DLY (p. 41: each from the input to the start of its sound) sit after the common initial
         # delay (inference); the reflections keep the initial delay (ER DLY 0.1 ms), the late network hears its input
         # REV DLY - ER DLY later (19.9 ms) through the hidden late onset
-        p.derived('voice_late_onset', g('rev_delay_ms') - g('er_delay_ms'), 'REV DLY 20 ms less ER DLY 0.1 ms (the reverb starts that much after the reflections)')
+        # The REV5 capture of 98: its reverb is the combinations' network (91's, r 0.88) 21.8 ms after the
+        # reflections, early taps and all, so the field is continuous from 10 ms; our late network beside a chart
+        # carries no taps of its own, and REV DLY as a late onset left a hole at 30-60 ms (-38 against -15 dB).
+        # Pass 67: the reverb plays the combinations' own tap set (voice_rev_taps 9, er_mode 20's) from REV DLY - ER
+        # DLY (19.9 ms) as part of the reverb, and only those taps feed the late network; reflections +6 dB.
+        # 0-200 ms per-channel envelope 3.48 -> 2.35 dB rms, C50 -2.4 -> -1.4 (capture -1.2)
+        p.derived('voice_rev_taps', 9, 'the combinations\' tap set beside the chart: the REV5 capture of 98 is the combinations\' network (pass 55); pass 67')
+        p.derived('voice_late_onset', round(g('rev_delay_ms') - g('er_delay_ms'), 3), 'REV DLY %s less ER DLY %s ms: where the reverb (its taps and late network) starts (pass 67)' % (r['rev_delay_ms'], r['er_delay_ms']))
+        p.derived('voice_er_gain', 6.0, 'fitted on the REV5 capture of 98 with its reverb taps (pass 67; pass 55 +4)')
+        p.derived('voice_diff_size', 0.6, 'the combinations\' diffusers (pass 55)')
+        # Pass 86: the S-Hall times were re-measured on the E/R programs' captures (05 / 06); 98's own capture matches the
+        # printed chart better at 10-40 ms (early-field match 0.26 against 0.19 at 40 ms), so 98 keeps the printed one
+        p.derived('voice_er_printed', 1, 'S-Hall as printed: the REV5 capture of 98 fits the printed chart, 05 / 06 the re-measured times (pass 86)')
     elif n == 99:
         base_choices(p, 4, 'off')
         p.pr('rt', g('reverb_time_s'), 'REV1 TIME'); p.pr('hi_ratio', g('hi_ratio'), '1 HIGH'); p.pr('lo_ratio', g('lo_ratio'), '1 LOW')
@@ -294,8 +310,8 @@ def build7(r):
     p.pr('pre_delay', g('initial_delay_ms')); p.pr('ref1_delay', g('ref1_delay_ms')); p.pr('ref1_level', g('ref1_level_pct'))
     if typ == 'REV':
         base_choices(p, REVERB_ER_MODE[nm], 'off')
-        p.ours('er_mode', REVERB_ER_MODE[nm], "the reverb program's three early reflections per channel (REV7 OM p. 14; times read from "
-               + ('its capture, pass 23)' if nm in REV7_MEASURED else 'captures, pass 23; nearest set by name)'))
+        p.ours('er_mode', REVERB_ER_MODE[nm], "the reverb program's early reflections, three per channel (REV7 OM p. 14; "
+               "times and levels read from its hardware capture, pass 40)")
         p.pr('rt', g('reverb_time_s')); p.pr('hi_ratio', g('hi_ratio')); p.pr('lo_ratio', g('lo_ratio')); p.pr('diffusion', g('diffusion'))
         p.ours('rev2_level', 0, 'the REV7 has no secondary reverb')
     elif typ.startswith('E/R'):
@@ -305,7 +321,10 @@ def build7(r):
         p.ours('er_count', 18, 'the REV7 prints no count; 18 reflections per channel (era-7 maximum)')
         # E/R1 or E/R2 as the ROM chart's type column prints it (pass 25: E/R2 diffuses the reflections). Source
         # conflict: the manual's program notes call Gate Reverb an E/R1 program (OM printed p. 18, page image); the chart wins.
-        p.pr('er_type', 1 if typ == 'E/R2' else 0, 'TYPE ' + typ + (' (the program notes say E/R1; ROM chart used)' if nm == 'Gate Reverb' else ''))
+        if nm in KICK_ER2:  # pass 57: the capture plays a tail the chart's E/R1 has not
+            p.derived('er_type', 1, KICK_ER2_NOTE % typ)
+        else:
+            p.pr('er_type', 1 if typ == 'E/R2' else 0, 'TYPE ' + typ + (' (the program notes say E/R1; ROM chart used)' if nm == 'Gate Reverb' else ''))
         p.ours('rt', 0.3, 'reflections only: no late tail'); p.ours('er_rev_balance', 100, 'reflections only')
         p.ours('rev2_level', 0, 'the REV7 has no secondary reverb')
     elif n == 7:
@@ -317,12 +336,12 @@ def build7(r):
         p.pr('echo_damp', g('high_damp')); p.ours('echo_level', 100, 'no level control printed')
     elif n == 10:
         # REV7 Reverb Flange: the flange with its feedback fixed at 30 % and REV TIME in its place (OM p. 16). Built
-        # like the REV5 program (pass 32): the engine at the printed REV TIME on the Rev Hall taps, the slot's plain
+        # like the REV5 program (pass 32): the engine at the printed REV TIME on the Rev Room taps (pass 40), the slot's plain
         # flange before it. The REV5 Reverb Flange capture is a dense reverb with no comb (2026-11-20), so a reverb, not
         # a decaying comb (our earlier guess, which rang like a spring). The REV7 prints no HIGH, LOW or DIFFUSION for
         # this program: the REV5 Reverb Flange's printed values stand in (REV5 OM p. 65; inference).
-        base_choices(p, 12, 'mod', mod='flange')
-        p.ours('er_mode', 12, "Rev Hall taps, as the REV5 Reverb Flange (the REV7 prints no reflections for this program)")
+        base_choices(p, 14, 'mod', mod='flange')
+        p.ours('er_mode', 14, "Rev Room taps, read from its hardware capture (pass 40; the REV7 prints no reflections for this program)")
         p.pr('rt', g('reverb_time_s'), 'REV TIME')
         p.ours('hi_ratio', 0.4, 'not printed on the REV7; the REV5 Reverb Flange prints 0.4 (OM p. 65)')
         p.ours('lo_ratio', 1.0, 'not printed on the REV7; the REV5 Reverb Flange prints 1.0 (OM p. 65)')
@@ -363,53 +382,159 @@ VOICE = {
 }
 # REV5 programs that are a voiced family under another name: Reverb & Gate and the combinations 91-97 are Large Hall
 # based (rt 2.6 s, L-HALL); 99 is plate-led.
-VOICE_FAMILY5 = {23: 'Large Hall', 91: 'Large Hall', 92: 'Large Hall', 93: 'Large Hall', 94: 'Large Hall',
-                 95: 'Large Hall', 96: 'Large Hall', 97: 'Large Hall', 99: 'Plate & Hall'}
+VOICE_FAMILY5 = {23: 'Large Hall', 91: 'Combination', 92: 'Combination', 93: 'Combination', 94: 'Combination',
+                 95: 'Combination', 96: 'Combination', 97: 'Combination', 99: 'Plate & Hall'}
 
-# REV7 diffuser sizes fitted on the REV7 captures (twenty-fourth pass, docs/design/engine.md): the late field's build-up
-# above 300 Hz after the three early reflections (envelope per 5 ms from the first tap, 0-150 ms) fits Large Hall at
-# the largest diffusers (x1.5: 4.4 / 5.0 -> 3.6 / 3.8 dB rms on Giant / Vast) and the plate at the smallest (x0.6: 6.6
-# -> 3.6 on a plate capture); Small Hall's 0.95 already fits. Percussion Plate follows the plate (family, inference). The
-# REV5 programs keep VOICE (no era-5 check).
-VOICE7_DIFF = {'Large Hall': (1.5, 'derived', 'diffuser size fitted on the REV7 Large Hall captures (pass 24)'),
-               'Vocal Plate': (0.6, 'derived', 'diffuser size fitted on the REV7 Vocal Plate capture (pass 24)'),
-               'Percussion Plate': (0.6, 'ours', 'diffuser size as the fitted Vocal Plate (pass 24; family, inference)')}
+# REV7 voices fitted on the REV7 captures of the factory programs (forty-fifth pass, docs/design/engine.md),
+# replacing pass 24's diffuser sizes (REV7 captures): the same score as VOICE5 (500 Hz-4 kHz energy per window
+# re the first 5 ms, C50, C80; 1 s sweeps), grid over reflection gain -12..+12 dB, late onset 0 / 10 ms and diffuser
+# size. Onset 0 everywhere; the reflections' level against the late field differs by up to 20 dB between programs
+# (the plates, Strings, Spring and Echo Room far under it, Percussion Plate and Snare far over). Small Hall keeps its
+# voice (it fitted). Values: (diff, er gain dB). Pass 74 (final sweep): Reverb Flange +4 -> +6 dB.
+VOICE7 = {'Large Hall': (1.25, 0.0), 'Vocal Plate': (0.6, -8.0), 'Percussion Plate': (0.6, 8.0),
+          'Reverb Flange': (0.6, 6.0), 'Spring': (0.6, -8.0), 'Echo Room': (0.6, -8.0), 'Strings': (0.6, -12.0),
+          'Snare': (1.0, 8.0), 'Handclaps': (0.8, 4.0)}
+VOICE7_NOTE = 'fitted on the REV7 capture of this program (pass 45)'
 
-# REV5 voices fitted on the REV5 captures (twenty-sixth pass, docs/design/engine.md): the late build-up above 300 Hz
-# from each capture's first tap (buildup.py --jobs). The late onset is the lever: the plate captures  fall
-# silent between their first taps and about 40 ms, and the halls' late field starts about 10 ms after ours (
-# Large 3A, Large 3B, Small A: 5.4 -> 4.5 dB rms; plates 13.1 -> 6.8). Diffusers x1.0 on both; the plates' loops x1.0
-# (x0.8 made bass ripple worse on every plate capture: 2.7 / 2.4 -> 0.5 / 1.0 dB). Era 7 fits best at onset 0 and the
-# springs, the snare and the own-tap captures too, so the other programs keep 0. Percussion Plate follows the plate
-# and the hall-based combinations (VOICE_FAMILY5) the Large Hall (family, inference). Values: (loop or None, diff, onset)
-VOICE5 = {'Large Hall': (None, 1.0, 10.0, 'derived', 'diffusers and late onset fitted on the REV5 hall captures (pass 26)'),
-          'Small Hall': (None, 1.0, 10.0, 'derived', 'diffusers and late onset fitted on the REV5 hall captures (pass 26)'),
-          'Vocal Plate': (1.0, 1.0, 18.0, 'derived', 'loops, diffusers and late onset fitted on the REV5 plate captures (pass 26)'),
-          'Percussion Plate': (1.0, 1.0, 18.0, 'ours', 'as the fitted Vocal Plate (pass 26; family, inference)')}
 
-# REV5 ER gain fitted on the REV5 spring captures (thirty-second pass, with the secondary reverb at its new share):
-# Two spring captures at the printed ER/REV BAL 35 % and LPF 3.6 kHz read C80 2.5 / 2.8 dB late-heavy at the
-# guessed -2 dB and within about 0.5 dB at +1.5 dB. The REV7 Spring keeps VOICE (no era-7 check).
-VOICE5_ERG = {'Spring': (1.5, 'derived', 'reflection gain fitted on the REV5 spring captures (pass 32)')}
+# REV5 voices fitted on the REV5 captures of the factory programs (forty-fourth pass, docs/design/engine.md),
+# replacing the pass-26 / pass-32 fits on the REV5 captures (old taps, programs unknown). Scored on the
+# 500 Hz-4 kHz energy per window re the first 5 ms (5-20 / 20-50 / 50-100 / 100-200 / 200-400 ms), C50 and C80, grid
+# over reflection gain, late onset and diffuser size: every family fits at late onset 0 (the late field starting 10-18
+# ms after ours was a reading), smaller diffusers, and the halls' reflections 1-2 dB forward. Reverb & Gate
+# and the combinations (VOICE_FAMILY5) follow the Large Hall (family, inference). Values: (loop or None, diff, onset,
+# er gain dB).
+VOICE5 = {'Large Hall': (None, 1.0, 0.0, 2.0), 'Small Hall': (None, 0.7, 0.0, 2.0),
+          'Vocal Plate': (1.0, 0.6, 0.0, -1.0), 'Percussion Plate': (1.0, 0.7, 0.0, 1.0),
+          'Strings': (None, 0.8, 0.0, -1.0), 'Spring': (None, 0.7, 0.0, 1.0),
+          'Echo Room': (None, 0.6, 0.0, 1.0), 'Snare': (None, 0.8, 0.0, -1.0),
+          'Combination': (None, 0.6, 0.0, 0.0)}
+# Pass 68: re-checked per channel (pass 44 scored L + R, weighing our L/R-identical taps about 3 dB over the
+# hardware's): Small Hall and Echo Room reflections +1 dB (500 Hz-4 kHz windows and C50 / C80 per channel, 1.18 /
+# 0.96 -> 1.02 / 0.68 dB rms); Large Hall stays (01 wants +1, 23 Reverb & Gate -1), Strings and Snare within 0.05 dB,
+# the plates and Spring stay.
+# Pass 62: Snare's diffusers x1.0 -> x0.8 after era 5's diffuser gain x0.6 (its 20-50 ms gap; features 2.3 -> 1.2 dB rms)
+VOICE5_NOTE = 'fitted on the REV5 capture of this program (pass 44)'
+# The combinations 91-97 share one reverb network (REV5 captures: 91-96 coherent to 1.8 s), not the Large
+# Hall's: their own voice, fitted on the 91 / 92 / 93 / 95 REV MIX 100 % captures with the effect off (fifty-fifth pass)
+VOICE5_COMBI_NOTE = 'the combinations\' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)'
+VOICE5_FAMILY_NOTE = 'as the fitted Large Hall (pass 44; family, inference)'
+
+# E/R programs whose reflection field sits off the 1st reflection after pass 43's per-era scale (forty-ninth pass): the
+# field (2-200 ms, 300 Hz-8 kHz) re the 1st reflection on the hardware captures against ours (`ref1ratio.py`). Our
+# taps are normalised to one energy, the hardware's field is not: its Plate programs at liveness 0-1 sit 3.5 dB under
+# the others (REV7) or 2.5-3.5 dB over (REV5). Programs within 1.5 dB keep 0. Values: er gain dB.
+# Pass 57: the hardware captures of Kick (REV7 21, REV5 21) carry a tail decaying from the plate taps (T60 about 0.1 s;
+# Electric Bass A, the same chart and size at diffusion 5, has none), so both play E/R2 against the printed E/R1 (Q-28).
+KICK_ER2 = {'Kick'}
+KICK_ER2_NOTE = 'TYPE %s printed; E/R2 here: its hardware capture decays past the taps like the E/R2 programs (pass 57, Q-28)'
+VOICE_ER7 = {'Electric Bass A': -3.5, 'Kick': -3.5}
+VOICE_ER5 = {'Electric Bass A': 2.5, 'Electric Bass B': -2.5, 'Kick': -3.5}
+VOICE_ER_NOTE = 'reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)'
+# Per-program reflection gain over the family voice (pass 60): REV5 10 Reverb Flange plays its late field about 7 dB
+# under 02 Small Hall's on the same taps (REV5 captures, 500 Hz-4 kHz windows re 0-5 ms, C50, C80).
+VOICE5_PROG_ER = {'Reverb Flange': 6.5}
+VOICE5_PROG_NOTE = 'fitted on the REV5 capture of this program (pass 60: its late field 7 dB under the family\'s)'
+# Pass 61: each REV7 program reads its taps its own way. Every tap of a REV7 capture carries the same treble
+# (8 / 10 / 12.5 kHz re 1-4 kHz, 1.2 ms windows), but the programs differ: as the direct path (Strings, Live
+# Reference, Piano), a little under it (Snare, Organ, Brass, the E/R presets), the half-sample read (halls, plates)
+# and darker (Gate Reverb, Handclaps, Spring). Values: the offset on the era-7 tap and late-feed averages, fitted on a
+# grid of 0.1 against the colour at 4-12.5 kHz in 0-50, 100-300 and 300-800 ms (the E/R bass programs on the taps'
+# own colour, their windows being dominated by other gaps).
+TAP_READ7 = {'Percussion Plate': 0.1, 'Early Reflection 1': -0.1, 'Early Reflection 2': -0.1, 'Reverb Flange': -0.1,
+             'Spring': 0.5, 'Echo Room': -0.25, 'Strings': -0.4, 'Electric Bass A': 0.15, 'Electric Bass B': 0.15,
+             'Kick': 0.15, 'Snare': -0.35, 'Gate Reverb': 0.5, 'Reverse Gate': 0.3, 'Piano': -0.15, 'Organ': -0.2,
+             'Brass': -0.05, 'Handclaps': 0.5, 'Live Reference': -0.5}
+TAP_READ7_NOTE = 'the program\'s tap read, fitted on its REV7 capture (pass 61)'
+# Pass 79: the early fill (pass 78) per REV7 reverb program, (level, size): fitted on the REV7 captures (colour
+# by window, pass 44's features, the 5 ms envelope, three drift seeds); Large Hall, Percussion Plate and Spring keep it
+# off (no gain, or the features worse).
+FILL7 = {'Small Hall': (0.2, 2.0), 'Vocal Plate': (1.0, 0.75), 'Reverb Flange': (0.1, 1.0), 'Echo Room': (0.75, 1.0),
+         'Strings': (0.75, 0.75), 'Snare': (0.1, 2.0), 'Handclaps': (0.2, 2.0)}
+FILL7_NOTE = 'the early fill, fitted on the REV7 capture of this program (pass 79)'
+
+
+# Pass 81 (regression pass): per-program refits, each accepted only where no metric of that program got worse (colour
+# by window, raw and with its own mean removed, pass 44's features, the 5 ms envelope, the early-field match; era 7 over
+# six drift seeds). Hidden voice_diff_gain (x the input diffusers' gain): the plates' 10-30 ms field, which passes 62-63
+# had left 6-9 dB under the captures. Values: (diffuser size or None, gain, low crossover Hz or None).
+#   REV5 Percussion Plate x0.78 / x1.25 (grid gain 1.0-1.35, size 0.6-0.8): envelope 2.87 -> 2.02, features 3.4 -> 2.5
+#   REV7 Percussion Plate x1.15, crossover 500 Hz (after pass 81's drift fix its late 125 Hz read 1 dB short)
+#   REV7 Strings x1.15 (features and envelope -0.13 / -0.14 dB rms)
+# Hidden voice_sub_ratio (x the decay below 120 Hz): REV7 Snare x1.15 (its late 63-125 Hz short; neutral elsewhere),
+# Handclaps x0.85 (late colour 0.2-0.5 dB better, the rest within 0.01).
+DIFF_GAIN = {('REV5', 'Percussion Plate'): (0.78, 1.25, None), ('REV7', 'Percussion Plate'): (None, 1.15, 500),
+             ('REV7', 'Strings'): (None, 1.15, None)}
+SUB_RATIO = {('REV7', 'Snare'): 1.15, ('REV7', 'Handclaps'): 0.85}
+DIFF_GAIN_NOTE = 'fitted on the hardware capture of this program (pass 81)'
+# Pass 82 (regression pass, the rest; same rule): per-program voice refits on the program alone (the families keep
+# theirs). REV5 Large Hall: reflections +2 -> +3 dB, diffuser gain x1.15 (envelope -0.48, 100-300 ms colour -0.18,
+# features -0.31 dB rms). REV5 Snare: late tilt +2.5 dB, reflections -1 -> +0.5 dB, high corner 8.5 -> 11 kHz, low
+# corner 350 -> 400 Hz (its late field 2-5 dB dark above 6 kHz: 100-300 / 300-800 ms colour -1.21 / -0.92 dB rms).
+PROG_VOICE = {('REV5', 'Large Hall'): {'voice_er_gain': 3.0, 'voice_diff_gain': 1.15},
+              ('REV5', 'Snare'): {'voice_late_tilt': 2.5, 'voice_er_gain': 0.5, 'voice_hi_xover': 11000,
+                                  'voice_lo_xover': 400},
+              # pass 83: the sub shelf's corner per program (hidden voice_sub_hz). REV7 Small Hall's late 63 Hz read
+              # short while its 125 Hz was already heavy, so the 120 Hz shelf could not help: at 56 Hz, x2 (300-800 /
+              # 100-300 ms colour -0.39 / -0.12 dB rms). REV5 Small Hall x0.9 below 100 Hz (300-800 ms -0.09).
+              ('REV7', 'Small Hall'): {'voice_sub_hz': 56, 'voice_sub_ratio': 2.0},
+              # pass 85: REV7 Large Hall's 15-20 ms excess was the input diffusers' echo of tap 1 (2026-11-25 side
+              # check); larger diffusers move it under tap 2, more diffuser gain keeps the 55-90 ms build-up and the
+              # sub shelf its late 125 Hz (six drift seeds: features 3.93 -> 2.86, 100-300 / 300-800 ms colour
+              # 0.99 / 0.85 -> 0.88 / 0.56, envelope 2.70 -> 2.67 dB rms; 15-20 ms L -37.9 -> -51.0 dB against -50.5).
+              # pass 87: REV7 Snare's late field spoke too early (20-200 ms +1.2 to +2.7 dB re its first 5 ms in pass 44's
+              # features): a 4 ms late onset, with its tap read -0.4 -> -0.35 (TAP_READ7) holding the colour (six seeds:
+              # features 1.37 -> 1.07, colour 0-50 / 100-300 / 300-800 ms 1.11 / 1.55 / 1.20 -> 1.02 / 1.52 / 1.00,
+              # envelope 1.79 -> 1.77 dB rms)
+              ('REV7', 'Snare'): {'voice_late_onset': 4},
+              # pass 89: its sub shelf 150 Hz x1.3 -> 130 Hz x1.1: pass 85's shelf held 300-800 ms but left the bass
+              # past 800 ms 2-10 dB over the capture (-20 to -40 dB decay at 63 / 125 Hz x1.22 / x1.36), beyond every
+              # scorer window; a trade the maintainer took (six seeds: colour 800-1500 / 1500-2500 ms 1.85 / 3.95 ->
+              # 1.54 / 2.95, 300-800 ms 0.56 -> 0.66 dB rms, the rest unchanged)
+              ('REV7', 'Large Hall'): {'voice_diff_size': 1.4, 'voice_diff_gain': 1.15, 'voice_sub_hz': 130,
+                                       'voice_sub_ratio': 1.1},
+              ('REV5', 'Small Hall'): {'voice_sub_hz': 100, 'voice_sub_ratio': 0.9}}
+PROG_VOICE_NOTE = 'fitted on the hardware capture of this program (passes 82-89)'
 
 
 def add_voice(p, family):
-    if family not in VOICE: return
-    loop, diff, xo, er, why = VOICE[family]
-    note = 'voice best guess (inference): ' + why
-    p.ours('voice_loop_size', loop, note); p.ours('voice_diff_size', diff, note)
-    p.ours('voice_lo_xover', xo, note); p.ours('voice_er_gain', er, note)
-    if p.unit == 'REV7' and family in VOICE7_DIFF:
-        val, basis, note = VOICE7_DIFF[family]
-        p.put('voice_diff_size', val, basis, note)
+    base = 'Large Hall' if family == 'Combination' else family  # the combinations keep the hall's loops (pass 55)
+    if base in VOICE:
+        loop, diff, xo, er, why = VOICE[base]
+        note = 'voice best guess (inference): ' + why
+        p.ours('voice_loop_size', loop, note); p.ours('voice_diff_size', diff, note)
+        p.ours('voice_lo_xover', xo, note); p.ours('voice_er_gain', er, note)
+    if p.unit == 'REV7' and family in VOICE7:
+        diff, er = VOICE7[family]
+        p.put('voice_diff_size', diff, 'derived', VOICE7_NOTE)
+        p.put('voice_er_gain', er, 'derived', VOICE7_NOTE)
+    er_fit = (VOICE_ER7 if p.unit == 'REV7' else VOICE_ER5).get(p.name)
+    if er_fit is not None:
+        p.put('voice_er_gain', er_fit, 'derived', VOICE_ER_NOTE)
     if p.unit == 'REV5' and family in VOICE5:
-        loop, diff, onset, basis, note = VOICE5[family]
+        loop, diff, onset, er = VOICE5[family]
+        basis, note = (('derived', VOICE5_COMBI_NOTE) if family == 'Combination'
+                       else ('ours', VOICE5_FAMILY_NOTE) if p.name != family else ('derived', VOICE5_NOTE))
         if loop is not None: p.put('voice_loop_size', loop, basis, note)
         p.put('voice_diff_size', diff, basis, note)
         p.put('voice_late_onset', onset, basis, note)
-    if p.unit == 'REV5' and family in VOICE5_ERG:
-        val, basis, note = VOICE5_ERG[family]
-        p.put('voice_er_gain', val, basis, note)
+        p.put('voice_er_gain', er, basis, note)
+    if p.unit == 'REV7' and p.name in TAP_READ7:
+        p.put('voice_tap_read', TAP_READ7[p.name], 'derived', TAP_READ7_NOTE)
+    if p.unit == 'REV7' and p.name in FILL7:
+        p.put('voice_er_fill', FILL7[p.name][0], 'derived', FILL7_NOTE)
+        p.put('voice_er_fill_size', FILL7[p.name][1], 'derived', FILL7_NOTE)
+    if (p.unit, p.name) in DIFF_GAIN:
+        size, gain, xo = DIFF_GAIN[(p.unit, p.name)]
+        if size is not None: p.put('voice_diff_size', size, 'derived', DIFF_GAIN_NOTE)
+        p.put('voice_diff_gain', gain, 'derived', DIFF_GAIN_NOTE)
+        if xo is not None: p.put('voice_lo_xover', xo, 'derived', DIFF_GAIN_NOTE)
+    for k, v in PROG_VOICE.get((p.unit, p.name), {}).items():
+        p.put(k, v, 'derived', PROG_VOICE_NOTE)
+    if (p.unit, p.name) in SUB_RATIO:
+        p.put('voice_sub_ratio', SUB_RATIO[(p.unit, p.name)], 'derived', DIFF_GAIN_NOTE)
+    if p.unit == 'REV5' and p.name in VOICE5_PROG_ER:
+        p.put('voice_er_gain', VOICE5_PROG_ER[p.name], 'derived', VOICE5_PROG_NOTE)
 
 
 for r in csv.DictReader(open(CSV7)): progs.append(build7(r))

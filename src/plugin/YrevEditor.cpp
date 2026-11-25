@@ -173,20 +173,21 @@ namespace
         return {r.x, r.y, r.w, r.h};
     }
 
-    // The instrument ER modes (Piano, Organ, Brass, Guitar) have no data yet (Q-01): their keys stay out of the panel
-    // and the processor plays a charted stand-in if a state or automation selects them.
+    // The instrument ER modes Organ, Brass and Guitar have no data yet (Q-01): their keys stay out of the panel and
+    // the processor plays a charted stand-in if a state or automation selects them. Era 5's Piano plays its measured
+    // pattern (pass 52) and has an era-5-only key beside REV E/R (2026-11-25).
     bool isHiddenModeKey (const KeyDef& d)
     {
         if (juce::String (d.group) != "ermodes1")
             return false;
-        for (const char* n : {"Piano", "Organ", "Brass", "Guitar"})
+        for (const char* n : {"Organ", "Brass", "Guitar"})
             if (juce::String (d.label) == n)
                 return true;
         return false;
     }
 
     // The ER mode keys' choice index by label (er_mode): the panel shows them out of choice order (the hidden
-    // instrument modes 8-11 have no keys; one REV E/R key stands for Rev Hall, Rev Plate and Rev Room, 12-14), so the
+    // instrument modes 8-11 have no keys; one REV E/R key stands for every Rev set, 12-20), so the
     // index cannot be the key's position.
     int erModeIndexOf (const juce::String& label)
     {

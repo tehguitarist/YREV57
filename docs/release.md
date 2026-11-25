@@ -39,5 +39,5 @@ The same Apple secrets can be reused from REV-246. Windows and Linux builds are 
 
 ```bash
 cmake -S . -B build -DYREV_BUILD_TESTS=ON && cmake --build build --target YREV57Tests && ctest --test-dir build --output-on-failure
-installer/macos/build_installer.sh 0.9.1 build/YREV57_artefacts/Release .   # unsigned .pkg
+installer/macos/build_installer.sh 1.0.0 build/YREV57_artefacts/Release .   # unsigned .pkg
 ```

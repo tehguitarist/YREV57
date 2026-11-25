@@ -217,6 +217,7 @@ namespace yrev::dsp
         sB.reset ();
         sRate.reset ();
         damp = {};
+        dampPrev = {};
         panGain = {0.5f, 0.5f}; // the centre
         phase = 0.0;
         phaseSlow = 0.0;
@@ -386,7 +387,13 @@ namespace yrev::dsp
             echo ? (era5 ? kMaxEchoMsEra5 : kMaxEchoMsEra7) : (era5 ? kMaxDelayMsEra5 : kMaxDelayMsEra7);
         const double lMs = clampd (syncedMs (echo ? p.echoLMs : p.dlyLMs, p), 0.1, maxMs);
         const double rMs = p.link ? lMs : clampd (syncedMs (echo ? p.echoRMs : p.dlyRMs, p), 0.1, maxMs);
-        const double tgtL = lMs * 0.001 * sr, tgtR = rMs * 0.001 * sr;
+        // Whole samples once settled (M6, 2026-11-24): the hardware's fixed delays are whole native samples, and the
+        // cubic read at a fraction took 0.8 / 1.7 / 3.5 dB off the repeats at 8 / 10 / 12.5 kHz (era 7, the bridge
+        // latency leaving a fraction). Moves the time by at most half a sample; a glide still reads between samples.
+        const double tgtL = std::round (lMs * 0.001 * sr), tgtR = std::round (rMs * 0.001 * sr);
+        // The output read sits the bridge delay ahead of the loop read (whole samples): the first repeat keeps panel
+        // timing and the loop period stays the panel time (it took the latency off every repeat before, 2.6 ms each).
+        const double adv = std::round (std::max (0.0f, p.repeatAdvanceMs) * 0.001 * sr);
         const double tgtLevel = clampd (echo ? p.echoLevel : p.dlyLevel, 0.0, 100.0) * 0.01;
         const double fbLo = era5 ? -kMaxFb : 0.0;
         double fbL = 0.0, fbR = 0.0, high = 1.0;
@@ -407,19 +414,37 @@ namespace yrev::dsp
             highFor = high;
             highA = (float) loopHighCoef (high, sr);
         }
-        const bool lowpass = highA < 1.0f;
+        // Era-7 echo: a two-tap average in the loop, y = (1 - c) x + c x[n-1] with c = (1 - HIGH) / 2, so HIGH is the
+        // gain at the native Nyquist (15.6 kHz). Fitted on the REV7 Stereo Echo capture (HIGH DAMP 9): -0.45 /
+        // -0.71 dB per repeat at 8 / 11.2 kHz, matched at -0.45 / -0.73; the SPX90 one-pole at 5 kHz took -1.8 / -2.6
+        // (inference: the same two-sample averages as the era-7 taps, pass 39). Era 5 keeps the measured one-pole.
+        const bool fir = echo && !era5 && high < kLoopHighThru;
+        const float c = fir ? (float) (0.5 * (1.0 - high)) : 0.0f;
+        const bool lowpass = !fir && highA < 1.0f;
         const float g = highA;
         for (int i = 0; i < n; ++i)
         {
             const double dl = sTime[0].tick (tgtL, smoothA), dr = sTime[1].tick (tgtR, smoothA);
             const float lev = (float) sLevel.tick (tgtLevel, smoothA);
             const float fl = (float) sFb.tick (fbL, smoothA), fr = (float) sA.tick (fbR, smoothA);
-            const float yl = lineA[0].read (dl), yr = lineA[1].read (dr);
+            const float yl = lineA[0].read (dl - adv), yr = lineA[1].read (dr - adv);
             float ul = yl, ur = yr;
-            if (lowpass)
+            if (adv > 0.0)
             {
-                ul = damp[0] = flush (damp[0] + g * (yl - damp[0]));
-                ur = damp[1] = flush (damp[1] + g * (yr - damp[1]));
+                ul = lineA[0].read (dl);
+                ur = lineA[1].read (dr);
+            }
+            if (fir)
+            {
+                const float xl = ul, xr = ur;
+                ul = xl + c * (dampPrev[0] - xl);
+                ur = xr + c * (dampPrev[1] - xr);
+                dampPrev = {xl, xr};
+            }
+            else if (lowpass)
+            {
+                ul = damp[0] = flush (damp[0] + g * (ul - damp[0]));
+                ur = damp[1] = flush (damp[1] + g * (ur - damp[1]));
             }
             const float il = l[i], ir = r[i];
             lineA[0].write (il + fl * ul);

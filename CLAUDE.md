@@ -13,7 +13,7 @@ Guidance for Claude Code working in this repository.
 - [docs/design/fx-slot.md](docs/design/fx-slot.md): FX slot
 - [docs/design/parameters.md](docs/design/parameters.md): parameter spec (names, ranges, sources)
 - [docs/design/ui-controls.md](docs/design/ui-controls.md), [ui-layout.md](docs/design/ui-layout.md): every control and the frozen layout
-- [docs/design/decisions/](docs/design/decisions/): ADRs (native-rate engine, mono wet sum, own late network, "inspired by", JUCE, true-stereo wet input)
+- [docs/design/decisions/](docs/design/decisions/): ADRs (native-rate engine and reported latency, mono wet sum, own late network, "inspired by", JUCE, true-stereo wet input, era-7 time variance)
 
 ## Layout
 
@@ -65,7 +65,7 @@ cmake --build build --config Release -j 8
 - All parameters live in the APVTS layout in `src/plugin/Parameters.cpp`; IDs in `yrev::id`. Add new parameters there and keep [parameters.md](docs/design/parameters.md) in step.
 - `processBlock` must not allocate, lock, log or throw. Preallocate in `prepareToPlay`.
 - Handle sample-rate changes, block size 1, and denormals (`ScopedNoDenormals`).
-- The native-rate engine (31.25 kHz / 44.1 kHz) needs resampling at the edges; the converter's delay is taken off the pre-delay and 1st-reflection delay, so no latency is reported to the host (ADR 0001).
+- The native-rate engine (31.25 kHz / 44.1 kHz) needs resampling at the edges; the bridge delay is reported to the host as latency and the dry is delayed to match; pre-delay, 1st reflections and FX delays play as printed (ADR 0001).
 - Report the reverb tail honestly (`getTailLengthSeconds`); Era 5 allows RT to 99 s.
 - Wet path is mono-summed by default (ADR 0002); dry stays stereo.
 

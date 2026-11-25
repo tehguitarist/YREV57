@@ -123,7 +123,21 @@ YrevProcessor::YrevProcessor ()
            r (id::revMix),
            r (id::fxWet),
            r (id::voiceRev2Hi),
-           r (id::voiceRev2Gain)};
+           r (id::voiceRev2Gain),
+           r (id::voiceTapRead),
+           r (id::voiceRevTaps),
+           r (id::voiceErFill),
+           r (id::voiceErFillSize),
+           r (id::voiceDiffGain),
+           r (id::voiceSubRatio),
+           r (id::voiceSubHz),
+           r (id::voiceErCloud),
+           r (id::voiceErCloudHold),
+           r (id::voiceErCloudFade),
+           r (id::voiceErCloudRise),
+           r (id::voiceErLoTilt),
+           r (id::voiceErLoHz),
+           r (id::voiceErPrinted)};
     apvts.addParameterListener (yrev::id::era, this);
     apvts.addParameterListener (yrev::id::modType, this);
     for (const auto& l : yrev::kEraLimits)
@@ -281,6 +295,7 @@ void YrevProcessor::enforceEraLimits ()
 void YrevProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     chain.prepare (sampleRate, juce::jmax (samplesPerBlock, 1));
+    setLatencySamples (chain.latencySamples ()); // the converter model's delay; the dry is delayed to match (ADR 0001)
 }
 
 yrev::dsp::ChainParams YrevProcessor::readParams () const
@@ -356,7 +371,9 @@ yrev::dsp::ChainParams YrevProcessor::readParams () const
         p.gate.releaseMs = raw.gateRelease->load ();
         p.gate.onInput = raw.gateInput->load () >= 0.5f; // hidden: GATE LVL programs gate the input
     }
-    e.erMode = yrev::erModeStandIn (juce::roundToInt (raw.erMode->load ())); // hidden instrument modes (Q-01)
+    const int erModeRaw = juce::roundToInt (raw.erMode->load ());
+    // hidden instrument modes (Q-01): stand-ins, except era 5's Piano, which plays its measured pattern (pass 52)
+    e.erMode = (p.era == 1 && erModeRaw == yrev::kPianoErMode) ? erModeRaw : yrev::erModeStandIn (erModeRaw);
     if (p.era == 0)
         e.erMode = yrev::erModeEra7 (e.erMode); // Pan A/B and the instruments are era 5
     e.liveness = raw.liveness->load ();
@@ -370,6 +387,20 @@ yrev::dsp::ChainParams YrevProcessor::readParams () const
     e.lateTiltDb = raw.voiceLateTilt->load ();
     e.rev2HiRatio = raw.voiceRev2Hi->load ();
     e.rev2GainDb = raw.voiceRev2Gain->load ();
+    e.tapReadOffset = raw.voiceTapRead->load ();
+    e.revTaps = juce::roundToInt (raw.voiceRevTaps->load ()); // pass 67
+    e.erFill = raw.voiceErFill->load ();                      // pass 78
+    e.erFillSize = raw.voiceErFillSize->load ();
+    e.diffGain = raw.voiceDiffGain->load (); // pass 80
+    e.subRatio = raw.voiceSubRatio->load (); // pass 81
+    e.subHz = raw.voiceSubHz->load ();       // pass 83
+    e.erCloud = raw.voiceErCloud->load ();   // pass 84
+    e.erCloudHoldMs = raw.voiceErCloudHold->load ();
+    e.erCloudFadeDb = raw.voiceErCloudFade->load ();
+    e.erCloudRiseDb = raw.voiceErCloudRise->load ();
+    e.erLoTiltDb = raw.voiceErLoTilt->load ();
+    e.erPrinted = raw.voiceErPrinted->load () >= 0.5f ? 1 : 0; // pass 86
+    e.erLoHz = raw.voiceErLoHz->load ();
     e.erType = raw.erType->load () >= 0.5f ? 1 : 0; // hidden: E/R2 programs (REV7 pass 25, REV5 pass 28)
     e.roomSize = limited (yrev::id::roomSize, raw.roomSize->load ());
     e.erCount = juce::roundToInt (limited (yrev::id::erCount, raw.erCount->load ()));
@@ -435,7 +466,8 @@ yrev::dsp::ChainParams YrevProcessor::readParams () const
 
 double YrevProcessor::getTailLengthSeconds () const
 {
-    return yrev::dsp::Chain::tailSeconds (readParams ());
+    return yrev::dsp::Chain::tailSeconds (readParams ()) +
+           (double) getLatencySamples () / juce::jmax (getSampleRate (), 1.0);
 }
 
 bool YrevProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const

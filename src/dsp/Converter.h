@@ -209,10 +209,10 @@ namespace yrev::dsp
     //     16-bit truncation, hiss (the FX, gate and EQ ran in the same DSP)
     //   host rate (analogue): reconstruction LPF -> sample-and-hold droop -> de-emphasis
     // Below 88.2 kHz host rates the analogue stages run at twice the host rate. Era 5 is fitted on that realised chain
-    // (bilinear cramping near Nyquist, the bridge, the hold droop; twenty-seventh pass), so its top octave lands where
-    // it was measured; 4x was tried and fitted only 0.06 dB rms better for about 2.5x the converter's cost. The
-    // bridge's own delay is taken off the pre-delay and the 1st-reflection delay, so timing matches the panel and no
-    // plug-in latency is reported (the dry path is not delayed). No allocation after prepare().
+    // (bilinear cramping near Nyquist and the bridge; twenty-seventh pass, refitted in pass 36), so its top octave
+    // lands where it was measured; 4x was tried and fitted only 0.06 dB rms better for about 2.5x the converter's cost.
+    // The plug-in reports reportedLatency() to the host and the Chain delays the dry by it (ADR 0001 update
+    // 2026-11-25). No allocation after prepare().
     class Converter
     {
     public:
@@ -223,6 +223,9 @@ namespace yrev::dsp
 
         // Wet-path delay of the converter model in host samples (half-band filters plus the rate bridge).
         int latencySamples () const { return latency; }
+        // The latency the plug-in reports to the host: the larger of the two eras' (valid after prepare()). The wet
+        // path is padded up to it, and the Chain delays the dry by the same.
+        int reportedLatency () const { return reported; }
         double nativeRate () const { return native; }
         // Test hook: the native stage passes A/D -> D/A without the engine (to measure the converter alone).
         void setEngineBypass (bool on) { engineBypass = on; }
@@ -239,7 +242,9 @@ namespace yrev::dsp
         // p. 14; REV7 pp. 14-16). A ring per channel on the effect's own part, up to 1 s at the highest native rate.
         std::vector<float> fxOffset[2];
         size_t fxOffsetPos = 0;
-        int era = -1, oversample = 2, latency = 0;
+        int era = -1, oversample = 2, latency = 0, reported = 0, padSamples = 0;
+        std::vector<float> padRing[2]; // wet-path pad (reported - latency samples), per channel
+        size_t padPos = 0;
         bool engineBypass = false, noiseGate = true, eco = false, frozen = false;
         double maxDspFs = 44100.0; // the highest rate the engine, FX and gate were prepared for
         uint32_t randomSeed = 0x2545f491u;
@@ -250,11 +255,10 @@ namespace yrev::dsp
         DigitalEqParams lastDeq;
         bool deqDirty = true;
         void updateDeq (const DigitalEqParams& d);
-        FxParams fxNative; // the block's FX settings with the bridge delay taken off the repeat times
+        FxParams fxNative; // the block's FX settings (effect times as printed)
         RateBridge bridge;
         AnalogCascade aaIn, recon, droop, emphasis, deemphasis;
-        BasicBiquad<double> bassLift[2]; // era 7 wet-path low shelf (host rate, after de-emphasis)
-        BasicBiquad<double> dcBlock[2];  // wet-path DC block, both eras (kDcBlockHz)
+        BasicBiquad<double> dcBlock[2]; // wet-path DC block, both eras (kDcBlockHz)
         HalfBand halfBand;
         float step = 1.0f / 32768.0f, hissGain = 0.0f, fade = 1.0f, fadeStep = 0.0f;
         uint32_t rng = 0x12345678u;

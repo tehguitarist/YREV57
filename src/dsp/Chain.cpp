@@ -50,6 +50,9 @@ namespace yrev::dsp
         ducker.prepare (sampleRate);
         for (auto& c : converter)
             c.prepare (sampleRate, maxBlock);
+        for (auto& r : dryRing)
+            r.assign ((size_t) converter[0].reportedLatency () + 1, 0.0f);
+        dryPos = 0;
         xfadeStep = (float) (1.0 / (kSwitchSeconds * sampleRate));
         quietLen = (int64_t) (kQuietSeconds * sampleRate);
         maxRing = (int64_t) (kMaxRingSeconds * sampleRate);
@@ -69,6 +72,9 @@ namespace yrev::dsp
         ducker.reset ();
         for (auto& c : converter)
             c.reset ();
+        for (auto& r : dryRing)
+            std::fill (r.begin (), r.end (), 0.0f);
+        dryPos = 0;
         primed = false;
         oldLive = dropping = false;
         xfade = oldOut = 1.0f;
@@ -243,11 +249,25 @@ namespace yrev::dsp
         float* wr = wetR.data ();
 
         // dry copy and the ducker's key (the dry mono level)
+        // (delayed by the reported latency, so the wet path's padded converter delay lines up with it)
+        const int dryDelay = latencySamples ();
         for (int i = 0; i < n; ++i)
         {
-            dl[i] = left[i];
-            dr[i] = right[i];
-            key[(size_t) i] = (left[i] + right[i]) * kMonoSum;
+            if (dryDelay > 0)
+            {
+                const size_t len = dryRing[0].size (), rd = (dryPos + len - (size_t) dryDelay) % len;
+                dl[i] = dryRing[0][rd];
+                dr[i] = dryRing[1][rd];
+                dryRing[0][dryPos] = left[i];
+                dryRing[1][dryPos] = right[i];
+                dryPos = (dryPos + 1) % len;
+            }
+            else
+            {
+                dl[i] = left[i];
+                dr[i] = right[i];
+            }
+            key[(size_t) i] = (dl[i] + dr[i]) * kMonoSum;
         }
 
         // wet input: mono (left only), stereo (summed) or true stereo; input level applies to the wet path only

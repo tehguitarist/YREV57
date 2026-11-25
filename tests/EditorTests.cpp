@@ -180,7 +180,7 @@ TEST_CASE ("write editor snapshots", "[.snapshot]")
     }
 }
 
-TEST_CASE ("the instrument ER modes (Piano, Organ, Brass, Guitar) are not in the mode selector")
+TEST_CASE ("the instrument ER modes Organ, Brass and Guitar are not in the mode selector; Piano is, in era 5 only")
 {
     YrevProcessor p;
     p.apvts.getParameter ("era")->setValueNotifyingHost (1.0f); // era 5 shows Pan A and Pan B
@@ -195,13 +195,14 @@ TEST_CASE ("the instrument ER modes (Piano, Organ, Brass, Guitar) are not in the
             walk (*child);
     };
     walk (*ed);
-    for (const char* hidden : {"Piano", "Organ", "Brass", "Guitar"})
+    for (const char* hidden : {"Organ", "Brass", "Guitar"})
     {
         INFO (hidden);
         CHECK (shown.count (hidden) == 0);
     }
     CHECK (shown.count ("Pan B") == 1); // the charted modes are still there
     CHECK (shown.count ("Spring") == 1);
+    CHECK (shown.count ("Piano") == 1); // era 5's measured Piano pattern (pass 52)
 }
 
 TEST_CASE ("CLA mode: both era keys lit on the hidden preset; a plain era click leaves it")

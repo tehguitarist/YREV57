@@ -160,8 +160,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout yrev::createParameterLayout 
     layout.add (knob (id::gateRelease, "Gate Release", 3.0f, 24000.0f, 400.0f, "ms", true));
 
     layout.add (choice (id::erMode, "ER Mode",
-                        {"Small Hall", "Large Hall", "Random", "Reverse", "Plate", "Spring", "Pan A", "Pan B", "Piano",
-                         "Organ", "Brass", "Guitar", "Rev Hall", "Rev Plate", "Rev Room"},
+                        {"Small Hall",    "Large Hall",  "Random",   "Reverse",        "Plate",     "Spring",
+                         "Pan A",         "Pan B",       "Piano",    "Organ",          "Brass",     "Guitar",
+                         "Rev Hall",      "Rev Plate",   "Rev Room", "Rev Perc Plate", "Rev Snare", "Rev Spring",
+                         "Rev Echo Room", "Rev Strings", "Rev Combi"},
                         1));
     layout.add (knob (id::liveness, "Liveness", 0.0f, 10.0f, 5.0f, "", false, 1.0f));
     layout.add (knob (id::roomSize, "Room Size", 0.1f, 25.0f, 2.0f, "x", true));
@@ -232,7 +234,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout yrev::createParameterLayout 
     layout.add (hidden (id::voiceLoopSize, "Voice Loop Size", 0.7f, 1.4f, 1.0f, "x"));
     layout.add (hidden (id::voiceDiffSize, "Voice Diffuser Size", 0.6f, 1.5f, 1.0f, "x"));
     layout.add (hidden (id::voiceLoXover, "Voice Low Crossover", 100.0f, 800.0f, 300.0f, "Hz", true));
-    layout.add (hidden (id::voiceErGain, "Voice ER Gain", -6.0f, 6.0f, 0.0f, "dB"));
+    layout.add (hidden (id::voiceErGain, "Voice ER Gain", -12.0f, 12.0f, 0.0f, "dB"));
     layout.add (hidden (id::gateInput, "Gate On Input", 0.0f, 1.0f, 0.0f, "")); // >= 0.5 on
     layout.add (hidden (id::voiceHiXover, "Voice High Crossover", 4000.0f, 14000.0f, 8500.0f, "Hz", true));
     layout.add (hidden (id::erType, "E/R Type 2", 0.0f, 1.0f, 0.0f, "")); // >= 0.5 E/R2 (both eras)
@@ -243,6 +245,21 @@ juce::AudioProcessorValueTreeState::ParameterLayout yrev::createParameterLayout 
     layout.add (toggle (id::fxWet, "FX Wet", false));
     layout.add (hidden (id::voiceRev2Hi, "Voice Secondary High", 0.0f, 1.0f, 0.0f, "x")); // 0 = follow hi_ratio
     layout.add (hidden (id::voiceRev2Gain, "Voice Secondary Gain", 0.0f, 12.0f, 0.0f, "dB"));
+    layout.add (hidden (id::voiceTapRead, "Voice Tap Read", -0.5f, 0.5f, 0.0f, "")); // era 7, pass 61
+    layout.add (
+        hidden (id::voiceRevTaps, "Voice Rev Taps", 0.0f, 9.0f, 0.0f, "")); // pass 67: 0 none, n = er_mode 11 + n
+    layout.add (hidden (id::voiceErFill, "Voice Early Fill", 0.0f, 2.0f, 0.0f, ""));           // pass 78
+    layout.add (hidden (id::voiceErFillSize, "Voice Early Fill Size", 0.5f, 3.0f, 1.0f, "x")); // pass 78
+    layout.add (hidden (id::voiceDiffGain, "Voice Diffuser Gain", 0.5f, 2.0f, 1.0f, "x"));     // pass 80
+    layout.add (hidden (id::voiceSubRatio, "Voice Sub Decay", 0.5f, 2.0f, 1.0f, "x"));         // pass 81
+    layout.add (hidden (id::voiceSubHz, "Voice Sub Corner", 40.0f, 200.0f, 120.0f, "Hz"));     // pass 83
+    layout.add (hidden (id::voiceErCloud, "Voice Early Cloud", 0.0f, 1.0f, 0.0f, ""));         // pass 84
+    layout.add (hidden (id::voiceErCloudHold, "Voice Early Cloud Hold", 0.0f, 100.0f, 40.0f, "ms"));
+    layout.add (hidden (id::voiceErCloudFade, "Voice Early Cloud Fade", 0.5f, 30.0f, 3.0f, "dB"));
+    layout.add (hidden (id::voiceErCloudRise, "Voice Early Cloud Rise", -30.0f, 0.0f, 0.0f, "dB"));
+    layout.add (hidden (id::voiceErLoTilt, "Voice ER Low Tilt", -24.0f, 24.0f, 0.0f, "dB"));
+    layout.add (hidden (id::voiceErLoHz, "Voice ER Low Corner", 60.0f, 2000.0f, 300.0f, "Hz"));
+    layout.add (hidden (id::voiceErPrinted, "Voice ER Printed Chart", 0.0f, 1.0f, 0.0f, "")); // pass 86
 
     return layout;
 }

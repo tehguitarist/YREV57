@@ -1,3 +1,4 @@
+#include "dsp/ErTables.h"
 #include "plugin/PluginProcessor.h"
 
 #include <set>
@@ -42,9 +43,9 @@ TEST_CASE ("factory presets load and reset what they do not set")
     const int spring = indexOf (p, "Spring Tank");
     REQUIRE (spring >= 0);
     p.presets.load (spring);
-    CHECK (value (p, "hi_ratio") == Approx (0.3f).margin (0.01));
-    CHECK (value (p, "er_mode") == Approx (5.0f)); // Spring
-    CHECK (value (p, "fx_type") == Approx (5.0f)); // Off
+    CHECK (value (p, "hi_ratio") == Approx (0.2f).margin (0.01)); // the REV Spring's printed HIGH (2026-11-24)
+    CHECK (value (p, "er_mode") == Approx (5.0f));                // Spring
+    CHECK (value (p, "fx_type") == Approx (5.0f));                // Off
     CHECK (p.presets.currentName () == "Spring Tank");
     CHECK (!p.presets.isEdited ());
 
@@ -223,7 +224,7 @@ TEST_CASE ("a preset with a negative ER feedback gain loads it signed")
     CHECK (value (p, "er_fb_gain") == Approx (-70.0f).margin (0.01));
 }
 
-TEST_CASE ("REV5 Rehearsal Room keeps its name and plays a charted stand-in for its printed PIANO mode")
+TEST_CASE ("REV5 Rehearsal Room loads its printed PIANO mode (the key is shown since 2026-11-25)")
 {
     YrevProcessor p;
     p.presets.setUserDirectory (tempDir ());
@@ -231,7 +232,7 @@ TEST_CASE ("REV5 Rehearsal Room keeps its name and plays a charted stand-in for 
     REQUIRE (idx >= 0);
     p.presets.load (idx);
     CHECK (p.presets.currentName () == "Rehearsal Room");
-    CHECK (value (p, "er_mode") == Approx (0.0f)); // Small Hall; the instrument modes are hidden (Q-01)
+    CHECK (value (p, "er_mode") == Approx (8.0f)); // Piano; Organ, Brass and Guitar stay hidden (Q-01)
     CHECK (value (p, "era") == Approx (1.0f));
 }
 
@@ -252,7 +253,7 @@ TEST_CASE ("hidden voice values are stored in user presets and load back")
     CHECK (value (p, "voice_hi_xover") == Approx (5000.0f).margin (1.0));
 }
 
-TEST_CASE ("manual reverb programs carry a family voice; reflection-only programs keep the defaults")
+TEST_CASE ("manual reverb programs carry a family voice; reflection-only programs keep the late defaults")
 {
     YrevProcessor p;
     p.presets.setUserDirectory (tempDir ());
@@ -260,11 +261,66 @@ TEST_CASE ("manual reverb programs carry a family voice; reflection-only program
     CHECK (value (p, "voice_loop_size") == Approx (0.8f).margin (0.001));
     CHECK (value (p, "voice_lo_xover") == Approx (380.0f).margin (0.5));
     CHECK (value (p, "voice_hi_xover") == Approx (8500.0f));  // per-program corners wait for the listening pass
-    p.presets.load (indexOf (p, "Chorus & Rev & G", "REV5")); // a Large Hall based combination
-    CHECK (value (p, "voice_loop_size") == Approx (1.1f).margin (0.001));
+    p.presets.load (indexOf (p, "Chorus & Rev & G", "REV5")); // the combinations' own voice (pass 55)
+    CHECK (value (p, "voice_diff_size") == Approx (0.6f).margin (0.001));
     p.presets.load (indexOf (p, "Kick", "REV5")); // reflections only: no late network to voice
     CHECK (value (p, "voice_loop_size") == Approx (1.0f));
+    // pass 49: the reflections re the 1st reflection per E/R program, from the hardware captures (REV5 Kick refitted
+    // with its tail in pass 57)
+    CHECK (value (p, "voice_er_gain") == Approx (-3.5f).margin (0.01));
+    CHECK (value (p, "er_type") == Approx (1.0f)); // pass 57: Kick plays E/R2 against the printed E/R1 (Q-28)
+    p.presets.load (indexOf (p, "Kick", "REV7"));
+    CHECK (value (p, "voice_er_gain") == Approx (-3.5f).margin (0.01));
+    CHECK (value (p, "er_type") == Approx (1.0f));
+    p.presets.load (indexOf (p, "Electric Bass A", "REV7"));
+    CHECK (value (p, "er_type") == Approx (0.0f));
+    p.presets.load (indexOf (p, "Early Reflection 1", "REV7"));
     CHECK (value (p, "voice_er_gain") == Approx (0.0f));
+}
+
+TEST_CASE ("REV5 voices (passes 44, 55): no late onset, halls' reflections forward, the combinations' own voice")
+{
+    YrevProcessor p;
+    p.presets.setUserDirectory (tempDir ());
+    for (const char* name : {"Large Hall", "Small Hall", "Vocal Plate", "Percussion Plate", "Strings", "Snare"})
+    {
+        p.presets.load (indexOf (p, name, "REV5"));
+        INFO (name);
+        CHECK (value (p, "voice_late_onset") == Approx (0.0f));
+    }
+    p.presets.load (indexOf (p, "Large Hall", "REV5"));
+    CHECK (value (p, "voice_er_gain") == Approx (3.0f)); // pass 82 (+2 dB to pass 81)
+    CHECK (value (p, "voice_diff_size") == Approx (1.0f));
+    CHECK (value (p, "voice_diff_gain") == Approx (1.15f));
+    p.presets.load (indexOf (p, "Vocal Plate", "REV5"));
+    CHECK (value (p, "voice_diff_size") == Approx (0.6f).margin (0.001));
+    // pass 55: the combinations' own network (91-96 one IR, not the Large Hall's), and 98 without a late onset
+    p.presets.load (indexOf (p, "Chorus & Rev & G", "REV5"));
+    CHECK (value (p, "voice_er_gain") == Approx (0.0f));
+    CHECK (value (p, "voice_diff_size") == Approx (0.6f).margin (0.001));
+    // pass 67: 98's reverb plays the combinations' taps from REV DLY - ER DLY
+    p.presets.load (indexOf (p, "ER + Rev & G", "REV5"));
+    CHECK (value (p, "voice_rev_taps") == Approx (9.0f));
+    CHECK (value (p, "voice_late_onset") == Approx (19.9f).margin (0.01));
+    CHECK (value (p, "voice_er_gain") == Approx (6.0f));
+    CHECK (value (p, "voice_er_printed") == Approx (1.0f)); // pass 86: S-Hall as printed
+    // the REV5 Large Hall taps: the first tap under the second on both channels (re-read in pass 44)
+    const auto& hall = yrev::dsp::er::kRevPatterns5[0];
+    CHECK (hall.left[0].db < hall.left[1].db - 1.5f);
+    CHECK (hall.right[0].db < hall.right[1].db);
+}
+
+TEST_CASE ("REV7 voices (pass 45): the reflections' level per program, past the old +-6 dB range")
+{
+    YrevProcessor p;
+    p.presets.setUserDirectory (tempDir ());
+    p.presets.load (indexOf (p, "Strings", "REV7"));
+    CHECK (value (p, "voice_er_gain") == Approx (-12.0f));
+    p.presets.load (indexOf (p, "Snare", "REV7"));
+    CHECK (value (p, "voice_er_gain") == Approx (8.0f));
+    p.presets.load (indexOf (p, "Small Hall", "REV7")); // fitted already: keeps its family voice
+    CHECK (value (p, "voice_er_gain") == Approx (1.0f));
+    CHECK (value (p, "voice_late_onset") == Approx (0.0f));
 }
 
 TEST_CASE ("CLA Drum Room is in the hidden SECRET bank only")
@@ -315,7 +371,8 @@ TEST_CASE ("both Reverb Flange programs are the reverb engine with a 30 % flange
         CHECK (value (p, "mod_type") == Approx (0.0f)); // the plain flange, not the reverb-flange comb
         CHECK (value (p, "mod_fb") == Approx (30.0f));
         CHECK (value (p, "mod_delay") == Approx (1.2f).margin (0.01));
-        CHECK (value (p, "er_mode") == Approx (12.0f)); // Rev Hall taps
+        CHECK (value (p, "er_mode") ==
+               Approx (14.0f)); // Rev Room: both captures share Small Hall's taps (passes 40-41)
     }
 }
 

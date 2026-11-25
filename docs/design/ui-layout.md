@@ -38,7 +38,7 @@ Build notes:
 - Wet-only analogue EQ (three fixed-width bells) before the engine; digital EQ (peak or shelf, with Q) after it, era 5 only.
 - Wet R phase invert, width (the ported LR4 widener), then the ducker keyed from the dry mono level.
 - Mix (linear), wet solo (forces 100 % wet), bypass (fades to the untouched dry signal, ignoring output level), output level, mute. Gains ramp over 20 ms.
-- Not done yet: converter model and `character`, dither, the output safety limiter, latency and tail reporting, and the reverb engine itself.
+- At the time of this note the converter model, `character`, dither, the output safety limiter, latency and tail reporting and the reverb engine were still to come; all are in now ([engine.md](engine.md)).
 
 ## INT PARAM drawer
 

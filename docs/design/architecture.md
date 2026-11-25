@@ -15,14 +15,14 @@ flowchart LR
   AEQ --> CONV_IN[Converter in:\nAA LPF, pre-emphasis,\nSRC to native rate,\ndither (Era 5), 16-bit quantiser,\nDC offset]
   CONV_IN --> ENG[Engine @ native rate:\nER multitap → diffusion →\nlate network (delays, APFs, LPFs)\n+ modulation + secondary reverb]
   ENG --> DEQ[Digital per-program EQ\n(Era 5)]
-  DEQ --> CONV_OUT[Converter out:\n16-bit, SRC to host rate,\nde-emphasis, aperture droop/comp,\nrecon LPF]
+  DEQ --> CONV_OUT[Converter out:\n16-bit, SRC to host rate,\nde-emphasis,\nrecon LPF]
   CONV_OUT --> MIX[Mix 1:1 direct/wet,\nbypass, out-phase R]
   MIX --> OUT[Stereo out]
 ```
 
 1. Stereo in, then mono sum for the wet path only; dry stays stereo.
 2. Wet-only 3-band EQ **before** the converter model (as both machines do), so boosts feed the noise and clipping behaviour.
-3. Converter model: low-pass at 12 kHz (Era 7) or 20 kHz (Era 5), pre-emphasis, sample-rate conversion to the native rate, 16-bit quantisation (plus dither in the Era 5), de-emphasis, aperture droop.
+3. Converter model: low-pass at 12 kHz (Era 7) or 20 kHz (Era 5), pre-emphasis, sample-rate conversion to the native rate, 16-bit quantisation (plus dither in the Era 5), de-emphasis. (An aperture-droop stage was planned and modelled until 2026-11-24; reference recordings of both units showed no droop, so it is off.)
 4. Reverb engine at the native rate: early reflections, diffusion, and a late network built from delays, all-pass filters and low-pass filters.
 5. Mix stage with a 1:1 direct/wet relationship, bypass and out-phase.
 
@@ -63,7 +63,7 @@ Running the engine at the native rate and resampling at the edges is the faithfu
 ## 5. Character options
 
 - **Bit depth and noise:** quantisation and residual-noise model with on/off and depth. Make noise interact with reverb time, since reviewers noticed it on long REV7 decays.
-- **Pre/de-emphasis and aperture droop:** a fixed filter pair around the quantiser (zero ≈ 3.1 kHz, pole ≈ 10.3 kHz; computed net residual ≤ 0.17 dB). Audition with and without.
+- **Pre/de-emphasis** (aperture droop dropped, see item 3 above): a fixed filter pair around the quantiser (zero ≈ 3.1 kHz, pole ≈ 10.3 kHz; computed net residual ≤ 0.17 dB). Audition with and without.
 - **True stereo:** the originals sum to mono before the effect (MONO uses the left input only, STEREO sums L+R). Default is the authentic L+R sum; true stereo is a third, plugin-only option on the same legend ([ADR 0002](decisions/0002-mono-wet-sum.md)).
 - **Program EQ:** the REV7's EQ is not stored with programs; storing it is an obvious modern improvement.
 - **DC offset:** a small fixed offset on the wet path, audible when the R wet phase is inverted.

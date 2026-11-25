@@ -3,7 +3,7 @@ REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,30,printed,
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,10,printed,
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,12,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from its capture, pass 23)"
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,12,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -13,14 +13,17 @@ REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_r
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,1.5,derived,diffuser size fitted on the REV7 Large Hall captures (pass 24)
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,1.4,derived,fitted on the hardware capture of this program (passes 82-89)
 REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,0,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_gain,1.15,derived,fitted on the hardware capture of this program (passes 82-89)
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_hz,130,derived,fitted on the hardware capture of this program (passes 82-89)
+REV7,1,Large Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_ratio,1.1,derived,fitted on the hardware capture of this program (passes 82-89)
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,20,printed,
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,10,printed,
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from its capture, pass 23)"
+REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -33,11 +36,15 @@ REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voic
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.95,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,320,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
 REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,1,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
+REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.2,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,2,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_hz,56,derived,fitted on the hardware capture of this program (passes 82-89)
+REV7,2,Small Hall,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_ratio,2,derived,fitted on the hardware capture of this program (passes 82-89)
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,45,printed,
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,10,printed,
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,13,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from its capture, pass 23)"
+REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,13,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -47,14 +54,16 @@ REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,0.8,ours,"voice best guess (inference): plate: short dense loops, thinner bass, few distinct reflections"
-REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,diffuser size fitted on the REV7 Vocal Plate capture (pass 24)
+REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,380,ours,"voice best guess (inference): plate: short dense loops, thinner bass, few distinct reflections"
-REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-2,ours,"voice best guess (inference): plate: short dense loops, thinner bass, few distinct reflections"
+REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-8,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,1,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,3,Vocal Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,0.75,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,10,printed,
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,10,printed,
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,13,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,15,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -64,9 +73,11 @@ REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,0.8,ours,"voice best guess (inference): plate: short dense loops, fast build-up, thinner bass"
-REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,ours,"diffuser size as the fitted Vocal Plate (pass 24; family, inference)"
-REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,400,ours,"voice best guess (inference): plate: short dense loops, fast build-up, thinner bass"
-REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-1,ours,"voice best guess (inference): plate: short dense loops, fast build-up, thinner bass"
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,500,derived,fitted on the hardware capture of this program (pass 81)
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,8,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.1,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,4,Percussion Plate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_gain,1.15,derived,fitted on the hardware capture of this program (pass 81)
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,10,printed,
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -83,6 +94,7 @@ REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,5,Early Reflection 1,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.1,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,10,printed,
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -99,6 +111,7 @@ REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,6,Early Reflection 2,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.1,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,7,Delay L R,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,7,Delay L R,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,0.1,printed,
 REV7,7,Delay L R,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -160,7 +173,7 @@ REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,0.1,printed,
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,12,ours,"Rev Hall taps, as the REV5 Reverb Flange (the REV7 prints no reflections for this program)"
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"Rev Room taps, read from its hardware capture (pass 40; the REV7 prints no reflections for this program)"
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,2,ours,FX slot use
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,0,ours,FX slot use
@@ -174,6 +187,11 @@ REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_delay,1.2,printed,
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_fb,30,printed,FEEDBACK fixed at 30 % in the unit (OM p. 16)
 REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_wet,1,ours,"flange into the reverb with no bypass, as the REV5 program (its capture shows no flanged direct signal)"
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,6,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.1,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.1,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,10,Reverb Flange,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,1,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
 REV7,11,Chorus A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,11,Chorus A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,0.1,printed,
 REV7,11,Chorus A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -266,7 +284,7 @@ REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,d
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,25,printed,
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,13,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,17,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -276,14 +294,15 @@ REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_rati
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,0.85,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
-REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,1.2,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
+REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,450,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
-REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-2,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
+REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-8,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,16,Spring,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.5,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,16,printed,
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,18,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -293,14 +312,17 @@ REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_r
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,1,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
-REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.85,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,280,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
-REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,1.5,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-8,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.25,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.75,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,17,Echo Room,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,1,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,13,printed,
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,12,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,19,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -310,9 +332,13 @@ REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_rat
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,1.15,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
-REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,1.2,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.6,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,240,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
-REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-1,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-12,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.4,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.75,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,0.75,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,18,Strings,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_gain,1.15,derived,fitted on the hardware capture of this program (pass 81)
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,12,printed,
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -329,6 +355,8 @@ REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-3.5,derived,"reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)"
+REV7,19,Electric Bass A,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.15,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,12,printed,
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -345,6 +373,7 @@ REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,20,Electric Bass B,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.15,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,12,printed,
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -357,15 +386,17 @@ REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),liveness,
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),room_size,0.3,printed,
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,7,printed,
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_count,18,ours,the REV7 prints no count; 18 reflections per channel (era-7 maximum)
-REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_type,0,printed,TYPE E/R1
+REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_type,1,derived,"TYPE E/R1 printed; E/R2 here: its hardware capture decays past the taps like the E/R2 programs (pass 57, Q-28)"
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,-3.5,derived,"reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)"
+REV7,21,Kick,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.15,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,10,printed,
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,16,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -375,9 +406,14 @@ REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_ratio
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,0.9,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.85,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,1,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,350,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,1,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,8,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.35,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.1,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,2,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_late_onset,4,derived,fitted on the hardware capture of this program (passes 82-89)
+REV7,22,Snare,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_ratio,1.15,derived,fitted on the hardware capture of this program (pass 81)
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,20,printed,
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -394,6 +430,7 @@ REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,23,Gate Reverb,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.5,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,25,printed,
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -410,6 +447,7 @@ REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),e
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,24,Reverse Gate,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.3,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,12,printed,
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -426,6 +464,7 @@ REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_type,
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,25,Piano,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.15,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,10,printed,
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -442,6 +481,7 @@ REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_type,
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,26,Organ,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.2,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,12,printed,
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -458,6 +498,7 @@ REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_type,
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,27,Brass,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.05,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV7,28,Guitar,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,28,Guitar,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,5,printed,
 REV7,28,Guitar,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -478,7 +519,7 @@ REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,0.1,printed,
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_level,0,printed,
-REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's three early reflections per channel (REV7 OM p. 14; times read from captures, pass 23; nearest set by name)"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_mode,14,ours,"the reverb program's early reflections, three per channel (REV7 OM p. 14; times and levels read from its hardware capture, pass 40)"
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_type,5,ours,FX slot use
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),fx_order,0,ours,effect then reverb
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),mod_type,2,ours,FX slot use
@@ -488,9 +529,13 @@ REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),lo_r
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),diffusion,5,printed,
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_loop_size,0.9,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.85,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_diff_size,0.8,derived,fitted on the REV7 capture of this program (pass 45)
 REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_lo_xover,350,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,1,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_gain,4,derived,fitted on the REV7 capture of this program (pass 45)
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,0.5,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill,0.2,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_er_fill_size,2,derived,"the early fill, fitted on the REV7 capture of this program (pass 79)"
+REV7,29,Handclaps,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_sub_ratio,0.85,derived,fitted on the hardware capture of this program (pass 81)
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),era,0,derived,unit
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),pre_delay,20,printed,
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),ref1_delay,0.1,printed,
@@ -507,6 +552,7 @@ REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28)
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rt,0.3,ours,reflections only: no late tail
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),er_rev_balance,100,ours,reflections only
 REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),rev2_level,0,ours,the REV7 has no secondary reverb
+REV7,30,Live Reference,REV7 owner's manual printed p. 27 (page image; PDF p. 28),voice_tap_read,-0.5,derived,"the program's tap read, fitted on its REV7 capture (pass 61)"
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),era,1,derived,unit
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),pre_delay,30,printed,
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),ref1_delay,10,printed,
@@ -529,7 +575,7 @@ REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manu
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),deq_hi_q,1,printed,
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),gate_level,0,printed,
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),fx_type,5,ours,FX slot use
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),fx_order,0,ours,effect then reverb
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),mod_type,2,ours,FX slot use
@@ -545,10 +591,11 @@ REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manu
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),rev2_level,100,printed,
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),er_rev_balance,54,printed,
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_diff_size,1,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_er_gain,3,derived,fitted on the hardware capture of this program (passes 82-89)
+REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,1,Large Hall,REV5 owner's manual sec. 10 printed p. 56 (page image; IA manuallib-id-2654254 PDF p. 4),voice_diff_gain,1.15,derived,fitted on the hardware capture of this program (passes 82-89)
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),era,1,derived,unit
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),pre_delay,20,printed,
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),ref1_delay,10,printed,
@@ -571,7 +618,7 @@ REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manu
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),deq_hi_q,1,printed,
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),gate_level,0,printed,
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),er_mode,14,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),fx_type,5,ours,FX slot use
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),fx_order,0,ours,effect then reverb
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),mod_type,2,ours,FX slot use
@@ -587,10 +634,12 @@ REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manu
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),rev2_level,100,printed,
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),er_rev_balance,57,printed,
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_loop_size,0.9,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
-REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_diff_size,0.7,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_lo_xover,320,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
-REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_er_gain,1,ours,"voice best guess (inference): small hall: shorter loops, reflections a little forward"
-REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_er_gain,2,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_sub_hz,100,derived,fitted on the hardware capture of this program (passes 82-89)
+REV5,2,Small Hall,REV5 owner's manual sec. 10 printed p. 57 (page image; IA manuallib-id-2654254 PDF p. 5),voice_sub_ratio,0.9,derived,fitted on the hardware capture of this program (passes 82-89)
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),era,1,derived,unit
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),pre_delay,45,printed,
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),ref1_delay,10,printed,
@@ -613,7 +662,7 @@ REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA man
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),deq_hi_q,1,printed,
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),gate_level,0,printed,
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),er_mode,13,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),er_mode,13,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),fx_type,5,ours,FX slot use
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),fx_order,0,ours,effect then reverb
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),mod_type,2,ours,FX slot use
@@ -628,11 +677,11 @@ REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA man
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),rev2_delay,0,printed,
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),rev2_level,100,printed,
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),er_rev_balance,66,printed,
-REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_loop_size,1,derived,"loops, diffusers and late onset fitted on the REV5 plate captures (pass 26)"
-REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_diff_size,1,derived,"loops, diffusers and late onset fitted on the REV5 plate captures (pass 26)"
+REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_loop_size,1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_diff_size,0.6,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_lo_xover,380,ours,"voice best guess (inference): plate: short dense loops, thinner bass, few distinct reflections"
-REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_er_gain,-2,ours,"voice best guess (inference): plate: short dense loops, thinner bass, few distinct reflections"
-REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_late_onset,18,derived,"loops, diffusers and late onset fitted on the REV5 plate captures (pass 26)"
+REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_er_gain,-1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,3,Vocal Plate,REV5 owner's manual sec. 10 printed p. 58 (page image; IA manuallib-id-2654254 PDF p. 6),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),era,1,derived,unit
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),pre_delay,10,printed,
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),ref1_delay,10,printed,
@@ -655,7 +704,7 @@ REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; I
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),deq_hi_q,1,printed,
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),gate_level,0,printed,
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),er_mode,13,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),er_mode,15,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),fx_type,5,ours,FX slot use
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),fx_order,0,ours,effect then reverb
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),mod_type,2,ours,FX slot use
@@ -670,11 +719,12 @@ REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; I
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),rev2_delay,0,printed,
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),rev2_level,100,printed,
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),er_rev_balance,80,printed,
-REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_loop_size,1,ours,"as the fitted Vocal Plate (pass 26; family, inference)"
-REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_diff_size,1,ours,"as the fitted Vocal Plate (pass 26; family, inference)"
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_loop_size,1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_diff_size,0.78,derived,fitted on the hardware capture of this program (pass 81)
 REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_lo_xover,400,ours,"voice best guess (inference): plate: short dense loops, fast build-up, thinner bass"
-REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_er_gain,-1,ours,"voice best guess (inference): plate: short dense loops, fast build-up, thinner bass"
-REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_late_onset,18,ours,"as the fitted Vocal Plate (pass 26; family, inference)"
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_er_gain,1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,4,Percussion Plate,REV5 owner's manual sec. 10 printed p. 59 (page image; IA manuallib-id-2654254 PDF p. 7),voice_diff_gain,1.25,derived,fitted on the hardware capture of this program (pass 81)
 REV5,5,Early Ref.1,REV5 owner's manual sec. 10 printed p. 60 (page image; IA manuallib-id-2654254 PDF p. 8),era,1,derived,unit
 REV5,5,Early Ref.1,REV5 owner's manual sec. 10 printed p. 60 (page image; IA manuallib-id-2654254 PDF p. 8),pre_delay,10,printed,
 REV5,5,Early Ref.1,REV5 owner's manual sec. 10 printed p. 60 (page image; IA manuallib-id-2654254 PDF p. 8),ref1_delay,0.1,printed,
@@ -894,7 +944,7 @@ REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA 
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),deq_hi_q,1,printed,
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),gate_level,0,printed,
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),er_mode,14,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),fx_type,2,ours,FX slot use
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),fx_order,0,ours,effect then reverb
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),mod_type,0,ours,FX slot use
@@ -915,6 +965,7 @@ REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA 
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),mod_fb,30,ours,feedback fixed at 30 % as in the REV7 Reverb Flange (REV7 OM p. 16); the REV5 prints none
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),fx_lpf,17,ours,"LPF FRQ is the reverb's (wet_lpf), not applied twice"
 REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),fx_wet,1,ours,flange into the reverb with no bypass: the REV5 Reverb Flange capture shows no flanged direct signal
+REV5,10,Reverb Flange,REV5 owner's manual sec. 10 printed p. 65 (page image; IA manuallib-id-2654254 PDF p. 13),voice_er_gain,6.5,derived,fitted on the REV5 capture of this program (pass 60: its late field 7 dB under the family's)
 REV5,11,Chorus A,REV5 owner's manual sec. 10 printed p. 66 (page image; IA manuallib-id-2654254 PDF p. 14),era,1,derived,unit
 REV5,11,Chorus A,REV5 owner's manual sec. 10 printed p. 66 (page image; IA manuallib-id-2654254 PDF p. 14),pre_delay,0.1,printed,
 REV5,11,Chorus A,REV5 owner's manual sec. 10 printed p. 66 (page image; IA manuallib-id-2654254 PDF p. 14),ref1_delay,0.1,printed,
@@ -1120,7 +1171,7 @@ REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuall
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),deq_hi_q,1,printed,
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),gate_level,0,printed,
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),er_mode,17,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),fx_type,5,ours,FX slot use
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),fx_order,0,ours,effect then reverb
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),mod_type,2,ours,FX slot use
@@ -1136,9 +1187,10 @@ REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuall
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),rev2_level,100,printed,
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),er_rev_balance,35,printed,
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_loop_size,0.85,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
-REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_diff_size,1.2,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
+REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_diff_size,0.7,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_lo_xover,450,ours,"voice best guess (inference): spring: short loops, long smeared diffusion, little bass"
-REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_er_gain,1.5,derived,reflection gain fitted on the REV5 spring captures (pass 32)
+REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_er_gain,1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,16,Spring,REV5 owner's manual sec. 10 printed p. 71 (page image; IA manuallib-id-2654254 PDF p. 19),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),era,1,derived,unit
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),pre_delay,16,printed,
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),ref1_delay,0.1,printed,
@@ -1161,7 +1213,7 @@ REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manu
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),deq_hi_q,1,printed,
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),gate_level,0,printed,
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),er_mode,18,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),fx_type,5,ours,FX slot use
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),fx_order,0,ours,effect then reverb
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),mod_type,2,ours,FX slot use
@@ -1177,9 +1229,10 @@ REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manu
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),rev2_level,100,printed,
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),er_rev_balance,40,printed,
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_loop_size,1,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
-REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_diff_size,0.85,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
+REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_diff_size,0.6,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_lo_xover,280,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
-REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_er_gain,1.5,ours,"voice best guess (inference): echo chamber: hard walls, less diffusion, prominent reflections"
+REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_er_gain,1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,17,Echo Room,REV5 owner's manual sec. 10 printed p. 72 (page image; IA manuallib-id-2654254 PDF p. 20),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),era,1,derived,unit
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),pre_delay,13,printed,
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),ref1_delay,0.1,printed,
@@ -1202,7 +1255,7 @@ REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manual
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),deq_hi_q,1,printed,
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),gate_level,0,printed,
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),er_mode,19,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),fx_type,5,ours,FX slot use
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),fx_order,0,ours,effect then reverb
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),mod_type,2,ours,FX slot use
@@ -1218,9 +1271,10 @@ REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manual
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),rev2_level,100,printed,
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),er_rev_balance,28,printed,
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_loop_size,1.15,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
-REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_diff_size,1.2,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
+REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_diff_size,0.8,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_lo_xover,240,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
-REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_er_gain,-1,ours,"voice best guess (inference): large smooth hall for strings: long loops, slow diffusion, warm"
+REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_er_gain,-1,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,18,Strings,REV5 owner's manual sec. 10 printed p. 73 (page image; IA manuallib-id-2654254 PDF p. 21),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),era,1,derived,unit
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),pre_delay,12,printed,
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),ref1_delay,0.1,printed,
@@ -1260,6 +1314,7 @@ REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; I
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),rt,0.3,ours,reflections only: no late tail
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),er_rev_balance,100,ours,reflections only
 REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),rev2_level,0,ours,no secondary reverb
+REV5,19,Electric Bass A,REV5 owner's manual sec. 10 printed p. 74 (page image; IA manuallib-id-2654254 PDF p. 22),voice_er_gain,2.5,derived,"reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)"
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),era,1,derived,unit
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),pre_delay,12,printed,
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),ref1_delay,0.1,printed,
@@ -1300,6 +1355,7 @@ REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; I
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),rt,0.3,ours,reflections only: no late tail
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),er_rev_balance,100,ours,reflections only
 REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),rev2_level,0,ours,no secondary reverb
+REV5,20,Electric Bass B,REV5 owner's manual sec. 10 printed p. 75 (page image; IA manuallib-id-2654254 PDF p. 23),voice_er_gain,-2.5,derived,"reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)"
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),era,1,derived,unit
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),pre_delay,12,printed,
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),ref1_delay,0.1,printed,
@@ -1331,7 +1387,7 @@ REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),diffusion,7,printed,
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_count,34,printed,
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),wet_lpf,6.3,printed,
-REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_type,0,printed,TYPE E/R1
+REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_type,1,derived,"TYPE E/R1 printed; E/R2 here: its hardware capture decays past the taps like the E/R2 programs (pass 57, Q-28)"
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_fb_delay,150,printed,
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_fb_gain,0,printed,
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_fb_hi,0.7,printed,
@@ -1339,6 +1395,7 @@ REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),rt,0.3,ours,reflections only: no late tail
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),er_rev_balance,100,ours,reflections only
 REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),rev2_level,0,ours,no secondary reverb
+REV5,21,Kick,REV5 owner's manual sec. 10 printed p. 76 (page image; IA manuallib-id-2654254 PDF p. 24),voice_er_gain,-3.5,derived,"reflections re the 1st reflection, fitted on the hardware capture of this program (pass 49)"
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),era,1,derived,unit
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),pre_delay,10,printed,
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),ref1_delay,0.1,printed,
@@ -1361,7 +1418,7 @@ REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manualli
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),deq_hi_q,1,printed,
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),gate_level,0,printed,
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),er_mode,16,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),fx_type,5,ours,FX slot use
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),fx_order,0,ours,effect then reverb
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),mod_type,2,ours,FX slot use
@@ -1377,9 +1434,12 @@ REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manualli
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),rev2_level,100,printed,
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),er_rev_balance,84,printed,
 REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_loop_size,0.9,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_diff_size,0.85,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_lo_xover,350,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
-REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_er_gain,1,ours,"voice best guess (inference): small bright room: short loops, forward reflections"
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_diff_size,0.8,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_lo_xover,400,derived,fitted on the hardware capture of this program (passes 82-89)
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_er_gain,0.5,derived,fitted on the hardware capture of this program (passes 82-89)
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_late_onset,0,derived,fitted on the REV5 capture of this program (pass 44)
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_late_tilt,2.5,derived,fitted on the hardware capture of this program (passes 82-89)
+REV5,22,Snare,REV5 owner's manual sec. 10 printed p. 77 (page image; IA manuallib-id-2654254 PDF p. 25),voice_hi_xover,11000,derived,fitted on the hardware capture of this program (passes 82-89)
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),era,1,derived,unit
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),pre_delay,20,printed,
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),ref1_delay,0.1,printed,
@@ -1404,7 +1464,7 @@ REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA 
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),gate_trig_delay,10,printed,
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),gate_hold,150,printed,
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),gate_release,5,printed,
-REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from its hardware capture, pass 41)"
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),fx_type,5,ours,FX slot use
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),fx_order,0,ours,effect then reverb
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),mod_type,2,ours,FX slot use
@@ -1420,10 +1480,10 @@ REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA 
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),rev2_level,100,printed,
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),er_rev_balance,54,printed,
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_diff_size,1,ours,"as the fitted Large Hall (pass 44; family, inference)"
 REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_er_gain,2,ours,"as the fitted Large Hall (pass 44; family, inference)"
+REV5,23,Reverb & Gate,REV5 owner's manual sec. 10 printed p. 78 (page image; IA manuallib-id-2654254 PDF p. 26),voice_late_onset,0,ours,"as the fitted Large Hall (pass 44; family, inference)"
 REV5,24,Reverse Gate,REV5 owner's manual sec. 10 printed p. 79 (page image; IA manuallib-id-2654254 PDF p. 27),era,1,derived,unit
 REV5,24,Reverse Gate,REV5 owner's manual sec. 10 printed p. 79 (page image; IA manuallib-id-2654254 PDF p. 27),pre_delay,25,printed,
 REV5,24,Reverse Gate,REV5 owner's manual sec. 10 printed p. 79 (page image; IA manuallib-id-2654254 PDF p. 27),ref1_delay,0.1,printed,
@@ -1486,7 +1546,7 @@ REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),deq_hi_q,1,printed,
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),gate_level,0,printed,
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),gate_input,1,ours,"GATE LVL is the program noise gate (pp. 22, 27-29, 34, 37); on the input (inference)"
-REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),er_mode,0,ours,"stand-in: the chart prints PIANO, hidden until there is data (Q-01)"
+REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),er_mode,8,printed,PIANO
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),fx_type,5,ours,FX slot use
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),fx_order,0,ours,effect then reverb
 REV5,25,Rehearsal Room,REV5 owner's manual sec. 10 printed p. 80 (page image; IA manuallib-id-2654254 PDF p. 28),mod_type,2,ours,FX slot use
@@ -1725,7 +1785,7 @@ REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),gate_trig_delay,20,printed,
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),gate_hold,150,printed,
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),gate_release,5,printed,
-REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),fx_type,1,ours,FX slot use
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),fx_order,0,ours,effect then reverb
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),mod_type,2,ours,FX slot use
@@ -1746,10 +1806,10 @@ REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),echo_damp,9,derived,F.B. HIGH x0.9 -> damp 9
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),echo_level,100,ours,no level control printed
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,91,Echo & Rev & G,REV5 owner's manual sec. 10 printed p. 86 (page image; IA manuallib-id-2654254 PDF p. 34),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),era,1,derived,unit
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),pre_delay,30,printed,
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),ref1_delay,10,printed,
@@ -1774,7 +1834,7 @@ REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; 
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),gate_trig_delay,20,printed,
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),gate_hold,150,printed,
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),gate_release,5,printed,
-REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),fx_type,2,ours,FX slot use
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),fx_order,0,ours,effect then reverb
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),mod_type,2,ours,FX slot use
@@ -1792,10 +1852,10 @@ REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; 
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),dm_depth,50,printed,
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),am_depth,40,printed,
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,92,Chorus & Rev & G,REV5 owner's manual sec. 10 printed p. 87 (page image; IA manuallib-id-2654254 PDF p. 35),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),era,1,derived,unit
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),pre_delay,30,printed,
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),ref1_delay,10,printed,
@@ -1820,7 +1880,7 @@ REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image;
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),gate_trig_delay,20,printed,
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),gate_hold,150,printed,
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),gate_release,5,printed,
-REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),fx_type,2,ours,FX slot use
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),fx_order,0,ours,effect then reverb
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),mod_type,6,ours,FX slot use
@@ -1837,10 +1897,10 @@ REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image;
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),lfo_rate,0.7,printed,
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),mod_depth,50,printed,
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,93,Sympho. & Rev & G,REV5 owner's manual sec. 10 printed p. 88 (page image; IA manuallib-id-2654254 PDF p. 36),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),era,1,derived,unit
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),pre_delay,30,printed,
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),ref1_delay,10,printed,
@@ -1865,7 +1925,7 @@ REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA m
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),gate_trig_delay,20,printed,
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),gate_hold,150,printed,
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),gate_release,5,printed,
-REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),fx_type,3,ours,FX slot use
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),fx_order,0,ours,effect then reverb
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),mod_type,2,ours,FX slot use
@@ -1885,10 +1945,10 @@ REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA m
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),pitch_delay,0.1,printed,
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),pitch_fb,0,printed,
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,94,PC & Rev & G,REV5 owner's manual sec. 10 printed p. 89 (page image; IA manuallib-id-2654254 PDF p. 37),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),era,1,derived,unit
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),pre_delay,30,printed,
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),ref1_delay,10,printed,
@@ -1913,7 +1973,7 @@ REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image;
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),gate_trig_delay,20,printed,
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),gate_hold,150,printed,
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),gate_release,5,printed,
-REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),fx_type,2,ours,FX slot use
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),fx_order,1,ours,reverb then effect
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),mod_type,6,ours,FX slot use
@@ -1930,10 +1990,10 @@ REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image;
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),lfo_rate,0.7,printed,
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),mod_depth,50,printed,
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,95,Rev & Sympho. & G,REV5 owner's manual sec. 10 printed p. 90 (page image; IA manuallib-id-2654254 PDF p. 38),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),era,1,derived,unit
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),pre_delay,30,printed,
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),ref1_delay,10,printed,
@@ -1958,7 +2018,7 @@ REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA 
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),gate_trig_delay,20,printed,
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),gate_hold,150,printed,
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),gate_release,5,printed,
-REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),fx_type,4,ours,FX slot use
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),fx_order,1,ours,reverb then effect
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),mod_type,2,ours,FX slot use
@@ -1976,10 +2036,10 @@ REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA 
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),pan_depth,75,printed,
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),pan_dir,0,printed,
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,96,Rev & Pan & G,REV5 owner's manual sec. 10 printed p. 91 (page image; IA manuallib-id-2654254 PDF p. 39),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),era,1,derived,unit
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),pre_delay,30,printed,
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),ref1_delay,10,printed,
@@ -2004,7 +2064,7 @@ REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA m
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),gate_trig_delay,20,printed,
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),gate_hold,150,printed,
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),gate_release,5,printed,
-REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),er_mode,12,ours,"the reverb program's own early taps (no ER mode on the REV5's reverb programs; read from captures, pass 22)"
+REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),er_mode,20,ours,"the combination programs' shared early taps (read from the hardware captures of 95 and 96, pass 41)"
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),fx_type,3,ours,FX slot use
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),fx_order,1,ours,reverb then effect
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),mod_type,2,ours,FX slot use
@@ -2026,10 +2086,10 @@ REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA m
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),pitch2_fine,-8,printed,
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),pitch2_delay,0.1,printed,
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_loop_size,1.1,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_diff_size,1,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_diff_size,0.6,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_lo_xover,260,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_er_gain,0,ours,"voice best guess (inference): large hall: longer loops, smoother onset, lower bass corner"
-REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_late_onset,10,derived,diffusers and late onset fitted on the REV5 hall captures (pass 26)
+REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_er_gain,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
+REV5,97,Rev & PC & G,REV5 owner's manual sec. 10 printed p. 92 (page image; IA manuallib-id-2654254 PDF p. 40),voice_late_onset,0,derived,"the combinations' own network, fitted on the REV5 captures of 91-93 and 95 (pass 55)"
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),era,1,derived,unit
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),pre_delay,10,printed,
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),ref1_delay,10,printed,
@@ -2070,7 +2130,11 @@ REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA m
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),room_size,2,printed,
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),er_count,14,printed,
 REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),rev2_level,0,ours,no secondary reverb
-REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_late_onset,19.9,derived,REV DLY 20 ms less ER DLY 0.1 ms (the reverb starts that much after the reflections)
+REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_rev_taps,9,derived,the combinations' tap set beside the chart: the REV5 capture of 98 is the combinations' network (pass 55); pass 67
+REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_late_onset,19.9,derived,REV DLY 20.0 less ER DLY 0.1 ms: where the reverb (its taps and late network) starts (pass 67)
+REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_er_gain,6,derived,fitted on the REV5 capture of 98 with its reverb taps (pass 67; pass 55 +4)
+REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_diff_size,0.6,derived,the combinations' diffusers (pass 55)
+REV5,98,ER + Rev & G,REV5 owner's manual sec. 10 printed p. 93 (page image; IA manuallib-id-2654254 PDF p. 41),voice_er_printed,1,derived,"S-Hall as printed: the REV5 capture of 98 fits the printed chart, 05 / 06 the re-measured times (pass 86)"
 REV5,99,Plate & Hall & G,REV5 owner's manual sec. 10 printed p. 94 (page image; IA manuallib-id-2654254 PDF p. 42),era,1,derived,unit
 REV5,99,Plate & Hall & G,REV5 owner's manual sec. 10 printed p. 94 (page image; IA manuallib-id-2654254 PDF p. 42),pre_delay,10,printed,
 REV5,99,Plate & Hall & G,REV5 owner's manual sec. 10 printed p. 94 (page image; IA manuallib-id-2654254 PDF p. 42),ref1_delay,10,printed,
