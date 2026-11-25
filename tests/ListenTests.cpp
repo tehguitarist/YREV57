@@ -57,7 +57,7 @@ namespace
 
     std::vector<Test> tests ()
     {
-        // Every group so far has been heard and closed (2026-11-22, ROADMAP M5); add new A/B groups here.
+        // Every group so far has been heard and closed (2026-11-22); add new A/B groups here.
         return {};
     }
 

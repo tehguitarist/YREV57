@@ -75,7 +75,7 @@ namespace yrev::dsp
         float panRateHz = 1.0f;           // pan_rate (0.1..40)
         float panDepth = 50.0f;           // pan_depth, %
 
-        // Period A/B options (ROADMAP M4b, fx-slot.md "Period authenticity"): global settings, not parameters, so
+        // Period A/B options (fx-slot.md "Period authenticity"): global settings, not parameters, so
         // each can be heard against the current build before a default is chosen. All off is the build as before.
         bool steppedSweep = false; // mod delay sweeps quantised to 8-bit MOD words (YM3807, inference)
         bool linearRead = false;   // linear fractional delay reads instead of cubic Hermite

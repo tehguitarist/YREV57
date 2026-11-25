@@ -47,7 +47,7 @@ jobs:
             libglu1-mesa-dev mesa-common-dev xvfb
 
       - name: Cache JUCE and Catch2
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .fetchcontent
           key: fetchcontent-${{ runner.os }}-${{ hashFiles('CMakeLists.txt') }}

@@ -4,7 +4,7 @@ Guidance for Claude Code working in this repository.
 
 ## What this project is
 
-**YREV57** is an open-source reverb plugin (JUCE / C++20, AU + VST3 + Standalone, LV2 on Linux) *inspired by* two mid-1980s Yamaha digital reverbs, the REV7 (1985) and REV5 (1987). It is not a clone and is not affiliated with Yamaha. A modelled converter-and-EQ chain wraps **our own** delay/all-pass reverb engine, with an **era switch** (1985 / 1987) as the main character control. Status: beta (0.9.1); see [ROADMAP.md](ROADMAP.md).
+**YREV57** is an open-source reverb plugin (JUCE / C++20, AU + VST3 + Standalone, LV2 on Linux) *inspired by* two mid-1980s Yamaha digital reverbs, the REV7 (1985) and REV5 (1987). It is not a clone and is not affiliated with Yamaha. A modelled converter-and-EQ chain wraps **our own** delay/all-pass reverb engine, with an **era switch** (1985 / 1987) as the main character control.
 
 ## Read first
 

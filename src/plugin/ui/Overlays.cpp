@@ -455,7 +455,7 @@ namespace yrev::ui
                  }}},
                [this] (int) { return prop ("limiter", "1") == "1"; });
 
-        // FX period A/B (ROADMAP M4b): each key toggles one period-style option in the FX slot so it can be heard
+        // FX period A/B (fx-slot.md "Period authenticity"): each key toggles one period-style option in the FX slot so it can be heard
         // against the current build; stored as "1"/"0" state properties, read by the processor (readSettings).
         // Defaults (2026-11-22): Trem. DM on, the others off; keep in step with YrevProcessor::readSettings.
         static constexpr const char* kFxKeys[] = {"fxStepped", "fxLinear", "fxTriangle", "fxTremDm"};

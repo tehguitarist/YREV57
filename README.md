@@ -16,8 +16,6 @@ and Standalone.
 > sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
 > the hardware that inspired this plug-in.
 
-**Status: version 1.0.** See [Status](#status).
-
 ## Highlights
 
 - **Two eras.** Era 7 is modelled on the REV7: 31.25 kHz native rate, 12 kHz bandwidth, no dither, decays of 0.3 to 10 s.
@@ -129,15 +127,11 @@ The targets are `YREV57_Standalone`, `YREV57_VST3`, `YREV57_LV2` (Linux only) an
 The CI and release workflows run by hand only; see [docs/release.md](docs/release.md). Contributor rules are in
 [CONTRIBUTING.md](CONTRIBUTING.md) and the project guidance for Claude Code is in [CLAUDE.md](CLAUDE.md).
 
-## Status
+## Notes
 
-**1.0.** Every feature is in: the panel, every parameter, the preset banks and the whole DSP chain. It builds as AU,
+Every feature is in: the panel, every parameter, the preset banks and the whole DSP chain. It builds as AU,
 VST3 and Standalone, passes Apple's `auval` and pluginval at strictness 10 (AU and VST3) and its automated tests, and costs about 1.3 to 2.4 % of one Apple M1 Pro core (block 256, 48 or 96 kHz).
 
-Good to know:
-
-- **Voicing.** The programs are tuned by measurement and ear; a listening pass may still refine them in 1.x
-  releases, including four period-style FX options that are off until they are judged.
 - **Inspired by, not a copy.** YREV57 is our own interpretation of the sound of these units, built from publicly
   available documentation and listening. It does not reproduce their circuits or firmware.
 - **Some hardware features are not modelled.** Three of the instrument early-reflection modes (organ, brass, guitar) are
@@ -145,7 +139,7 @@ Good to know:
   automation.
 - **Builds.** Installers are signed and notarised on macOS; the Windows and Linux builds are unsigned, so Windows may show a SmartScreen warning.
 
-The [roadmap](ROADMAP.md) has what is planned next. Design notes are in [docs/](docs/README.md).
+Design notes are in [docs/](docs/README.md).
 
 ## Repository layout
 
