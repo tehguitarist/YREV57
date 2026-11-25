@@ -12,11 +12,7 @@ and filters around the reverb as well as the reverb itself. YREV57 models that c
 delay and all-pass reverb engine inside it. An **era switch** (7 or 5) is the main character control. It runs as AU, VST3, LV2 (Linux)
 and Standalone.
 
-> **Tip:** shift-click the era key that isn't lit. There's a secret preset hiding behind it.
-
-> YREV57 is an independent product, inspired by the Yamaha REV7 and REV5. It is not affiliated with, endorsed by or
-> sponsored by Yamaha Corporation. Yamaha, REV7 and REV5 are trademarks of Yamaha Corporation, used here only to describe
-> the hardware that inspired this plug-in.
+> **Tip:** shift-click the era key that isn't lit. There's a secret preset hiding from the Rev-1 used by a fairly well known mixer.
 
 ## Highlights
 
