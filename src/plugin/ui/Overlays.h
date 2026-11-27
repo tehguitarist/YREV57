@@ -56,6 +56,9 @@ namespace yrev::ui
         Naming naming = Naming::none;
         juce::String note;
         bool hiddenNext = false;
+        // The bank and preset last scrolled into view; refresh () scrolls only when they change.
+        juce::String revealedBank;
+        int revealedPreset = -2;
         std::unique_ptr<juce::FileChooser> chooser;
 
         int getNumRows () override { return (int) rows.size (); }

@@ -4,7 +4,15 @@
 namespace
 {
     constexpr double kMaxSwapWaitSeconds = 0.25; // longest the audio thread waits for a per-era settings swap
-}
+    // Tail reported by the VST3 (maintainer decision 2026-11-27): VST3 has no way to tell the host that the tail
+    // changed (only a component restart, which can interrupt playback), and hosts read it once, so a host that
+    // stops processing a silent plug-in after the reported tail cut reverbs whose RT was raised after loading
+    // (GitHub issue #1: REAPER's auto-bypass on silence, VST3). The VST3 reports this fixed tail instead: it covers
+    // every RT setting (the longest, era 5 RT 99 s x Low Ratio 2.4 with 1 s pre-delay and room 25x, is about 59 dB
+    // down by then); only ER or FX feedback near 99 % may still be cut past it. The AU and Standalone keep the live
+    // tail (AU hosts can follow its changes; Logic plays it without the cut).
+    constexpr double kVst3TailSeconds = 240.0;
+} // namespace
 
 YrevProcessor::YrevProcessor ()
     : AudioProcessor (BusesProperties ()
@@ -466,8 +474,9 @@ yrev::dsp::ChainParams YrevProcessor::readParams () const
 
 double YrevProcessor::getTailLengthSeconds () const
 {
-    return yrev::dsp::Chain::tailSeconds (readParams ()) +
-           (double) getLatencySamples () / juce::jmax (getSampleRate (), 1.0);
+    const double tail =
+        wrapperType == wrapperType_VST3 ? kVst3TailSeconds : yrev::dsp::Chain::tailSeconds (readParams ());
+    return tail + (double) getLatencySamples () / juce::jmax (getSampleRate (), 1.0);
 }
 
 bool YrevProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const

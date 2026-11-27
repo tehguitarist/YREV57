@@ -66,7 +66,7 @@ cmake --build build --config Release -j 8
 - `processBlock` must not allocate, lock, log or throw. Preallocate in `prepareToPlay`.
 - Handle sample-rate changes, block size 1, and denormals (`ScopedNoDenormals`).
 - The native-rate engine (31.25 kHz / 44.1 kHz) needs resampling at the edges; the bridge delay is reported to the host as latency and the dry is delayed to match; pre-delay, 1st reflections and FX delays play as printed (ADR 0001).
-- Report the reverb tail honestly (`getTailLengthSeconds`); Era 5 allows RT to 99 s.
+- Report the reverb tail honestly (`getTailLengthSeconds`); Era 5 allows RT to 99 s. Exception: the VST3 reports a fixed 240 s, since VST3 cannot tell the host the tail changed and REAPER's auto-bypass cut raised RTs (issue #1, 2026-11-27).
 - Wet path is mono-summed by default (ADR 0002); dry stays stereo.
 
 ## Licence

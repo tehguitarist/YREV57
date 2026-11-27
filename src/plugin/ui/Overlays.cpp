@@ -218,6 +218,7 @@ namespace yrev::ui
         hiddenNext = false;
         if (bank == "SECRET")
             note = "HIDDEN PRESETS";
+        revealedPreset = -2; // show the current preset again on every opening
         refresh ();
     }
 
@@ -235,9 +236,16 @@ namespace yrev::ui
                 rows.push_back (i);
         list.updateContent ();
         list.repaint ();
-        for (size_t r = 0; r < rows.size (); ++r)
-            if (rows[r] == mgr.current ())
-                list.scrollToEnsureRowIsOnscreen ((int) r);
+        // Bring the current preset into view only when the bank or the preset changes: the editor refreshes the
+        // open browser on every timer tick, and scrolling back each time undid any mouse-wheel scroll.
+        if (bank != revealedBank || mgr.current () != revealedPreset)
+        {
+            revealedBank = bank;
+            revealedPreset = mgr.current ();
+            for (size_t r = 0; r < rows.size (); ++r)
+                if (rows[r] == mgr.current ())
+                    list.scrollToEnsureRowIsOnscreen ((int) r);
+        }
         tabFactory.setToggleState (bank == "FACTORY", juce::dontSendNotification);
         tabUser.setToggleState (bank == "USER", juce::dontSendNotification);
         tabCombi.setToggleState (bank == "COMBI", juce::dontSendNotification);

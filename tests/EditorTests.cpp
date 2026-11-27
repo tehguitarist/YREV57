@@ -1,5 +1,6 @@
 #include "plugin/PluginProcessor.h"
 #include "plugin/YrevEditor.h"
+#include "plugin/ui/Overlays.h"
 #include "plugin/ui/SkinKey.h"
 
 #include <catch2/catch_test_macros.hpp>
@@ -249,4 +250,54 @@ TEST_CASE ("CLA mode: both era keys lit on the hidden preset; a plain era click 
     auto* first = on5 ? era["5"] : era["7"];
     first->onClick (); // (key lights follow on the editor timer, which does not run here)
     CHECK (juce::roundToInt (p.apvts.getRawParameterValue ("era")->load ()) == (on5 ? 1 : 0));
+}
+
+TEST_CASE ("the preset list keeps a mouse-wheel scroll across the editor's timer refreshes (issue #1)")
+{
+    YrevProcessor p;
+    for (const juce::String bank : {"FACTORY", "REV5"})
+    {
+        INFO ("bank " << bank);
+        std::vector<int> inBank;
+        for (int i = 0; i < p.presets.size (); ++i)
+            if (p.presets.at (i).bank == bank)
+                inBank.push_back (i);
+        REQUIRE (inBank.size () > 10); // more rows than the list shows (ten)
+        p.presets.load (inBank.front ());
+
+        std::unique_ptr<juce::AudioProcessorEditor> ed (p.createEditor ());
+        REQUIRE (ed != nullptr);
+        yrev::ui::PresetBrowser* browser = nullptr;
+        std::function<void (juce::Component&)> walk = [&] (juce::Component& c)
+        {
+            if (auto* b = dynamic_cast<yrev::ui::PresetBrowser*> (&c))
+                browser = b;
+            for (auto* child : c.getChildren ())
+                walk (*child);
+        };
+        walk (*ed);
+        REQUIRE (browser != nullptr);
+        browser->open ();
+        juce::ListBox* list = nullptr;
+        for (auto* child : browser->getChildren ())
+            if (auto* l = dynamic_cast<juce::ListBox*> (child))
+                list = l;
+        REQUIRE (list != nullptr);
+        auto* vp = list->getViewport ();
+        REQUIRE (vp != nullptr);
+        CHECK (vp->getViewPositionY () == 0); // opens on the current preset, the bank's first
+
+        // a wheel scroll moves the viewport; the timer then refreshes the open browser
+        vp->setViewPosition (0, 1 << 20);
+        const int scrolled = vp->getViewPositionY ();
+        REQUIRE (scrolled > 0);
+        browser->refresh ();
+        browser->refresh ();
+        CHECK (vp->getViewPositionY () == scrolled);
+
+        // a new current preset is still brought into view
+        p.presets.load (inBank[1]);
+        browser->refresh ();
+        CHECK (vp->getViewPositionY () <= list->getRowHeight ()); // the bank's second row, back at the top
+    }
 }
